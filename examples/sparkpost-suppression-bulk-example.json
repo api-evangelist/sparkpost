@@ -1,0 +1,34 @@
+{
+  "description": "Example: Bulk insert suppressions for unsubscribed recipients",
+  "request": {
+    "method": "PUT",
+    "url": "https://api.sparkpost.com/api/v1/suppression-list",
+    "headers": {
+      "Authorization": "YOUR_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "recipients": [
+        {
+          "recipient": "unsubscribed@example.com",
+          "type": "non_transactional",
+          "description": "User requested unsubscribe via email footer"
+        },
+        {
+          "recipient": "bounced@example.com",
+          "type": "transactional",
+          "description": "Hard bounce — address does not exist"
+        },
+        {
+          "recipient": "complained@example.com",
+          "type": "non_transactional",
+          "description": "Spam complaint via Yahoo FBL"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {}
+  }
+}

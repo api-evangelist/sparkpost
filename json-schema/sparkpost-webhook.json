@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.sparkpost.com/schemas/webhook",
+  "title": "SparkPost Webhook",
+  "description": "Schema for a SparkPost event webhook configuration",
+  "type": "object",
+  "required": ["name", "target", "events"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Unique webhook identifier (returned in responses)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name for the webhook"
+    },
+    "target": {
+      "type": "string",
+      "format": "uri",
+      "description": "HTTP or HTTPS URL to receive event POST payloads"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "delivery",
+          "injection",
+          "bounce",
+          "delay",
+          "policy_rejection",
+          "out_of_band",
+          "open",
+          "initial_open",
+          "click",
+          "generation_failure",
+          "generation_rejection",
+          "spam_complaint",
+          "list_unsubscribe",
+          "link_unsubscribe",
+          "relay_injection",
+          "relay_rejection",
+          "relay_delivery",
+          "relay_tempfail",
+          "relay_permfail"
+        ]
+      },
+      "description": "List of event types to subscribe to"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this webhook is currently active"
+    },
+    "custom_headers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom HTTP headers to include in webhook POST requests"
+    },
+    "exception_subaccounts": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "Subaccount IDs whose events are excluded from this webhook"
+    },
+    "auth_type": {
+      "type": "string",
+      "enum": ["none", "basic", "oauth2"],
+      "default": "none",
+      "description": "Authentication mechanism for webhook requests"
+    },
+    "auth_request_details": {
+      "type": "object",
+      "description": "OAuth 2.0 token request configuration (required when auth_type=oauth2)",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "body": {
+          "type": "object"
+        }
+      }
+    },
+    "auth_credentials": {
+      "type": "object",
+      "description": "Basic auth credentials (required when auth_type=basic)",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "last_successful": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Timestamp of last successful batch delivery"
+    },
+    "last_failure": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Timestamp of last failed batch delivery attempt"
+    }
+  }
+}

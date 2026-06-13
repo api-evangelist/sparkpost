@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.sparkpost.com/schemas/transmission",
+  "title": "SparkPost Transmission",
+  "description": "Schema for a SparkPost email transmission request",
+  "type": "object",
+  "properties": {
+    "campaign_id": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Campaign name for grouping transmissions"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1024,
+      "description": "Human-readable description of the transmission"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Transmission-level metadata passed to webhooks"
+    },
+    "substitution_data": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Template substitution data for all recipients"
+    },
+    "return_path": {
+      "type": "string",
+      "description": "Envelope FROM address for bounce handling"
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "start_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Schedule transmission for future delivery (max 3 days ahead)"
+        },
+        "open_tracking": {
+          "type": "boolean",
+          "description": "Enable open tracking pixel"
+        },
+        "click_tracking": {
+          "type": "boolean",
+          "description": "Enable click-through tracking"
+        },
+        "transactional": {
+          "type": "boolean",
+          "description": "Classify as transactional email"
+        },
+        "sandbox": {
+          "type": "boolean",
+          "description": "Use sandbox mode for testing without sending"
+        },
+        "skip_suppression": {
+          "type": "boolean",
+          "description": "Bypass suppression list check"
+        },
+        "ip_pool": {
+          "type": "string",
+          "description": "IP pool ID to use for sending"
+        },
+        "inline_css": {
+          "type": "boolean",
+          "description": "Inline CSS styles before sending"
+        },
+        "perform_substitutions": {
+          "type": "boolean",
+          "description": "Whether to perform substitution data replacement"
+        }
+      }
+    },
+    "recipients": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Recipient"
+          },
+          "description": "Inline recipient list"
+        },
+        {
+          "type": "object",
+          "required": ["list_id"],
+          "properties": {
+            "list_id": {
+              "type": "string",
+              "description": "ID of a stored recipient list"
+            }
+          }
+        }
+      ]
+    },
+    "content": {
+      "$ref": "#/definitions/Content"
+    }
+  },
+  "required": ["recipients", "content"],
+  "definitions": {
+    "Recipient": {
+      "type": "object",
+      "required": ["address"],
+      "properties": {
+        "address": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "email"
+            },
+            {
+              "type": "object",
+              "required": ["email"],
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "header_to": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "substitution_data": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "Content": {
+      "type": "object",
+      "oneOf": [
+        {
+          "required": ["from", "subject"],
+          "properties": {
+            "from": {
+              "oneOf": [
+                { "type": "string" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "email": { "type": "string", "format": "email" },
+                    "name": { "type": "string" }
+                  }
+                }
+              ]
+            },
+            "subject": { "type": "string" },
+            "html": { "type": "string" },
+            "text": { "type": "string" },
+            "amp_html": { "type": "string" },
+            "reply_to": { "type": "string" },
+            "headers": {
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            }
+          }
+        },
+        {
+          "required": ["template_id"],
+          "properties": {
+            "template_id": {
+              "type": "string",
+              "description": "ID of stored template"
+            }
+          }
+        },
+        {
+          "required": ["ab_test_id"],
+          "properties": {
+            "ab_test_id": {
+              "type": "string",
+              "description": "ID of A/B test"
+            }
+          }
+        },
+        {
+          "required": ["email_rfc822"],
+          "properties": {
+            "email_rfc822": {
+              "type": "string",
+              "description": "Raw RFC822 formatted email"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

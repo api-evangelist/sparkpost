@@ -1,0 +1,188 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "sparkpost": "https://developers.sparkpost.com/api/vocabulary#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Transmission": "sparkpost:Transmission",
+    "Template": "sparkpost:Template",
+    "RecipientList": "sparkpost:RecipientList",
+    "Recipient": "sparkpost:Recipient",
+    "Webhook": "sparkpost:Webhook",
+    "RelayWebhook": "sparkpost:RelayWebhook",
+    "SuppressionEntry": "sparkpost:SuppressionEntry",
+    "SendingDomain": "sparkpost:SendingDomain",
+    "InboundDomain": "sparkpost:InboundDomain",
+    "Subaccount": "sparkpost:Subaccount",
+    "Event": "sparkpost:Event",
+    "Metrics": "sparkpost:Metrics",
+    "IPPool": "sparkpost:IPPool",
+    "DkimKey": "sparkpost:DkimKey",
+
+    "id": "@id",
+    "type": "@type",
+
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "target": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "campaignId": {
+      "@id": "sparkpost:campaignId",
+      "@type": "xsd:string"
+    },
+    "substitutionData": {
+      "@id": "sparkpost:substitutionData",
+      "@type": "@json"
+    },
+    "metadata": {
+      "@id": "sparkpost:metadata",
+      "@type": "@json"
+    },
+    "templateId": {
+      "@id": "sparkpost:templateId",
+      "@type": "xsd:string"
+    },
+    "recipients": {
+      "@id": "sparkpost:recipients",
+      "@container": "@set"
+    },
+    "content": {
+      "@id": "sparkpost:content",
+      "@type": "@json"
+    },
+    "options": {
+      "@id": "sparkpost:options",
+      "@type": "@json"
+    },
+    "events": {
+      "@id": "sparkpost:events",
+      "@container": "@set"
+    },
+    "active": {
+      "@id": "sparkpost:active",
+      "@type": "xsd:boolean"
+    },
+    "suppressionType": {
+      "@id": "sparkpost:suppressionType",
+      "@type": "xsd:string"
+    },
+    "domain": {
+      "@id": "sparkpost:domain",
+      "@type": "xsd:string"
+    },
+    "dkim": {
+      "@id": "sparkpost:dkim",
+      "@type": "@json"
+    },
+    "selector": {
+      "@id": "sparkpost:selector",
+      "@type": "xsd:string"
+    },
+    "ipPool": {
+      "@id": "sparkpost:ipPool",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "sparkpost:status",
+      "@type": "xsd:string"
+    },
+    "subaccountId": {
+      "@id": "sparkpost:subaccountId",
+      "@type": "xsd:integer"
+    },
+    "openTracking": {
+      "@id": "sparkpost:openTracking",
+      "@type": "xsd:boolean"
+    },
+    "clickTracking": {
+      "@id": "sparkpost:clickTracking",
+      "@type": "xsd:boolean"
+    },
+    "returnPath": {
+      "@id": "sparkpost:returnPath",
+      "@type": "xsd:string"
+    },
+    "bounceClass": {
+      "@id": "sparkpost:bounceClass",
+      "@type": "xsd:integer"
+    },
+    "customHeaders": {
+      "@id": "sparkpost:customHeaders",
+      "@type": "@json"
+    },
+    "authType": {
+      "@id": "sparkpost:authType",
+      "@type": "xsd:string"
+    },
+    "match": {
+      "@id": "sparkpost:match",
+      "@type": "@json"
+    },
+    "listId": {
+      "@id": "sparkpost:listId",
+      "@type": "xsd:string"
+    },
+    "totalAcceptedRecipients": {
+      "@id": "sparkpost:totalAcceptedRecipients",
+      "@type": "xsd:integer"
+    },
+    "totalRejectedRecipients": {
+      "@id": "sparkpost:totalRejectedRecipients",
+      "@type": "xsd:integer"
+    },
+    "countDelivered": {
+      "@id": "sparkpost:countDelivered",
+      "@type": "xsd:integer"
+    },
+    "countBounce": {
+      "@id": "sparkpost:countBounce",
+      "@type": "xsd:integer"
+    },
+    "countOpen": {
+      "@id": "sparkpost:countOpen",
+      "@type": "xsd:integer"
+    },
+    "countClick": {
+      "@id": "sparkpost:countClick",
+      "@type": "xsd:integer"
+    },
+    "countSpamComplaint": {
+      "@id": "sparkpost:countSpamComplaint",
+      "@type": "xsd:integer"
+    },
+    "transactional": {
+      "@id": "sparkpost:transactional",
+      "@type": "xsd:boolean"
+    },
+    "sharedWithSubaccounts": {
+      "@id": "sparkpost:sharedWithSubaccounts",
+      "@type": "xsd:boolean"
+    }
+  }
+}

@@ -30,6 +30,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/transmissions/
+      - type: OpenAPI
+        url: openapi/sparkpost-transmissions-openapi.yml
   - aid: sparkpost:templates
     name: SparkPost Templates API
     description: Create, retrieve, update, delete, and preview stored email templates. Templates support dynamic substitution data and support both text and HTML parts.
@@ -41,6 +43,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/templates/
+      - type: OpenAPI
+        url: openapi/sparkpost-templates-openapi.yml
   - aid: sparkpost:metrics
     name: SparkPost Metrics API
     description: Query aggregate email performance metrics including deliveries, bounces, opens, clicks, and spam complaints. Supports filtering by campaign, template, sending domain, and time range.
@@ -53,6 +57,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/metrics/
+      - type: OpenAPI
+        url: openapi/sparkpost-metrics-openapi.yml
   - aid: sparkpost:events
     name: SparkPost Message Events API
     description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
@@ -64,6 +70,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/message-events/
+      - type: OpenAPI
+        url: openapi/sparkpost-events-openapi.yml
   - aid: sparkpost:webhooks
     name: SparkPost Webhooks API
     description: Configure real-time HTTP push notifications for email events (deliveries, bounces, opens, clicks, spam complaints). Supports batched event payloads and retry logic.
@@ -76,6 +84,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/webhooks/
+      - type: OpenAPI
+        url: openapi/sparkpost-webhooks-openapi.yml
   - aid: sparkpost:suppression-list
     name: SparkPost Suppression List API
     description: Manage the suppression list to prevent sending to unsubscribed, bounced, or complained recipients. Supports bulk insert, search, and deletion of suppressed addresses.
@@ -88,6 +98,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/suppression-list/
+      - type: OpenAPI
+        url: openapi/sparkpost-suppression-list-openapi.yml
   - aid: sparkpost:recipient-lists
     name: SparkPost Recipient Lists API
     description: Create and manage stored recipient lists for use with Transmissions. Lists can include substitution data per recipient for personalized sending campaigns.
@@ -100,6 +112,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/recipient-lists/
+      - type: OpenAPI
+        url: openapi/sparkpost-recipient-lists-openapi.yml
   - aid: sparkpost:sending-domains
     name: SparkPost Sending Domains API
     description: Add and verify custom sending domains via DKIM signing. Required for domain-based email authentication and custom bounce domain configuration.
@@ -112,6 +126,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/sending-domains/
+      - type: OpenAPI
+        url: openapi/sparkpost-sending-domains-openapi.yml
   - aid: sparkpost:subaccounts
     name: SparkPost Subaccounts API
     description: Manage subaccounts for multi-tenant or agency deployments, each with isolated sending domains, API keys, suppression lists, and reporting.
@@ -124,6 +140,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/subaccounts/
+      - type: OpenAPI
+        url: openapi/sparkpost-subaccounts-openapi.yml
   - aid: sparkpost:inbound
     name: SparkPost Inbound Domains & Relay Webhooks API
     description: Configure inbound email processing by associating inbound domains with relay webhooks that forward received messages as HTTP POST events to your application.
@@ -136,6 +154,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.sparkpost.com/api/inbound-domains/
+      - type: OpenAPI
+        url: openapi/sparkpost-inbound-openapi.yml
 common:
   - type: Website
     url: https://www.sparkpost.com/

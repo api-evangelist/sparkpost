@@ -1,0 +1,57 @@
+{
+  "description": "Example: Send a transactional email with inline content",
+  "request": {
+    "method": "POST",
+    "url": "https://api.sparkpost.com/api/v1/transmissions",
+    "headers": {
+      "Authorization": "YOUR_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "options": {
+        "open_tracking": true,
+        "click_tracking": true,
+        "transactional": true
+      },
+      "campaign_id": "order_confirmation",
+      "metadata": {
+        "user_type": "premium",
+        "region": "us-east"
+      },
+      "substitution_data": {
+        "order_id": "ORD-123456",
+        "customer_name": "Jane Doe"
+      },
+      "recipients": [
+        {
+          "address": {
+            "email": "jane.doe@example.com",
+            "name": "Jane Doe"
+          },
+          "substitution_data": {
+            "order_id": "ORD-123456"
+          }
+        }
+      ],
+      "content": {
+        "from": {
+          "email": "orders@mycompany.com",
+          "name": "My Company Orders"
+        },
+        "subject": "Your order {{order_id}} has been confirmed",
+        "html": "<html><body><h1>Hello {{customer_name}},</h1><p>Your order <strong>{{order_id}}</strong> is confirmed.</p></body></html>",
+        "text": "Hello {{customer_name}},\n\nYour order {{order_id}} is confirmed."
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "results": {
+        "total_rejected_recipients": 0,
+        "total_accepted_recipients": 1,
+        "id": "11668787484950529"
+      }
+    }
+  }
+}

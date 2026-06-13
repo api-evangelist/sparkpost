@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.sparkpost.com/schemas/suppression-entry",
+  "title": "SparkPost Suppression Entry",
+  "description": "Schema for a SparkPost suppression list entry",
+  "type": "object",
+  "required": ["recipient", "type"],
+  "properties": {
+    "recipient": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the suppressed recipient"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["transactional", "non_transactional"],
+      "description": "Type of suppression — transactional applies to transactional messages, non_transactional to marketing"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable reason for the suppression"
+    },
+    "list_id": {
+      "type": "string",
+      "description": "RFC 2919 compliant mailing list identifier"
+    },
+    "source": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Origin of the suppression (returned in responses)"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Timestamp when suppression was created"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Timestamp when suppression was last updated"
+    }
+  }
+}

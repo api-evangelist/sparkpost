@@ -1,0 +1,42 @@
+{
+  "description": "Example: Create a webhook for delivery and bounce events",
+  "request": {
+    "method": "POST",
+    "url": "https://api.sparkpost.com/api/v1/webhooks",
+    "headers": {
+      "Authorization": "YOUR_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "Production Event Webhook",
+      "target": "https://webhook.myapp.com/sparkpost-events",
+      "events": [
+        "delivery",
+        "bounce",
+        "out_of_band",
+        "spam_complaint",
+        "open",
+        "click",
+        "link_unsubscribe"
+      ],
+      "active": true,
+      "auth_type": "basic",
+      "auth_credentials": {
+        "username": "webhook_user",
+        "password": "s3cur3p@ssw0rd"
+      },
+      "custom_headers": {
+        "X-Webhook-Source": "sparkpost",
+        "X-Environment": "production"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "results": {
+        "id": "a2b83904-00d4-4a8c-9c72-0e8dc3f2a1b5"
+      }
+    }
+  }
+}

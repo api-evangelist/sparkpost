@@ -1,0 +1,128 @@
+vocabulary:
+  name: SparkPost API Vocabulary
+  description: Standardized terminology used across the SparkPost email delivery platform APIs
+  provider: sparkpost
+  url: https://developers.sparkpost.com/api/
+  terms:
+
+    - term: transmission
+      definition: A single request to send one or more emails. A transmission can target inline recipients or a stored recipient list and can reference a stored template, A/B test, or inline content.
+      related: [recipient_list, template, campaign]
+
+    - term: campaign_id
+      definition: An optional string identifier used to group related transmissions together for reporting and metrics aggregation.
+      related: [transmission, metrics]
+
+    - term: substitution_data
+      definition: A key-value object used to populate dynamic variables within email templates. Can be set at transmission level (for all recipients) or per-recipient.
+      related: [template, recipient, transmission]
+
+    - term: template
+      definition: A stored, reusable email message with HTML, plain text, and AMP HTML parts. Templates support dynamic substitution variables using SparkPost's templating language.
+      related: [transmission, substitution_data]
+
+    - term: recipient_list
+      definition: A stored collection of email recipients with optional per-recipient metadata and substitution data. Referenced by list_id in a transmission.
+      related: [transmission, recipient]
+
+    - term: suppression_list
+      definition: A managed list of email addresses to which SparkPost will not deliver messages. Entries are typed as transactional or non_transactional to allow granular control.
+      related: [recipient, compliance, unsubscribe]
+
+    - term: suppression_type
+      definition: Classification for a suppression entry. "transactional" blocks transactional emails only; "non_transactional" blocks marketing/bulk emails only.
+      values:
+        - transactional
+        - non_transactional
+      related: [suppression_list]
+
+    - term: webhook
+      definition: A configured HTTP endpoint that receives real-time batched event payloads from SparkPost when email events (deliveries, bounces, opens, clicks, etc.) occur.
+      related: [event, relay_webhook]
+
+    - term: relay_webhook
+      definition: A webhook that forwards inbound email received at an inbound domain to an application endpoint as an HTTP POST in near-real-time.
+      related: [inbound_domain, webhook]
+
+    - term: inbound_domain
+      definition: A domain configured to receive inbound SMTP email via SparkPost's inbound relay infrastructure. Must be associated with a relay webhook to process received messages.
+      related: [relay_webhook]
+
+    - term: sending_domain
+      definition: A custom domain used as the From address in outbound emails. Sending domains require DKIM verification for proper email authentication.
+      related: [dkim, bounce_domain]
+
+    - term: dkim
+      definition: DomainKeys Identified Mail — a cryptographic email authentication method that uses a public/private key pair to sign outbound emails. Verifies that messages haven't been altered in transit.
+      related: [sending_domain]
+
+    - term: bounce
+      definition: An email that could not be delivered to the recipient's mailbox. Categorized as inband (synchronous, returned during the SMTP session) or outofband (asynchronous, returned after acceptance).
+      types:
+        - inband_bounce
+        - outofband_bounce
+        - admin_bounce
+      related: [bounce_class, suppression_list]
+
+    - term: bounce_class
+      definition: A numeric classification code that categorizes the reason for an email bounce (e.g., invalid address, mailbox full, policy rejection).
+      related: [bounce]
+
+    - term: subaccount
+      definition: An isolated account within a SparkPost master account, with its own sending domains, API keys, suppression list, and reporting. Used for multi-tenant and agency deployments.
+      related: [sending_domain, api_key]
+
+    - term: ip_pool
+      definition: A group of dedicated sending IP addresses that can be assigned to a sending domain or subaccount for IP reputation management.
+      related: [sending_domain, subaccount]
+
+    - term: metadata
+      definition: Arbitrary key-value data attached to a transmission or recipient that is passed through to webhook event payloads for downstream analytics.
+      related: [transmission, recipient, webhook]
+
+    - term: open_tracking
+      definition: A feature that injects a 1x1 tracking pixel into HTML emails to detect when a recipient opens a message.
+      related: [click_tracking, transmission]
+
+    - term: click_tracking
+      definition: A feature that rewrites links in emails to route through SparkPost's tracking infrastructure, detecting when recipients click links.
+      related: [open_tracking, transmission]
+
+    - term: sandbox
+      definition: A sending mode that processes a transmission as normal but does not actually deliver emails externally. Used for testing integrations.
+      related: [transmission]
+
+    - term: ab_test
+      definition: An A/B test configuration that splits recipients across multiple email variants (templates or content) to measure which performs better.
+      related: [transmission, template, metrics]
+
+    - term: inline_css
+      definition: A transmission option that automatically inlines CSS styles from style blocks into HTML element attributes before delivery, improving email client compatibility.
+      related: [transmission, template]
+
+    - term: return_path
+      definition: The envelope FROM address (also called bounce address) used for bounce handling. Distinct from the visible From header in the email.
+      related: [sending_domain, bounce]
+
+    - term: event
+      definition: A record of an email lifecycle action — such as injection, delivery, open, click, bounce, or spam complaint — associated with a specific message.
+      types:
+        - delivery
+        - injection
+        - bounce
+        - delay
+        - open
+        - initial_open
+        - click
+        - spam_complaint
+        - list_unsubscribe
+        - link_unsubscribe
+        - out_of_band
+        - policy_rejection
+        - generation_failure
+        - generation_rejection
+      related: [webhook, metrics]
+
+    - term: metrics
+      definition: Aggregate statistical data about email performance, including counts of targeted, injected, delivered, bounced, opened, and clicked messages, queryable by time range and dimension.
+      related: [event, transmission, campaign_id]
