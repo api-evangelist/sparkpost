@@ -1,0 +1,98 @@
+name: SparkPost FinOps
+description: FinOps Framework 1.0 FOCUS-aligned cost visibility and optimization guidance for SparkPost email delivery API consumption. SparkPost charges primarily on email volume sent per month, with additional costs for dedicated IPs, recipient validation, and overages.
+specificationVersion: "1.0"
+url: https://www.sparkpost.com/pricing/
+provider: SparkPost (Bird)
+framework: FinOps Framework 1.0 FOCUS
+
+costDimensions:
+  - name: Email Volume
+    description: Primary cost driver. Monthly emails sent determine the base plan tier and overage charges.
+    unit: emails
+    billingModel: tiered-volume
+    notes: First 500 emails/month are free on the Test plan. Paid plans start at 50,000 emails/month.
+
+  - name: Plan Subscription
+    description: Fixed monthly subscription fee covering a base email volume allowance.
+    unit: USD/month
+    billingModel: subscription
+    tiers:
+      - name: Test
+        price: 0
+        volume: 500
+      - name: Starter
+        priceFrom: 20
+        volume: 50000
+      - name: Premier
+        priceCustom: true
+        volume: custom
+
+  - name: Overage Emails
+    description: Emails sent beyond the plan's included monthly volume are charged at an overage rate per email.
+    unit: USD/email
+    billingModel: pay-as-you-go
+    notes: Overage rate varies by plan tier. Only applies to paid plans; free accounts cannot exceed volume.
+
+  - name: Dedicated IP Addresses
+    description: Dedicated sending IPs are required for accounts sending more than 50,000 emails/day on average. Typically an add-on cost.
+    unit: USD/IP/month
+    billingModel: add-on
+    notes: Required with Premier tier for high-volume senders; improves deliverability and sender reputation isolation.
+
+  - name: Recipient Validation
+    description: The Recipient Validation feature validates email addresses before sending to reduce bounces and protect sender reputation.
+    unit: USD/validation
+    billingModel: pay-per-use
+    notes: Pricing available on sparkpost.com/pricing; reduces wasted sends on invalid addresses.
+
+optimizationRecommendations:
+  - name: Use Suppression Lists
+    description: Maintain active suppression lists to avoid re-sending to bounced, unsubscribed, or complained addresses. Eliminating invalid sends reduces volume costs and protects sender reputation.
+    category: waste-reduction
+    impact: medium
+
+  - name: Enable Recipient Validation
+    description: Validate email addresses before transmission to reduce hard bounces and avoid wasted email volume charges on undeliverable addresses.
+    category: waste-reduction
+    impact: medium
+
+  - name: Optimize Send Frequency
+    description: Analyze engagement metrics (opens, clicks) via the Metrics API to identify and suppress inactive recipients, reducing send volume and associated costs.
+    category: usage-optimization
+    impact: high
+
+  - name: Use A/B Testing for Template Optimization
+    description: Leverage SparkPost's built-in A/B testing to optimize email content and improve engagement rates, maximizing value per email sent.
+    category: value-optimization
+    impact: medium
+
+  - name: Monitor Daily Quotas
+    description: Poll the Usage API or configure webhook alerts to monitor daily sending quotas. Approaching limits can cause message rejection rather than queuing, leading to lost sends and potential re-send costs.
+    category: risk-reduction
+    impact: high
+
+  - name: Right-size Plan Tier
+    description: Review monthly send volumes regularly against plan allowances. Overages can accumulate quickly; upgrading plans proactively is typically cheaper than sustained overage charges.
+    category: cost-optimization
+    impact: high
+
+  - name: Use Webhooks Instead of Polling
+    description: Replace high-frequency polling of Message Events and Metrics APIs with webhook-based event delivery. Reduces API call volume (and risk of rate-limit 429 errors) while lowering engineering overhead.
+    category: efficiency
+    impact: medium
+
+  - name: Subaccount Allocation for Cost Attribution
+    description: For multi-product or multi-tenant deployments, use SparkPost subaccounts to isolate sending domains, API keys, and reporting. This enables accurate cost attribution per product line, team, or customer.
+    category: cost-attribution
+    impact: high
+
+visibility:
+  - name: Usage API
+    description: Query current email sending volume and quota usage for the current billing period.
+    url: https://developers.sparkpost.com/api/usage/
+  - name: Metrics API
+    description: Drill into per-campaign, per-template, and per-domain email performance metrics to identify wasted sends.
+    url: https://developers.sparkpost.com/api/metrics/
+  - name: Billing Portal
+    description: View plan details, usage history, and invoices in the SparkPost account dashboard.
+    url: https://app.sparkpost.com/

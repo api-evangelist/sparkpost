@@ -1,0 +1,78 @@
+name: SparkPost Plans and Pricing
+description: SparkPost (part of Bird) offers tiered email delivery plans based on monthly email volume. All paid plans include API access, SMTP relay, analytics, webhooks, and suppression list management.
+specificationVersion: "0.1"
+url: https://www.sparkpost.com/pricing/
+plans:
+  - name: Test (Free)
+    description: Free sandbox plan for developers to test the SparkPost API with limited sending volume. Suitable for development and integration testing only.
+    url: https://www.sparkpost.com/pricing/
+    price: 0
+    priceCurrency: USD
+    billingCycle: monthly
+    limits:
+      - name: Monthly Emails
+        value: 500
+        unit: emails
+      - name: Daily Emails
+        value: 100
+        unit: emails
+    features:
+      - REST API access
+      - SMTP relay
+      - Basic analytics
+      - Suppression list management
+      - Sandbox domain (5 emails lifetime)
+    restrictions:
+      - Cannot request daily limit increases
+      - Cannot exceed monthly volume
+
+  - name: Starter
+    description: Low-cost plans for new or low-volume senders. Ideal for startups and small businesses with moderate sending needs.
+    url: https://www.sparkpost.com/pricing/
+    price: 20
+    priceCurrency: USD
+    billingCycle: monthly
+    limits:
+      - name: Monthly Emails
+        value: 50000
+        unit: emails
+      - name: Initial Daily Limit
+        value: 1000
+        unit: emails
+        notes: Increases over first week; up to 50k/day average requires dedicated IPs
+    features:
+      - REST API access
+      - SMTP relay
+      - Advanced analytics and reporting
+      - Webhooks and real-time events
+      - Templates and A/B testing
+      - Recipient validation
+      - Signals analytics
+      - Suppression list management
+      - Sending domain verification (DKIM)
+    overage:
+      description: Can exceed plan volume up to monthly cap at an overage rate
+
+  - name: Premier
+    description: Robust email packages for high-volume senders and enterprise deployments. Includes dedicated IP addresses, advanced deliverability features, and subaccounts.
+    url: https://www.sparkpost.com/pricing/
+    price: null
+    priceCurrency: USD
+    billingCycle: monthly
+    limits:
+      - name: Monthly Emails
+        value: null
+        unit: emails
+        notes: Custom high-volume limits; requires dedicated IPs for >50k/day average
+    features:
+      - All Starter features
+      - Dedicated sending IP addresses
+      - Custom bounce and tracking domains
+      - Subaccounts for multi-tenant deployments
+      - IP warm-up guidance
+      - Inbound email processing (Relay Webhooks)
+      - Seed list and inline seeding
+      - Event Ingest API
+      - Priority support
+      - SLA guarantees
+    notes: Contact SparkPost/Bird sales for custom pricing on Enterprise volumes

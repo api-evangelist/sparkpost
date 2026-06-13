@@ -1,0 +1,182 @@
+aid: sparkpost
+name: SparkPost
+description: SparkPost (now part of Bird) is the world's leading email delivery platform, providing a REST API for sending transactional and marketing emails, managing templates, tracking analytics, handling suppressions, and processing inbound email. Trusted by enterprises such as The New York Times, Adobe, and Zillow, SparkPost delivers billions of emails daily with advanced analytics, A/B testing, and real-time event streams via webhooks.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/sparkpost/refs/heads/main/apis.yml
+created: 2026-06-13
+modified: 2026-06-13
+specificationVersion: "0.19"
+tags:
+  - Email
+  - Transactional Email
+  - Marketing Email
+  - Email Delivery
+  - SMTP
+  - Webhooks
+  - Analytics
+  - Templates
+  - Suppression List
+apis:
+  - aid: sparkpost:transmissions
+    name: SparkPost Transmissions API
+    description: Send transactional and marketing emails at scale using inline recipients or stored recipient lists. Supports templating, A/B testing, scheduled sending, and per-recipient substitution data.
+    humanURL: https://developers.sparkpost.com/api/transmissions/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Email Sending
+      - Transactional
+      - Bulk Email
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/transmissions/
+  - aid: sparkpost:templates
+    name: SparkPost Templates API
+    description: Create, retrieve, update, delete, and preview stored email templates. Templates support dynamic substitution data and support both text and HTML parts.
+    humanURL: https://developers.sparkpost.com/api/templates/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Templates
+      - Email
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/templates/
+  - aid: sparkpost:metrics
+    name: SparkPost Metrics API
+    description: Query aggregate email performance metrics including deliveries, bounces, opens, clicks, and spam complaints. Supports filtering by campaign, template, sending domain, and time range.
+    humanURL: https://developers.sparkpost.com/api/metrics/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Analytics
+      - Metrics
+      - Reporting
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/metrics/
+  - aid: sparkpost:events
+    name: SparkPost Message Events API
+    description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+    humanURL: https://developers.sparkpost.com/api/message-events/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Events
+      - Analytics
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/message-events/
+  - aid: sparkpost:webhooks
+    name: SparkPost Webhooks API
+    description: Configure real-time HTTP push notifications for email events (deliveries, bounces, opens, clicks, spam complaints). Supports batched event payloads and retry logic.
+    humanURL: https://developers.sparkpost.com/api/webhooks/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Webhooks
+      - Events
+      - Real-time
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/webhooks/
+  - aid: sparkpost:suppression-list
+    name: SparkPost Suppression List API
+    description: Manage the suppression list to prevent sending to unsubscribed, bounced, or complained recipients. Supports bulk insert, search, and deletion of suppressed addresses.
+    humanURL: https://developers.sparkpost.com/api/suppression-list/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Suppression
+      - Compliance
+      - Unsubscribe
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/suppression-list/
+  - aid: sparkpost:recipient-lists
+    name: SparkPost Recipient Lists API
+    description: Create and manage stored recipient lists for use with Transmissions. Lists can include substitution data per recipient for personalized sending campaigns.
+    humanURL: https://developers.sparkpost.com/api/recipient-lists/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Recipients
+      - Lists
+      - Email
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/recipient-lists/
+  - aid: sparkpost:sending-domains
+    name: SparkPost Sending Domains API
+    description: Add and verify custom sending domains via DKIM signing. Required for domain-based email authentication and custom bounce domain configuration.
+    humanURL: https://developers.sparkpost.com/api/sending-domains/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Domains
+      - DKIM
+      - Authentication
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/sending-domains/
+  - aid: sparkpost:subaccounts
+    name: SparkPost Subaccounts API
+    description: Manage subaccounts for multi-tenant or agency deployments, each with isolated sending domains, API keys, suppression lists, and reporting.
+    humanURL: https://developers.sparkpost.com/api/subaccounts/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Subaccounts
+      - Multi-tenant
+      - Enterprise
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/subaccounts/
+  - aid: sparkpost:inbound
+    name: SparkPost Inbound Domains & Relay Webhooks API
+    description: Configure inbound email processing by associating inbound domains with relay webhooks that forward received messages as HTTP POST events to your application.
+    humanURL: https://developers.sparkpost.com/api/inbound-domains/
+    baseURL: https://api.sparkpost.com/api/v1
+    tags:
+      - Inbound Email
+      - Webhooks
+      - Relay
+    properties:
+      - type: Documentation
+        url: https://developers.sparkpost.com/api/inbound-domains/
+common:
+  - type: Website
+    url: https://www.sparkpost.com/
+  - type: Documentation
+    url: https://developers.sparkpost.com/api/
+  - type: GettingStarted
+    url: https://support.sparkpost.com/docs/getting-started/getting-started-sparkpost
+  - type: SupportDocumentation
+    url: https://support.sparkpost.com/docs
+  - type: GitHubOrg
+    url: https://github.com/SparkPost
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/sparkpost
+  - type: X
+    url: https://x.com/sparkpost
+  - type: Blog
+    url: https://www.sparkpost.com/blog/
+  - type: Pricing
+    url: https://www.sparkpost.com/pricing/
+  - type: StatusPage
+    url: https://status.sparkpost.com/
+  - type: SDKNodejs
+    url: https://github.com/SparkPost/node-sparkpost
+  - type: SDKPython
+    url: https://github.com/SparkPost/python-sparkpost
+  - type: SDKPHP
+    url: https://github.com/SparkPost/php-sparkpost
+  - type: SDKJava
+    url: https://github.com/SparkPost/java-sparkpost
+  - type: SDKGo
+    url: https://github.com/SparkPost/gosparkpost
+  - type: SDKElixir
+    url: https://github.com/SparkPost/elixir-sparkpost
+  - type: PostmanCollection
+    url: https://github.com/SparkPost/postman-collection
+  - type: Plans
+    url: plans/sparkpost-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/sparkpost-rate-limits.yml
+  - type: FinOps
+    url: finops/sparkpost-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

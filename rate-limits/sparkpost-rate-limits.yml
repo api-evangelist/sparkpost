@@ -1,0 +1,76 @@
+name: SparkPost API Rate Limits
+description: SparkPost applies rate limits to protect service stability. HTTP 429 is returned when limits are exceeded. Daily and monthly sending quotas apply separately from per-endpoint API rate limits.
+specificationVersion: "0.1"
+url: https://support.sparkpost.com/docs/faq/daily-and-monthly-quota-limits
+rateLimits:
+  - name: API Endpoint Rate Limit
+    description: General rate limit applied to most SparkPost API endpoints. Applies to all endpoints except Transmissions POST.
+    scope: account
+    limit: null
+    window: null
+    notes: Specific numeric limits not publicly documented. On 429 response, wait 1 to 5 seconds before retrying.
+    errorCode: 429
+    retryGuidance: Wait 1 to 5 seconds after receiving HTTP 429 before retrying. Use webhooks as an alternative to polling-heavy patterns.
+    exemptions:
+      - Transmissions API POST requests are not rate-limited in this way
+    headers:
+      - name: Retry-After
+        description: May be returned on 429 responses
+
+  - name: Transmissions DELETE Rate Limit
+    description: DELETE requests to the Transmissions API are rate-limited separately from POST requests.
+    scope: account
+    endpoint: DELETE /api/v1/transmissions/{id}
+    notes: Specific numeric limits not publicly documented. Retry after 1 to 5 seconds on 429.
+    errorCode: 429
+
+  - name: Daily Sending Quota
+    description: Rolling 24-hour sending limit applied to all accounts. New paid accounts start at 1,000 emails/day and increase over the first week based on plan volume. Exceeding the limit causes message rejection (not queuing).
+    scope: account
+    window: 24h
+    windowType: rolling
+    limits:
+      - plan: Test (Free)
+        limit: 100
+        unit: emails
+        increaseable: false
+      - plan: Starter / Paid
+        limit: 1000
+        unit: emails
+        notes: Initial limit for new paid accounts. Grows proportionally over first week.
+        increaseable: true
+        increaseProcess: Request via Dashboard; reviewed based on sending history and performance
+      - plan: Premier / High-Volume
+        limit: custom
+        unit: emails
+        notes: Sending >50k emails/day average requires dedicated IPs and custom bounce/tracking domains plus IP warm-up
+    enforcement: reject
+    upgradeDelay: Up to one week after plan upgrade for daily limits to update
+
+  - name: Monthly Sending Quota
+    description: Monthly sending cap based on plan tier. Paid accounts may send beyond their plan volume up to a monthly limit and are charged an overage rate. Free accounts cannot exceed monthly volume.
+    scope: account
+    window: calendar month
+    windowType: fixed
+    limits:
+      - plan: Test (Free)
+        limit: 500
+        unit: emails
+        increaseable: false
+      - plan: Starter
+        limit: 50000
+        unit: emails
+        increaseable: true
+        overage: Charged at overage rate up to monthly cap
+      - plan: Premier
+        limit: custom
+        unit: emails
+    enforcement: reject
+
+  - name: Sandbox Domain Lifetime Limit
+    description: The sandbox sending domain (sparkpostbox.com) is limited to 5 total emails across the lifetime of an account. Used for API integration testing only.
+    scope: account
+    limit: 5
+    unit: emails
+    windowType: lifetime
+    notes: Only for development/testing; switch to a verified sending domain for production use
