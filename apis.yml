@@ -2,7 +2,7 @@ aid: sparkpost
 name: SparkPost
 description: SparkPost (now part of Bird) is the world's leading email delivery platform, providing a REST API for sending transactional and marketing emails, managing templates, tracking analytics, handling suppressions, and processing inbound email. Trusted by enterprises such as The New York Times, Adobe, and Zillow, SparkPost delivers billions of emails daily with advanced analytics, A/B testing, and real-time event streams via webhooks.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/sparkpost/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
