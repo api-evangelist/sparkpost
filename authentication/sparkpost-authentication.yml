@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sparkpost-events-openapi.yml, openapi/sparkpost-inbound-openapi.yml, openapi/sparkpost-metrics-openapi.yml,
+  openapi/sparkpost-recipient-lists-openapi.yml, openapi/sparkpost-sending-domains-openapi.yml,
+  openapi/sparkpost-subaccounts-openapi.yml, openapi/sparkpost-suppression-list-openapi.yml,
+  openapi/sparkpost-templates-openapi.yml, openapi/sparkpost-transmissions-openapi.yml, openapi/sparkpost-webhooks-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/sparkpost-events-openapi.yml
+  - openapi/sparkpost-inbound-openapi.yml
+  - openapi/sparkpost-metrics-openapi.yml
+  - openapi/sparkpost-recipient-lists-openapi.yml
+  - openapi/sparkpost-sending-domains-openapi.yml
+  - openapi/sparkpost-subaccounts-openapi.yml
+  - openapi/sparkpost-suppression-list-openapi.yml
+  - openapi/sparkpost-templates-openapi.yml
+  - openapi/sparkpost-transmissions-openapi.yml
+  - openapi/sparkpost-webhooks-openapi.yml

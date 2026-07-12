@@ -157,6 +157,12 @@ apis:
       - type: OpenAPI
         url: openapi/sparkpost-inbound-openapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/sparkpost-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/sparkpost-domain-security.yml
+  - type: Authentication
+    url: authentication/sparkpost-authentication.yml
   - type: Website
     url: https://www.sparkpost.com/
   - type: Documentation
