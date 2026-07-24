@@ -1,115 +1,29 @@
 openapi: 3.0.3
 info:
-  title: SparkPost Inbound Domains & Relay Webhooks API
-  description: Configure inbound email processing by associating inbound domains with relay webhooks that forward received messages as HTTP POST events to your application.
+  title: SparkPost Events DKIM Keys Relay Webhooks API
+  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/inbound-domains/
+    url: https://developers.sparkpost.com/api/events/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: https://api.sparkpost.com/api/v1
-    description: SparkPost Production API
+- url: https://api.sparkpost.com/api/v1
+  description: SparkPost Production API
 security:
-  - ApiKeyAuth: []
+- ApiKeyAuth: []
+tags:
+- name: Relay Webhooks
 paths:
-  /inbound-domains:
-    post:
-      operationId: createInboundDomain
-      summary: Create an Inbound Domain
-      description: Register a new inbound domain for receiving inbound email via relay webhooks.
-      tags:
-        - Inbound Domains
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - domain
-              properties:
-                domain:
-                  type: string
-                  description: Domain name to register for inbound email
-      responses:
-        '200':
-          description: Inbound domain created
-        '409':
-          description: Domain already exists
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-    get:
-      operationId: listInboundDomains
-      summary: List All Inbound Domains
-      description: Retrieve a list of all registered inbound domains.
-      tags:
-        - Inbound Domains
-      responses:
-        '200':
-          description: List of inbound domains
-  /inbound-domains/{domain}:
-    get:
-      operationId: getInboundDomain
-      summary: Retrieve an Inbound Domain
-      description: Retrieve details about a specific inbound domain.
-      tags:
-        - Inbound Domains
-      parameters:
-        - name: domain
-          in: path
-          required: true
-          description: Inbound domain name
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Inbound domain details
-        '404':
-          description: Domain not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-    delete:
-      operationId: deleteInboundDomain
-      summary: Delete an Inbound Domain
-      description: Remove an inbound domain registration.
-      tags:
-        - Inbound Domains
-      parameters:
-        - name: domain
-          in: path
-          required: true
-          description: Inbound domain name
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Inbound domain deleted
-        '404':
-          description: Domain not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '409':
-          description: Domain is associated with a relay webhook
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
   /relay-webhooks:
     post:
       operationId: createRelayWebhook
       summary: Create a Relay Webhook
       description: Create a webhook to receive inbound email messages forwarded from an inbound domain.
       tags:
-        - Relay Webhooks
+      - Relay Webhooks
       requestBody:
         required: true
         content:
@@ -146,7 +60,7 @@ paths:
       summary: List All Relay Webhooks
       description: Retrieve a list of all configured relay webhooks.
       tags:
-        - Relay Webhooks
+      - Relay Webhooks
       responses:
         '200':
           description: List of relay webhooks
@@ -158,14 +72,14 @@ paths:
       summary: Retrieve a Relay Webhook
       description: Retrieve details about a specific relay webhook.
       tags:
-        - Relay Webhooks
+      - Relay Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Relay webhook ID
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Relay webhook ID
+        schema:
+          type: string
       responses:
         '200':
           description: Relay webhook details
@@ -186,14 +100,14 @@ paths:
       summary: Update a Relay Webhook
       description: Update configuration for an existing relay webhook.
       tags:
-        - Relay Webhooks
+      - Relay Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Relay webhook ID
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Relay webhook ID
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -214,14 +128,14 @@ paths:
       summary: Delete a Relay Webhook
       description: Remove a relay webhook configuration.
       tags:
-        - Relay Webhooks
+      - Relay Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Relay webhook ID
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Relay webhook ID
+        schema:
+          type: string
       responses:
         '200':
           description: Relay webhook deleted
@@ -237,29 +151,24 @@ paths:
       summary: Validate a Relay Webhook
       description: Send a test inbound email event to the relay webhook target to validate connectivity.
       tags:
-        - Relay Webhooks
+      - Relay Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Relay webhook ID
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Relay webhook ID
+        schema:
+          type: string
       responses:
         '200':
           description: Validation result
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: Authorization
   schemas:
     RelayWebhookRequest:
       type: object
       required:
-        - target
-        - match
+      - target
+      - match
       properties:
         name:
           type: string
@@ -270,7 +179,9 @@ components:
           description: HTTP or HTTPS URL to receive inbound messages
         auth_type:
           type: string
-          enum: [none, oauth2]
+          enum:
+          - none
+          - oauth2
           description: Authentication type for webhook requests
         auth_request_details:
           type: object
@@ -287,7 +198,7 @@ components:
         match:
           type: object
           required:
-            - domain
+          - domain
           description: Domain matching criteria for this relay webhook
           properties:
             domain:
@@ -295,12 +206,27 @@ components:
               description: Inbound domain to associate with this relay webhook
             protocol:
               type: string
-              enum: [SMTP]
+              enum:
+              - SMTP
         custom_headers:
           type: object
           additionalProperties:
             type: string
           description: Custom HTTP headers to include in relay webhook requests
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     RelayWebhookUpdateRequest:
       type: object
       properties:
@@ -313,7 +239,9 @@ components:
           type: string
         auth_type:
           type: string
-          enum: [none, oauth2]
+          enum:
+          - none
+          - oauth2
         auth_request_details:
           type: object
         match:
@@ -325,6 +253,11 @@ components:
           type: object
           additionalProperties:
             type: string
+    RelayWebhookResponse:
+      type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/RelayWebhookDetails'
     RelayWebhookDetails:
       type: object
       properties:
@@ -343,22 +276,8 @@ components:
               type: string
         custom_headers:
           type: object
-    RelayWebhookResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/RelayWebhookDetails'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization

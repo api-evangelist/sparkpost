@@ -1,19 +1,21 @@
 openapi: 3.0.3
 info:
-  title: SparkPost Transmissions API
-  description: Send transactional and marketing emails at scale using inline recipients or stored recipient lists. Supports templating, A/B testing, scheduled sending, and per-recipient substitution data.
+  title: SparkPost Events DKIM Keys Transmissions API
+  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/transmissions/
+    url: https://developers.sparkpost.com/api/events/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: https://api.sparkpost.com/api/v1
-    description: SparkPost Production API
+- url: https://api.sparkpost.com/api/v1
+  description: SparkPost Production API
 security:
-  - ApiKeyAuth: []
+- ApiKeyAuth: []
+tags:
+- name: Transmissions
 paths:
   /transmissions:
     post:
@@ -21,7 +23,7 @@ paths:
       summary: Create a Transmission
       description: Send transactional or marketing emails. Supports inline content, stored templates, A/B tests, and RFC822 raw email format.
       tags:
-        - Transmissions
+      - Transmissions
       requestBody:
         required: true
         content:
@@ -52,14 +54,14 @@ paths:
       summary: Delete Scheduled Transmissions by Campaign
       description: Bulk delete scheduled transmissions by campaign ID. Deletion happens asynchronously.
       tags:
-        - Transmissions
+      - Transmissions
       parameters:
-        - name: campaign_id
-          in: query
-          required: true
-          description: Campaign identifier to filter transmissions for deletion
-          schema:
-            type: string
+      - name: campaign_id
+        in: query
+        required: true
+        description: Campaign identifier to filter transmissions for deletion
+        schema:
+          type: string
       responses:
         '204':
           description: Deletion accepted (asynchronous)
@@ -70,15 +72,15 @@ paths:
       description: Retrieve details about a scheduled transmission by its ID. (Deprecated)
       deprecated: true
       tags:
-        - Transmissions
+      - Transmissions
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Transmission ID
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        description: Transmission ID
+        schema:
+          type: integer
+          format: int64
       responses:
         '200':
           description: Transmission details
@@ -98,15 +100,15 @@ paths:
       description: Remove an individual scheduled transmission. (Deprecated)
       deprecated: true
       tags:
-        - Transmissions
+      - Transmissions
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Transmission ID
-          schema:
-            type: integer
-            format: int64
+      - name: id
+        in: path
+        required: true
+        description: Transmission ID
+        schema:
+          type: integer
+          format: int64
       responses:
         '204':
           description: Transmission deleted
@@ -123,12 +125,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: Authorization
   schemas:
+    TransmissionDetails:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+            state:
+              type: string
+            num_recipients:
+              type: integer
+            campaign_id:
+              type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     TransmissionRequest:
       type: object
       properties:
@@ -169,14 +194,14 @@ components:
               description: DKIM key to use for signing
         recipients:
           oneOf:
-            - type: array
-              items:
-                $ref: '#/components/schemas/Recipient'
-            - type: object
-              properties:
-                list_id:
-                  type: string
-                  description: ID of stored recipient list
+          - type: array
+            items:
+              $ref: '#/components/schemas/Recipient'
+          - type: object
+            properties:
+              list_id:
+                type: string
+                description: ID of stored recipient list
         content:
           type: object
           description: Email content (inline, template, A/B test, or RFC822)
@@ -227,36 +252,6 @@ components:
         return_path:
           type: string
           description: Envelope FROM address for bounce handling
-    Recipient:
-      type: object
-      required:
-        - address
-      properties:
-        address:
-          oneOf:
-            - type: string
-              description: Recipient email address
-            - type: object
-              properties:
-                email:
-                  type: string
-                name:
-                  type: string
-                header_to:
-                  type: string
-        tags:
-          type: array
-          items:
-            type: string
-          description: Tags for recipient grouping
-        metadata:
-          type: object
-          additionalProperties: true
-          description: Per-recipient metadata
-        substitution_data:
-          type: object
-          additionalProperties: true
-          description: Per-recipient substitution data for templates
     TransmissionResponse:
       type: object
       properties:
@@ -270,31 +265,38 @@ components:
             id:
               type: string
               description: Transmission ID
-    TransmissionDetails:
+    Recipient:
       type: object
+      required:
+      - address
       properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
-            state:
-              type: string
-            num_recipients:
-              type: integer
-            campaign_id:
-              type: string
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
+        address:
+          oneOf:
+          - type: string
+            description: Recipient email address
+          - type: object
+            properties:
+              email:
+                type: string
+              name:
+                type: string
+              header_to:
+                type: string
+        tags:
           type: array
           items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
+            type: string
+          description: Tags for recipient grouping
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Per-recipient metadata
+        substitution_data:
+          type: object
+          additionalProperties: true
+          description: Per-recipient substitution data for templates
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization

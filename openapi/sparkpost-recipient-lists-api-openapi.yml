@@ -1,19 +1,21 @@
 openapi: 3.0.3
 info:
-  title: SparkPost Recipient Lists API
-  description: Create and manage stored recipient lists for use with Transmissions. Lists can include substitution data per recipient for personalized sending campaigns.
+  title: SparkPost Events DKIM Keys Recipient Lists API
+  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/recipient-lists/
+    url: https://developers.sparkpost.com/api/events/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: https://api.sparkpost.com/api/v1
-    description: SparkPost Production API
+- url: https://api.sparkpost.com/api/v1
+  description: SparkPost Production API
 security:
-  - ApiKeyAuth: []
+- ApiKeyAuth: []
+tags:
+- name: Recipient Lists
 paths:
   /recipient-lists:
     post:
@@ -21,15 +23,15 @@ paths:
       summary: Create a Recipient List
       description: Create a new stored recipient list for use in transmissions.
       tags:
-        - Recipient Lists
+      - Recipient Lists
       parameters:
-        - name: num_rcpt_errors
-          in: query
-          required: false
-          description: Maximum number of recipient errors to return (default 3)
-          schema:
-            type: integer
-            default: 3
+      - name: num_rcpt_errors
+        in: query
+        required: false
+        description: Maximum number of recipient errors to return (default 3)
+        schema:
+          type: integer
+          default: 3
       requestBody:
         required: true
         content:
@@ -60,7 +62,7 @@ paths:
       summary: List All Recipient Lists
       description: Retrieve a summary list of all stored recipient lists.
       tags:
-        - Recipient Lists
+      - Recipient Lists
       responses:
         '200':
           description: List of recipient lists
@@ -74,21 +76,21 @@ paths:
       summary: Retrieve a Recipient List
       description: Retrieve a stored recipient list by ID.
       tags:
-        - Recipient Lists
+      - Recipient Lists
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Recipient list ID (case sensitive)
-          schema:
-            type: string
-        - name: show_recipients
-          in: query
-          required: false
-          description: If true, includes the recipient entries (default true)
-          schema:
-            type: boolean
-            default: true
+      - name: id
+        in: path
+        required: true
+        description: Recipient list ID (case sensitive)
+        schema:
+          type: string
+      - name: show_recipients
+        in: query
+        required: false
+        description: If true, includes the recipient entries (default true)
+        schema:
+          type: boolean
+          default: true
       responses:
         '200':
           description: Recipient list details
@@ -107,21 +109,21 @@ paths:
       summary: Update a Recipient List
       description: Update the metadata or recipients of a stored recipient list.
       tags:
-        - Recipient Lists
+      - Recipient Lists
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Recipient list ID (case sensitive)
-          schema:
-            type: string
-        - name: num_rcpt_errors
-          in: query
-          required: false
-          description: Maximum number of recipient errors to return (default 3)
-          schema:
-            type: integer
-            default: 3
+      - name: id
+        in: path
+        required: true
+        description: Recipient list ID (case sensitive)
+        schema:
+          type: string
+      - name: num_rcpt_errors
+        in: query
+        required: false
+        description: Maximum number of recipient errors to return (default 3)
+        schema:
+          type: integer
+          default: 3
       requestBody:
         required: true
         content:
@@ -160,14 +162,14 @@ paths:
       summary: Delete a Recipient List
       description: Delete a stored recipient list.
       tags:
-        - Recipient Lists
+      - Recipient Lists
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Recipient list ID (case sensitive)
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Recipient list ID (case sensitive)
+        schema:
+          type: string
       responses:
         '200':
           description: Recipient list deleted
@@ -184,47 +186,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: Authorization
   schemas:
-    Recipient:
-      type: object
-      required:
-        - address
-      properties:
-        address:
-          oneOf:
-            - type: string
-              format: email
-            - type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                name:
-                  type: string
-                header_to:
-                  type: string
-        tags:
-          type: array
-          items:
-            type: string
-          description: Tags for recipient grouping
-        metadata:
-          type: object
-          additionalProperties: true
-          description: Per-recipient metadata
-        substitution_data:
-          type: object
-          additionalProperties: true
-          description: Per-recipient substitution data for templates
     RecipientListRequest:
       type: object
       required:
-        - recipients
+      - recipients
       properties:
         id:
           type: string
@@ -265,6 +231,17 @@ components:
           items:
             $ref: '#/components/schemas/Recipient'
           description: Replaces all existing recipients
+    RecipientListSummary:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        total_accepted_recipients:
+          type: integer
     RecipientListCreateResponse:
       type: object
       properties:
@@ -279,38 +256,6 @@ components:
               type: string
             name:
               type: string
-    RecipientListSummary:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        total_accepted_recipients:
-          type: integer
-    RecipientListResponse:
-      type: object
-      properties:
-        results:
-          allOf:
-            - $ref: '#/components/schemas/RecipientListSummary'
-            - type: object
-              properties:
-                attributes:
-                  type: object
-                recipients:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/Recipient'
-    RecipientListsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecipientListSummary'
     ErrorResponse:
       type: object
       properties:
@@ -325,3 +270,60 @@ components:
                 type: string
               description:
                 type: string
+    RecipientListResponse:
+      type: object
+      properties:
+        results:
+          allOf:
+          - $ref: '#/components/schemas/RecipientListSummary'
+          - type: object
+            properties:
+              attributes:
+                type: object
+              recipients:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipient'
+    RecipientListsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecipientListSummary'
+    Recipient:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          oneOf:
+          - type: string
+            format: email
+          - type: object
+            properties:
+              email:
+                type: string
+                format: email
+              name:
+                type: string
+              header_to:
+                type: string
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags for recipient grouping
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Per-recipient metadata
+        substitution_data:
+          type: object
+          additionalProperties: true
+          description: Per-recipient substitution data for templates
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization

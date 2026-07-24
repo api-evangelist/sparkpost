@@ -1,19 +1,21 @@
 openapi: 3.0.3
 info:
-  title: SparkPost Metrics API
-  description: Query aggregate email performance metrics including deliveries, bounces, opens, clicks, and spam complaints. Supports filtering by campaign, template, sending domain, and time range.
+  title: SparkPost Events DKIM Keys Metrics API
+  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/metrics/
+    url: https://developers.sparkpost.com/api/events/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: https://api.sparkpost.com/api/v1
-    description: SparkPost Production API
+- url: https://api.sparkpost.com/api/v1
+  description: SparkPost Production API
 security:
-  - ApiKeyAuth: []
+- ApiKeyAuth: []
+tags:
+- name: Metrics
 paths:
   /metrics/:
     get:
@@ -21,7 +23,7 @@ paths:
       summary: Metrics API Root
       description: Lists available child endpoints for discoverability.
       tags:
-        - Metrics
+      - Metrics
       responses:
         '200':
           description: Available metrics endpoints
@@ -31,25 +33,25 @@ paths:
       summary: Metrics Summary
       description: Query aggregate deliverability metrics across all sending dimensions.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/delimiter'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/domains'
-        - $ref: '#/components/parameters/campaigns'
-        - $ref: '#/components/parameters/templates'
-        - $ref: '#/components/parameters/sending_ips'
-        - $ref: '#/components/parameters/ip_pools'
-        - $ref: '#/components/parameters/sending_domains'
-        - $ref: '#/components/parameters/subaccounts'
-        - $ref: '#/components/parameters/mailbox_providers'
-        - $ref: '#/components/parameters/mailbox_provider_regions'
-        - $ref: '#/components/parameters/subject_campaigns'
-        - $ref: '#/components/parameters/precision'
-        - $ref: '#/components/parameters/query_filters'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/delimiter'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/domains'
+      - $ref: '#/components/parameters/campaigns'
+      - $ref: '#/components/parameters/templates'
+      - $ref: '#/components/parameters/sending_ips'
+      - $ref: '#/components/parameters/ip_pools'
+      - $ref: '#/components/parameters/sending_domains'
+      - $ref: '#/components/parameters/subaccounts'
+      - $ref: '#/components/parameters/mailbox_providers'
+      - $ref: '#/components/parameters/mailbox_provider_regions'
+      - $ref: '#/components/parameters/subject_campaigns'
+      - $ref: '#/components/parameters/precision'
+      - $ref: '#/components/parameters/query_filters'
       responses:
         '200':
           description: Aggregate deliverability metrics
@@ -63,7 +65,7 @@ paths:
       summary: Advanced Query JSON Schema
       description: Retrieves the JSON Schema for validating the query_filters parameter.
       tags:
-        - Metrics
+      - Metrics
       responses:
         '200':
           description: JSON Schema for query_filters
@@ -73,14 +75,14 @@ paths:
       summary: Metrics by Recipient Domain
       description: Query deliverability metrics grouped by recipient domain.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by recipient domain
@@ -94,14 +96,14 @@ paths:
       summary: Metrics by Sending IP
       description: Query deliverability metrics grouped by sending IP address.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by sending IP
@@ -115,14 +117,14 @@ paths:
       summary: Metrics by IP Pool
       description: Query deliverability metrics grouped by IP pool.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by IP pool
@@ -136,14 +138,14 @@ paths:
       summary: Metrics by Sending Domain
       description: Query deliverability metrics grouped by sending domain.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by sending domain
@@ -157,14 +159,14 @@ paths:
       summary: Metrics by Subaccount
       description: Query deliverability metrics grouped by subaccount.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by subaccount
@@ -178,14 +180,14 @@ paths:
       summary: Metrics by Campaign
       description: Query deliverability metrics grouped by campaign.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by campaign
@@ -199,14 +201,14 @@ paths:
       summary: Metrics by Template
       description: Query deliverability metrics grouped by template.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by template
@@ -220,14 +222,14 @@ paths:
       summary: Metrics by Watched Domain
       description: Query deliverability metrics grouped by watched domain.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by watched domain
@@ -241,14 +243,14 @@ paths:
       summary: Metrics by Mailbox Provider
       description: Query deliverability metrics grouped by mailbox provider (e.g., Gmail, Yahoo).
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by mailbox provider
@@ -262,14 +264,14 @@ paths:
       summary: Metrics by Mailbox Provider Region
       description: Query deliverability metrics grouped by mailbox provider region.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by mailbox provider region
@@ -283,19 +285,27 @@ paths:
       summary: Time-Series Metrics
       description: Query deliverability metrics over time at specified precision intervals.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - name: precision
-          in: query
-          required: false
-          description: Time series precision
-          schema:
-            type: string
-            enum: [1min, 5min, 15min, hour, 12hr, day, week, month]
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - name: precision
+        in: query
+        required: false
+        description: Time series precision
+        schema:
+          type: string
+          enum:
+          - 1min
+          - 5min
+          - 15min
+          - hour
+          - 12hr
+          - day
+          - week
+          - month
       responses:
         '200':
           description: Time-series metrics data
@@ -309,19 +319,19 @@ paths:
       summary: Bounce Reason Metrics
       description: Query bounce metrics grouped by bounce reason.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - name: metrics
-          in: query
-          required: false
-          description: Bounce-specific metrics to return
-          schema:
-            type: string
-            example: count_bounce,count_inband_bounce,count_outofband_bounce,count_admin_bounce
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - name: metrics
+        in: query
+        required: false
+        description: Bounce-specific metrics to return
+        schema:
+          type: string
+          example: count_bounce,count_inband_bounce,count_outofband_bounce,count_admin_bounce
       responses:
         '200':
           description: Bounce metrics by reason
@@ -335,12 +345,12 @@ paths:
       summary: Bounce Reason Metrics by Domain
       description: Query bounce metrics grouped by bounce reason and recipient domain.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
       responses:
         '200':
           description: Bounce metrics by reason and domain
@@ -354,14 +364,14 @@ paths:
       summary: Metrics by Subject Campaign
       description: Query deliverability metrics grouped by subject campaign. Requires deliverability add-on.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/from'
-        - $ref: '#/components/parameters/to'
-        - $ref: '#/components/parameters/metrics'
-        - $ref: '#/components/parameters/timezone'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/order_by'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/metrics'
+      - $ref: '#/components/parameters/timezone'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order_by'
       responses:
         '200':
           description: Metrics by subject campaign
@@ -370,56 +380,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/MetricsResponse'
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: Authorization
   parameters:
-    from:
-      name: from
-      in: query
-      required: true
-      description: Start datetime in YYYY-MM-DDTHH:MM format
-      schema:
-        type: string
-        format: date-time
-    to:
-      name: to
+    templates:
+      name: templates
       in: query
       required: false
-      description: End datetime (defaults to now)
-      schema:
-        type: string
-        format: date-time
-    delimiter:
-      name: delimiter
-      in: query
-      required: false
-      description: List parameter separator (default comma)
-      schema:
-        type: string
-        default: ','
-    timezone:
-      name: timezone
-      in: query
-      required: false
-      description: Timezone for date bucketing (default UTC)
-      schema:
-        type: string
-        default: UTC
-    metrics:
-      name: metrics
-      in: query
-      required: true
-      description: Comma-delimited list of metrics to return
-      schema:
-        type: string
-    domains:
-      name: domains
-      in: query
-      required: false
-      description: Filter by recipient domains
+      description: Filter by template IDs
       schema:
         type: string
     campaigns:
@@ -429,11 +395,11 @@ components:
       description: Filter by campaign IDs
       schema:
         type: string
-    templates:
-      name: templates
+    domains:
+      name: domains
       in: query
       required: false
-      description: Filter by template IDs
+      description: Filter by recipient domains
       schema:
         type: string
     sending_ips:
@@ -443,39 +409,19 @@ components:
       description: Filter by sending IP addresses
       schema:
         type: string
-    ip_pools:
-      name: ip_pools
+    from:
+      name: from
       in: query
-      required: false
-      description: Filter by IP pool IDs
+      required: true
+      description: Start datetime in YYYY-MM-DDTHH:MM format
       schema:
         type: string
-    sending_domains:
-      name: sending_domains
+        format: date-time
+    metrics:
+      name: metrics
       in: query
-      required: false
-      description: Filter by sending domains
-      schema:
-        type: string
-    subaccounts:
-      name: subaccounts
-      in: query
-      required: false
-      description: Filter by subaccount IDs
-      schema:
-        type: string
-    mailbox_providers:
-      name: mailbox_providers
-      in: query
-      required: false
-      description: Filter by mailbox providers
-      schema:
-        type: string
-    mailbox_provider_regions:
-      name: mailbox_provider_regions
-      in: query
-      required: false
-      description: Filter by mailbox provider regions
+      required: true
+      description: Comma-delimited list of metrics to return
       schema:
         type: string
     subject_campaigns:
@@ -485,6 +431,41 @@ components:
       description: Filter by subject campaigns
       schema:
         type: string
+    mailbox_providers:
+      name: mailbox_providers
+      in: query
+      required: false
+      description: Filter by mailbox providers
+      schema:
+        type: string
+    sending_domains:
+      name: sending_domains
+      in: query
+      required: false
+      description: Filter by sending domains
+      schema:
+        type: string
+    ip_pools:
+      name: ip_pools
+      in: query
+      required: false
+      description: Filter by IP pool IDs
+      schema:
+        type: string
+    order_by:
+      name: order_by
+      in: query
+      required: false
+      description: Metric name to sort results by
+      schema:
+        type: string
+    subaccounts:
+      name: subaccounts
+      in: query
+      required: false
+      description: Filter by subaccount IDs
+      schema:
+        type: string
     precision:
       name: precision
       in: query
@@ -492,7 +473,20 @@ components:
       description: Time precision for bucketing results
       schema:
         type: string
-        enum: [1min, 5min, 15min, hour, day]
+        enum:
+        - 1min
+        - 5min
+        - 15min
+        - hour
+        - day
+    to:
+      name: to
+      in: query
+      required: false
+      description: End datetime (defaults to now)
+      schema:
+        type: string
+        format: date-time
     query_filters:
       name: query_filters
       in: query
@@ -510,13 +504,29 @@ components:
         minimum: 1
         maximum: 10000
         default: 1000
-    order_by:
-      name: order_by
+    mailbox_provider_regions:
+      name: mailbox_provider_regions
       in: query
       required: false
-      description: Metric name to sort results by
+      description: Filter by mailbox provider regions
       schema:
         type: string
+    delimiter:
+      name: delimiter
+      in: query
+      required: false
+      description: List parameter separator (default comma)
+      schema:
+        type: string
+        default: ','
+    timezone:
+      name: timezone
+      in: query
+      required: false
+      description: Timezone for date bucketing (default UTC)
+      schema:
+        type: string
+        default: UTC
   schemas:
     MetricsResponse:
       type: object
@@ -528,3 +538,8 @@ components:
             additionalProperties: true
         total_count:
           type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization

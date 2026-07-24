@@ -1,19 +1,21 @@
 openapi: 3.0.3
 info:
-  title: SparkPost Templates API
-  description: Create, retrieve, update, delete, and preview stored email templates. Templates support dynamic substitution data and both text and HTML parts.
+  title: SparkPost Events DKIM Keys Templates API
+  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/templates/
+    url: https://developers.sparkpost.com/api/events/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: https://api.sparkpost.com/api/v1
-    description: SparkPost Production API
+- url: https://api.sparkpost.com/api/v1
+  description: SparkPost Production API
 security:
-  - ApiKeyAuth: []
+- ApiKeyAuth: []
+tags:
+- name: Templates
 paths:
   /templates:
     post:
@@ -21,7 +23,7 @@ paths:
       summary: Create a Template
       description: Create a new email template with HTML, text, and AMP HTML parts.
       tags:
-        - Templates
+      - Templates
       requestBody:
         required: true
         content:
@@ -46,20 +48,20 @@ paths:
       summary: List All Templates
       description: Retrieve a list of all stored templates.
       tags:
-        - Templates
+      - Templates
       parameters:
-        - name: draft
-          in: query
-          required: false
-          description: If true, returns drafts in addition to published templates
-          schema:
-            type: boolean
-        - name: shared_with_subaccounts
-          in: query
-          required: false
-          description: Filter by templates shared with subaccounts
-          schema:
-            type: boolean
+      - name: draft
+        in: query
+        required: false
+        description: If true, returns drafts in addition to published templates
+        schema:
+          type: boolean
+      - name: shared_with_subaccounts
+        in: query
+        required: false
+        description: Filter by templates shared with subaccounts
+        schema:
+          type: boolean
       responses:
         '200':
           description: List of templates
@@ -73,20 +75,20 @@ paths:
       summary: Retrieve a Template
       description: Retrieve a stored template by its ID.
       tags:
-        - Templates
+      - Templates
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Template ID
-          schema:
-            type: string
-        - name: draft
-          in: query
-          required: false
-          description: If true, returns the draft version
-          schema:
-            type: boolean
+      - name: id
+        in: path
+        required: true
+        description: Template ID
+        schema:
+          type: string
+      - name: draft
+        in: query
+        required: false
+        description: If true, returns the draft version
+        schema:
+          type: boolean
       responses:
         '200':
           description: Template details
@@ -99,20 +101,20 @@ paths:
       summary: Update a Template
       description: Update a draft or published template. Use update_published=true to update a published template directly.
       tags:
-        - Templates
+      - Templates
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Template ID
-          schema:
-            type: string
-        - name: update_published
-          in: query
-          required: false
-          description: If true, updates the published version directly
-          schema:
-            type: boolean
+      - name: id
+        in: path
+        required: true
+        description: Template ID
+        schema:
+          type: string
+      - name: update_published
+        in: query
+        required: false
+        description: If true, updates the published version directly
+        schema:
+          type: boolean
       requestBody:
         required: true
         content:
@@ -127,14 +129,14 @@ paths:
       summary: Delete a Template
       description: Delete a stored template.
       tags:
-        - Templates
+      - Templates
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Template ID
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Template ID
+        schema:
+          type: string
       responses:
         '200':
           description: Template deleted
@@ -150,20 +152,20 @@ paths:
       summary: Preview a Template
       description: Render a template with substitution data to preview the output.
       tags:
-        - Templates
+      - Templates
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Template ID
-          schema:
-            type: string
-        - name: draft
-          in: query
-          required: false
-          description: If true, previews the draft version
-          schema:
-            type: boolean
+      - name: id
+        in: path
+        required: true
+        description: Template ID
+        schema:
+          type: string
+      - name: draft
+        in: query
+        required: false
+        description: If true, previews the draft version
+        schema:
+          type: boolean
       requestBody:
         required: true
         content:
@@ -188,7 +190,7 @@ paths:
       summary: Preview Inline Template
       description: Preview an inline template with substitution data without saving it.
       tags:
-        - Templates
+      - Templates
       requestBody:
         required: true
         content:
@@ -205,97 +207,7 @@ paths:
         '200':
           description: Rendered inline template preview
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: Authorization
   schemas:
-    TemplateContent:
-      type: object
-      properties:
-        html:
-          type: string
-          description: HTML part of the email
-        text:
-          type: string
-          description: Plain text part of the email
-        amp_html:
-          type: string
-          description: AMP HTML part of the email
-        subject:
-          type: string
-          description: Email subject line (supports substitution variables)
-        from:
-          oneOf:
-            - type: string
-            - type: object
-              properties:
-                email:
-                  type: string
-                name:
-                  type: string
-          description: Sender address
-        reply_to:
-          type: string
-          description: Reply-to address
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Additional email headers
-    TemplateOptions:
-      type: object
-      properties:
-        transactional:
-          type: boolean
-        open_tracking:
-          type: boolean
-        click_tracking:
-          type: boolean
-    TemplateRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique alphanumeric ID (auto-generated if not provided)
-        name:
-          type: string
-          description: Display name for the template
-        description:
-          type: string
-          description: Template description
-        content:
-          $ref: '#/components/schemas/TemplateContent'
-        options:
-          $ref: '#/components/schemas/TemplateOptions'
-        shared_with_subaccounts:
-          type: boolean
-          description: Whether this template is shared with subaccounts
-    TemplateUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        content:
-          $ref: '#/components/schemas/TemplateContent'
-        options:
-          $ref: '#/components/schemas/TemplateOptions'
-        shared_with_subaccounts:
-          type: boolean
-        published:
-          type: boolean
-          description: Set to true to publish the draft
-    TemplateCreateResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
     TemplateResponse:
       type: object
       properties:
@@ -319,13 +231,6 @@ components:
             last_update_time:
               type: string
               format: date-time
-    TemplateListResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TemplateResponse'
     TemplatePreviewResponse:
       type: object
       properties:
@@ -342,6 +247,22 @@ components:
               type: string
             from:
               type: string
+    TemplateUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          $ref: '#/components/schemas/TemplateContent'
+        options:
+          $ref: '#/components/schemas/TemplateOptions'
+        shared_with_subaccounts:
+          type: boolean
+        published:
+          type: boolean
+          description: Set to true to publish the draft
     ErrorResponse:
       type: object
       properties:
@@ -356,3 +277,84 @@ components:
                 type: string
               description:
                 type: string
+    TemplateListResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateResponse'
+    TemplateCreateResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+    TemplateContent:
+      type: object
+      properties:
+        html:
+          type: string
+          description: HTML part of the email
+        text:
+          type: string
+          description: Plain text part of the email
+        amp_html:
+          type: string
+          description: AMP HTML part of the email
+        subject:
+          type: string
+          description: Email subject line (supports substitution variables)
+        from:
+          oneOf:
+          - type: string
+          - type: object
+            properties:
+              email:
+                type: string
+              name:
+                type: string
+          description: Sender address
+        reply_to:
+          type: string
+          description: Reply-to address
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional email headers
+    TemplateRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique alphanumeric ID (auto-generated if not provided)
+        name:
+          type: string
+          description: Display name for the template
+        description:
+          type: string
+          description: Template description
+        content:
+          $ref: '#/components/schemas/TemplateContent'
+        options:
+          $ref: '#/components/schemas/TemplateOptions'
+        shared_with_subaccounts:
+          type: boolean
+          description: Whether this template is shared with subaccounts
+    TemplateOptions:
+      type: object
+      properties:
+        transactional:
+          type: boolean
+        open_tracking:
+          type: boolean
+        click_tracking:
+          type: boolean
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization

@@ -1,19 +1,21 @@
 openapi: 3.0.3
 info:
-  title: SparkPost Webhooks API
-  description: Configure real-time HTTP push notifications for email events (deliveries, bounces, opens, clicks, spam complaints). Supports batched event payloads and retry logic.
+  title: SparkPost Events DKIM Keys Webhooks API
+  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/webhooks/
+    url: https://developers.sparkpost.com/api/events/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: https://api.sparkpost.com/api/v1
-    description: SparkPost Production API
+- url: https://api.sparkpost.com/api/v1
+  description: SparkPost Production API
 security:
-  - ApiKeyAuth: []
+- ApiKeyAuth: []
+tags:
+- name: Webhooks
 paths:
   /webhooks:
     post:
@@ -21,7 +23,7 @@ paths:
       summary: Create a Webhook
       description: Create a new webhook to receive real-time event notifications via HTTP POST.
       tags:
-        - Webhooks
+      - Webhooks
       requestBody:
         required: true
         content:
@@ -46,15 +48,15 @@ paths:
       summary: List All Webhooks
       description: Retrieve a list of all configured webhooks.
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: timezone
-          in: query
-          required: false
-          description: Timezone for date fields (default UTC)
-          schema:
-            type: string
-            default: UTC
+      - name: timezone
+        in: query
+        required: false
+        description: Timezone for date fields (default UTC)
+        schema:
+          type: string
+          default: UTC
       responses:
         '200':
           description: List of webhooks
@@ -73,21 +75,21 @@ paths:
       summary: Retrieve a Webhook
       description: Retrieve details about a specific webhook.
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Webhook ID
-          schema:
-            type: string
-        - name: timezone
-          in: query
-          required: false
-          description: Timezone for date fields (default UTC)
-          schema:
-            type: string
-            default: UTC
+      - name: id
+        in: path
+        required: true
+        description: Webhook ID
+        schema:
+          type: string
+      - name: timezone
+        in: query
+        required: false
+        description: Timezone for date fields (default UTC)
+        schema:
+          type: string
+          default: UTC
       responses:
         '200':
           description: Webhook details
@@ -100,14 +102,14 @@ paths:
       summary: Update a Webhook
       description: Update configuration for an existing webhook.
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Webhook ID
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Webhook ID
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -122,14 +124,14 @@ paths:
       summary: Delete a Webhook
       description: Remove a webhook configuration.
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Webhook ID
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Webhook ID
+        schema:
+          type: string
       responses:
         '204':
           description: Webhook deleted
@@ -139,14 +141,14 @@ paths:
       summary: Validate a Webhook
       description: Send a test event batch to the webhook target to validate connectivity.
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Webhook ID
-          schema:
-            type: string
+      - name: id
+        in: path
+        required: true
+        description: Webhook ID
+        schema:
+          type: string
       requestBody:
         required: false
         content:
@@ -165,21 +167,21 @@ paths:
       summary: Retrieve Batch Status Information
       description: Retrieve delivery status information for recent event batches sent to this webhook.
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: id
-          in: path
-          required: true
-          description: Webhook ID
-          schema:
-            type: string
-        - name: limit
-          in: query
-          required: false
-          description: Maximum number of batch status records to return (default 1000)
-          schema:
-            type: integer
-            default: 1000
+      - name: id
+        in: path
+        required: true
+        description: Webhook ID
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of batch status records to return (default 1000)
+        schema:
+          type: integer
+          default: 1000
       responses:
         '200':
           description: Batch status records
@@ -189,7 +191,7 @@ paths:
       summary: Events Documentation
       description: Retrieve documentation for all event types available for webhook delivery.
       tags:
-        - Webhooks
+      - Webhooks
       responses:
         '200':
           description: Event type documentation
@@ -199,79 +201,19 @@ paths:
       summary: Event Samples
       description: Retrieve sample payloads for specific event types.
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: events
-          in: query
-          required: false
-          description: Comma-delimited list of event types
-          schema:
-            type: string
+      - name: events
+        in: query
+        required: false
+        description: Comma-delimited list of event types
+        schema:
+          type: string
       responses:
         '200':
           description: Sample event payloads
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: Authorization
   schemas:
-    WebhookRequest:
-      type: object
-      required:
-        - name
-        - target
-        - events
-      properties:
-        name:
-          type: string
-          description: Human-readable name for the webhook
-        target:
-          type: string
-          format: uri
-          description: HTTP or HTTPS URL to receive webhook POST events
-        events:
-          type: array
-          items:
-            type: string
-          description: List of event types to subscribe to
-        active:
-          type: boolean
-          default: true
-          description: Whether the webhook is active
-        custom_headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Custom HTTP headers to include in webhook requests
-        exception_subaccounts:
-          type: array
-          items:
-            type: integer
-          description: Subaccount IDs to exclude from this webhook
-        auth_type:
-          type: string
-          enum: [none, basic, oauth2]
-          default: none
-          description: Authentication type for webhook requests
-        auth_request_details:
-          type: object
-          description: OAuth 2.0 configuration (required if auth_type=oauth2)
-          properties:
-            url:
-              type: string
-              format: uri
-            body:
-              type: object
-        auth_credentials:
-          type: object
-          description: Credentials for basic auth (required if auth_type=basic)
-          properties:
-            username:
-              type: string
-            password:
-              type: string
     WebhookUpdateRequest:
       type: object
       properties:
@@ -298,11 +240,28 @@ components:
           type: integer
         auth_type:
           type: string
-          enum: [none, basic, oauth2]
+          enum:
+          - none
+          - basic
+          - oauth2
         auth_request_details:
           type: object
         auth_credentials:
           type: object
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     WebhookDetails:
       type: object
       properties:
@@ -333,17 +292,66 @@ components:
       properties:
         results:
           $ref: '#/components/schemas/WebhookDetails'
-    ErrorResponse:
+    WebhookRequest:
       type: object
+      required:
+      - name
+      - target
+      - events
       properties:
-        errors:
+        name:
+          type: string
+          description: Human-readable name for the webhook
+        target:
+          type: string
+          format: uri
+          description: HTTP or HTTPS URL to receive webhook POST events
+        events:
           type: array
           items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
+            type: string
+          description: List of event types to subscribe to
+        active:
+          type: boolean
+          default: true
+          description: Whether the webhook is active
+        custom_headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom HTTP headers to include in webhook requests
+        exception_subaccounts:
+          type: array
+          items:
+            type: integer
+          description: Subaccount IDs to exclude from this webhook
+        auth_type:
+          type: string
+          enum:
+          - none
+          - basic
+          - oauth2
+          default: none
+          description: Authentication type for webhook requests
+        auth_request_details:
+          type: object
+          description: OAuth 2.0 configuration (required if auth_type=oauth2)
+          properties:
+            url:
+              type: string
+              format: uri
+            body:
+              type: object
+        auth_credentials:
+          type: object
+          description: Credentials for basic auth (required if auth_type=basic)
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
