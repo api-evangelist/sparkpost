@@ -1,0 +1,36 @@
+{
+  "provider": "sparkpost",
+  "sources": [
+    "sparkpost-dkim-keys-api-openapi.yml",
+    "sparkpost-events-api-openapi.yml",
+    "sparkpost-inbound-domains-api-openapi.yml",
+    "sparkpost-metrics-api-openapi.yml",
+    "sparkpost-recipient-lists-api-openapi.yml",
+    "sparkpost-relay-webhooks-api-openapi.yml",
+    "sparkpost-sending-domains-api-openapi.yml",
+    "sparkpost-subaccounts-api-openapi.yml",
+    "sparkpost-suppression-list-api-openapi.yml",
+    "sparkpost-templates-api-openapi.yml",
+    "sparkpost-transmissions-api-openapi.yml",
+    "sparkpost-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "sparkpost-dkim-keys-api-openapi.yml",
+    "sparkpost-events-api-openapi.yml",
+    "sparkpost-inbound-domains-api-openapi.yml",
+    "sparkpost-metrics-api-openapi.yml",
+    "sparkpost-recipient-lists-api-openapi.yml",
+    "sparkpost-relay-webhooks-api-openapi.yml",
+    "sparkpost-sending-domains-api-openapi.yml",
+    "sparkpost-subaccounts-api-openapi.yml",
+    "sparkpost-suppression-list-api-openapi.yml",
+    "sparkpost-templates-api-openapi.yml",
+    "sparkpost-transmissions-api-openapi.yml",
+    "sparkpost-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
