@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys Webhooks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/webhooks",
+            "params": [
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date fields (default UTC)"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all configured webhooks."
+        },
+        {
+          "info": {
+            "name": "Create a Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook to receive real-time event notifications via HTTP POST."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook ID"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date fields (default UTC)"
+              }
+            ]
+          },
+          "docs": "Retrieve details about a specific webhook."
+        },
+        {
+          "info": {
+            "name": "Update a Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sparkpost.com/api/v1/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update configuration for an existing webhook."
+        },
+        {
+          "info": {
+            "name": "Delete a Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook ID"
+              }
+            ]
+          },
+          "docs": "Remove a webhook configuration."
+        },
+        {
+          "info": {
+            "name": "Validate a Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/webhooks/:id/validate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a test event batch to the webhook target to validate connectivity."
+        },
+        {
+          "info": {
+            "name": "Retrieve Batch Status Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/webhooks/:id/batch-status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of batch status records to return (default 1000)"
+              }
+            ]
+          },
+          "docs": "Retrieve delivery status information for recent event batches sent to this webhook."
+        },
+        {
+          "info": {
+            "name": "Events Documentation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/webhooks/events/documentation"
+          },
+          "docs": "Retrieve documentation for all event types available for webhook delivery."
+        },
+        {
+          "info": {
+            "name": "Event Samples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/webhooks/events/samples",
+            "params": [
+              {
+                "name": "events",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of event types"
+              }
+            ]
+          },
+          "docs": "Retrieve sample payloads for specific event types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

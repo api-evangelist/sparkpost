@@ -1,0 +1,729 @@
+{
+  "item": [
+    {
+      "id": "38312f0c-4f61-448b-b2f9-484d95eaf5ff",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b2aa80e-f0a7-4ce4-97b5-c1490724d5dd",
+          "name": "Search Message Events",
+          "request": {
+            "name": "Search Message Events",
+            "description": {
+              "content": "Search for message-level events with filtering, pagination, and cursor support. Returns deliveries, bounces, clicks, opens, spam complaints, and other engagement events. Data retention is 10 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "Start datetime (YYYY-MM-DDTHH:MM:ssZ), defaults to 24 hours ago"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "End datetime, defaults to 1 minute ago"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "initial",
+                  "description": "Pagination cursor (defaults to \"initial\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "1000",
+                  "description": "Results per page (1-10,000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": ",",
+                  "description": "List parameter separator (default comma)"
+                },
+                {
+                  "disabled": false,
+                  "key": "events",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of event types to filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "event_ids",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of event IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "recipients",
+                  "value": "<string>",
+                  "description": "Filter by recipient email addresses"
+                },
+                {
+                  "disabled": false,
+                  "key": "recipient_domains",
+                  "value": "<string>",
+                  "description": "Filter by recipient domains"
+                },
+                {
+                  "disabled": false,
+                  "key": "from_addresses",
+                  "value": "<string>",
+                  "description": "Filter by from addresses"
+                },
+                {
+                  "disabled": false,
+                  "key": "sending_domains",
+                  "value": "<string>",
+                  "description": "Filter by sending domains"
+                },
+                {
+                  "disabled": false,
+                  "key": "subjects",
+                  "value": "<string>",
+                  "description": "Filter by email subjects"
+                },
+                {
+                  "disabled": false,
+                  "key": "bounce_classes",
+                  "value": "<string>",
+                  "description": "Filter by bounce classification codes"
+                },
+                {
+                  "disabled": false,
+                  "key": "reasons",
+                  "value": "<string>",
+                  "description": "Filter by bounce or failure reasons"
+                },
+                {
+                  "disabled": false,
+                  "key": "campaigns",
+                  "value": "<string>",
+                  "description": "Filter by campaign IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "templates",
+                  "value": "<string>",
+                  "description": "Filter by template IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "sending_ips",
+                  "value": "<string>",
+                  "description": "Filter by sending IPs"
+                },
+                {
+                  "disabled": false,
+                  "key": "ip_pools",
+                  "value": "<string>",
+                  "description": "Filter by IP pool IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "subaccounts",
+                  "value": "<string>",
+                  "description": "Filter by subaccount IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "messages",
+                  "value": "<string>",
+                  "description": "Filter by message IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "transmissions",
+                  "value": "<string>",
+                  "description": "Filter by transmission IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "mailbox_providers",
+                  "value": "<string>",
+                  "description": "Filter by mailbox providers"
+                },
+                {
+                  "disabled": false,
+                  "key": "mailbox_provider_regions",
+                  "value": "<string>",
+                  "description": "Filter by mailbox provider regions"
+                },
+                {
+                  "disabled": false,
+                  "key": "ab_tests",
+                  "value": "<string>",
+                  "description": "Filter by A/B test IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "ab_test_versions",
+                  "value": "<string>",
+                  "description": "Filter by A/B test version numbers"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ec2f6ff-0f82-41b0-a9c9-d9a8d1d5a6aa",
+              "name": "Message events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "initial"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": ","
+                    },
+                    {
+                      "key": "events",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "event_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recipients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recipient_domains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from_addresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sending_domains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subjects",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bounce_classes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reasons",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaigns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "templates",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sending_ips",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip_pools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subaccounts",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "messages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transmissions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mailbox_providers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mailbox_provider_regions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ab_tests",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ab_test_versions",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"key_0\": 5746.901743027356,\n      \"key_1\": 600\n    },\n    {\n      \"key_0\": 7455.822087285912,\n      \"key_1\": false,\n      \"key_2\": true,\n      \"key_3\": 6749\n    }\n  ],\n  \"total_count\": 8177,\n  \"links\": {\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7a1bffc-0b54-4010-9c2b-750d21ecf568",
+          "name": "Message Events Documentation",
+          "request": {
+            "name": "Message Events Documentation",
+            "description": {
+              "content": "Retrieve field descriptions and metadata for event response objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "message",
+                "documentation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c120a035-bf19-4472-8e68-d781d2292cac",
+              "name": "Field definitions for message events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "message",
+                    "documentation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4facfc2f-edab-4877-9d58-9b881bb002c1",
+          "name": "Message Event Samples",
+          "request": {
+            "name": "Message Event Samples",
+            "description": {
+              "content": "Get example event payloads for specified event types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "message",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "events",
+                  "value": "<string>",
+                  "description": "Comma-delimited event types to get samples for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ead814aa-0f9b-4ba7-ab07-1f6836e8fc0a",
+              "name": "Sample event payloads",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "message",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "events",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"key_0\": 7380.11994820324\n    },\n    {\n      \"key_0\": false\n    }\n  ],\n  \"total_count\": 7651,\n  \"links\": {\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "374237f4-32a4-43c9-b4b2-b90511785d81",
+          "name": "Search Ingest Events",
+          "request": {
+            "name": "Search Ingest Events",
+            "description": {
+              "content": "Retrieve ingest events with optional filtering. Ingest events track data pipeline ingestion status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "ingest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "Start datetime, defaults to 24 hours ago"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "End datetime, defaults to 1 minute ago"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor (defaults to \"initial\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "1000",
+                  "description": "Results per page (1-10,000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": "<string>",
+                  "description": "List separator (defaults to comma)"
+                },
+                {
+                  "disabled": false,
+                  "key": "events",
+                  "value": "<string>",
+                  "description": "Filter by event types"
+                },
+                {
+                  "disabled": false,
+                  "key": "event_ids",
+                  "value": "<string>",
+                  "description": "Filter by event IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "batch_ids",
+                  "value": "<string>",
+                  "description": "Filter by batch IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "subaccounts",
+                  "value": "<string>",
+                  "description": "Filter by subaccount IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "retryable",
+                  "value": "<boolean>",
+                  "description": "Filter by retryability"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fa14b13-e0af-467a-82a5-8fb676ec18b1",
+              "name": "Ingest events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "events",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "event_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "batch_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subaccounts",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "retryable",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"key_0\": 7380.11994820324\n    },\n    {\n      \"key_0\": false\n    }\n  ],\n  \"total_count\": 7651,\n  \"links\": {\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sparkpost.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3688119a-20ca-4c9a-92ed-f2cb57ca4a3b",
+    "name": "SparkPost DKIM Keys Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.\n\nContact Support:\n Name: SparkPost Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

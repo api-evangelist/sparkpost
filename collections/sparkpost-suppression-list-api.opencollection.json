@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys Suppression List API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suppression List",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Suppressions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/suppression-list",
+            "params": [
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter suppressions created before this date (YYYY-MM-DDTHH:mm:ssZ)"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter suppressions created after this date (YYYY-MM-DDTHH:mm:ssZ)"
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query",
+                "description": "Filter by recipient email domain"
+              },
+              {
+                "name": "sources",
+                "value": "",
+                "type": "query",
+                "description": "Filter by suppression sources"
+              },
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Filter by suppression type (transactional or non_transactional)"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Filter by description (partial match)"
+              },
+              {
+                "name": "description_strict",
+                "value": "",
+                "type": "query",
+                "description": "If true, use exact description match"
+              },
+              {
+                "name": "list_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by list ID"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (default 1000)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Search the suppression list with optional filters for date range, domain, source, and type."
+        },
+        {
+          "info": {
+            "name": "Bulk Create or Update Suppressions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sparkpost.com/api/v1/suppression-list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert or update up to 10,000 suppression entries in a single request."
+        },
+        {
+          "info": {
+            "name": "Retrieve Suppression Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/suppression-list/summary"
+          },
+          "docs": "Retrieve suppression counts grouped by source and overall total."
+        },
+        {
+          "info": {
+            "name": "Retrieve Single Suppression",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/suppression-list/:recipient",
+            "params": [
+              {
+                "name": "recipient",
+                "value": "",
+                "type": "path",
+                "description": "Recipient email address"
+              },
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Filter by suppression type"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (1-10,000, default 1000)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              }
+            ]
+          },
+          "docs": "Retrieve suppression status for a specific recipient email address."
+        },
+        {
+          "info": {
+            "name": "Create or Update Single Suppression",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sparkpost.com/api/v1/suppression-list/:recipient",
+            "params": [
+              {
+                "name": "recipient",
+                "value": "",
+                "type": "path",
+                "description": "Recipient email address"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert or update a suppression entry for a specific recipient email address."
+        },
+        {
+          "info": {
+            "name": "Delete Suppression",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/suppression-list/:recipient",
+            "params": [
+              {
+                "name": "recipient",
+                "value": "",
+                "type": "path",
+                "description": "Recipient email address"
+              },
+              {
+                "name": "list_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by list ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a suppression entry for a specific recipient."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

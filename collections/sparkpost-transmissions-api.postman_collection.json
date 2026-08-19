@@ -1,0 +1,674 @@
+{
+  "item": [
+    {
+      "id": "53c88ff5-86e1-49e5-9d70-6e5c4feae406",
+      "name": "Transmissions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6544f681-404e-4c8e-9900-33949aa64874",
+          "name": "Create a Transmission",
+          "request": {
+            "name": "Create a Transmission",
+            "description": {
+              "content": "Send transactional or marketing emails. Supports inline content, stored templates, A/B tests, and RFC822 raw email format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transmissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"options\": {\n    \"start_time\": \"<dateTime>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\",\n    \"transactional\": \"<boolean>\",\n    \"sandbox\": \"<boolean>\",\n    \"skip_suppression\": \"<boolean>\",\n    \"ip_pool\": \"<string>\",\n    \"inline_css\": \"<boolean>\",\n    \"perform_substitutions\": \"<boolean>\",\n    \"dkim_key\": \"<string>\"\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6897.507776925089\n      }\n    },\n    {\n      \"address\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  ],\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"template_id\": \"<string>\",\n    \"ab_test_id\": \"<string>\",\n    \"email_rfc822\": \"<string>\"\n  },\n  \"campaign_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 3581.2253840042263\n  },\n  \"substitution_data\": {\n    \"key_0\": 4526.270865433053\n  },\n  \"return_path\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06cbfd7b-f340-4ad7-a459-092ca00965ac",
+              "name": "Transmission accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"options\": {\n    \"start_time\": \"<dateTime>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\",\n    \"transactional\": \"<boolean>\",\n    \"sandbox\": \"<boolean>\",\n    \"skip_suppression\": \"<boolean>\",\n    \"ip_pool\": \"<string>\",\n    \"inline_css\": \"<boolean>\",\n    \"perform_substitutions\": \"<boolean>\",\n    \"dkim_key\": \"<string>\"\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": 8366\n      },\n      \"substitution_data\": {\n        \"key_0\": false,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"address\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": 7108.31013973759,\n        \"key_2\": 3894\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 802,\n        \"key_2\": true\n      }\n    }\n  ],\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"template_id\": \"<string>\",\n    \"ab_test_id\": \"<string>\",\n    \"email_rfc822\": \"<string>\"\n  },\n  \"campaign_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 4430\n  },\n  \"substitution_data\": {\n    \"key_0\": 5068,\n    \"key_1\": 8496\n  },\n  \"return_path\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"total_rejected_recipients\": 4631,\n    \"total_accepted_recipients\": 3802,\n    \"id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4e2d988-d863-48e2-b069-ef517e72ac05",
+              "name": "Invalid domain or DKIM key errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"options\": {\n    \"start_time\": \"<dateTime>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\",\n    \"transactional\": \"<boolean>\",\n    \"sandbox\": \"<boolean>\",\n    \"skip_suppression\": \"<boolean>\",\n    \"ip_pool\": \"<string>\",\n    \"inline_css\": \"<boolean>\",\n    \"perform_substitutions\": \"<boolean>\",\n    \"dkim_key\": \"<string>\"\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": 8366\n      },\n      \"substitution_data\": {\n        \"key_0\": false,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"address\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": 7108.31013973759,\n        \"key_2\": 3894\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 802,\n        \"key_2\": true\n      }\n    }\n  ],\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"template_id\": \"<string>\",\n    \"ab_test_id\": \"<string>\",\n    \"email_rfc822\": \"<string>\"\n  },\n  \"campaign_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 4430\n  },\n  \"substitution_data\": {\n    \"key_0\": 5068,\n    \"key_1\": 8496\n  },\n  \"return_path\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a338cff1-8bf8-4889-8b55-8d5e2791604f",
+              "name": "Subresource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"options\": {\n    \"start_time\": \"<dateTime>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\",\n    \"transactional\": \"<boolean>\",\n    \"sandbox\": \"<boolean>\",\n    \"skip_suppression\": \"<boolean>\",\n    \"ip_pool\": \"<string>\",\n    \"inline_css\": \"<boolean>\",\n    \"perform_substitutions\": \"<boolean>\",\n    \"dkim_key\": \"<string>\"\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": 8366\n      },\n      \"substitution_data\": {\n        \"key_0\": false,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"address\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": 7108.31013973759,\n        \"key_2\": 3894\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 802,\n        \"key_2\": true\n      }\n    }\n  ],\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"template_id\": \"<string>\",\n    \"ab_test_id\": \"<string>\",\n    \"email_rfc822\": \"<string>\"\n  },\n  \"campaign_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 4430\n  },\n  \"substitution_data\": {\n    \"key_0\": 5068,\n    \"key_1\": 8496\n  },\n  \"return_path\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22431b36-0960-4978-ae87-a356ea8f94ff",
+          "name": "Delete Scheduled Transmissions by Campaign",
+          "request": {
+            "name": "Delete Scheduled Transmissions by Campaign",
+            "description": {
+              "content": "Bulk delete scheduled transmissions by campaign ID. Deletion happens asynchronously.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transmissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "campaign_id",
+                  "value": "<string>",
+                  "description": "(Required) Campaign identifier to filter transmissions for deletion"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fec4d740-277e-4a03-82b4-eaae6940c349",
+              "name": "Deletion accepted (asynchronous)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaign_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3705726a-fa2b-4a7b-8f10-8767dcf4c805",
+          "name": "Retrieve a Scheduled Transmission",
+          "request": {
+            "name": "Retrieve a Scheduled Transmission",
+            "description": {
+              "content": "Retrieve details about a scheduled transmission by its ID. (Deprecated)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transmissions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) Transmission ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c99ffdfb-fe41-416b-a495-87ef3bdb365c",
+              "name": "Transmission details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) Transmission ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"id\": \"string\",\n    \"state\": \"string\",\n    \"num_recipients\": 5686,\n    \"campaign_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcd659a3-1429-4bf7-8a41-380a8515ab69",
+              "name": "Transmission not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) Transmission ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39ed5ff9-d114-4396-ab71-2863f50ce88a",
+          "name": "Delete a Scheduled Transmission",
+          "request": {
+            "name": "Delete a Scheduled Transmission",
+            "description": {
+              "content": "Remove an individual scheduled transmission. (Deprecated)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transmissions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) Transmission ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6144995-26ee-4646-8ab7-55e2851ddd15",
+              "name": "Transmission deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) Transmission ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aba1bbb7-02d1-4f02-885e-b5ba4fbb3cfd",
+              "name": "Transmission not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) Transmission ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f964513d-df0d-41b7-9f1f-be8a7a8fd8ab",
+              "name": "Too close to generation time or invalid state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transmissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) Transmission ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sparkpost.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b954de0a-9d5b-4a8e-9fec-01380d96fdc6",
+    "name": "SparkPost Events DKIM Keys Transmissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.\n\nContact Support:\n Name: SparkPost Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

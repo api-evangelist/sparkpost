@@ -1,0 +1,883 @@
+{
+  "item": [
+    {
+      "id": "e214d573-217e-4381-bccc-229e48dbfdf6",
+      "name": "Sending Domains",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ff8935f-5b9c-4944-bddc-e4382c8a625f",
+          "name": "Create a Sending Domain",
+          "request": {
+            "name": "Create a Sending Domain",
+            "description": {
+              "content": "Add a new custom sending domain with optional DKIM key generation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sending-domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"domain\": \"<string>\",\n  \"tracking_domain\": \"<string>\",\n  \"dkim\": {\n    \"private\": \"<string>\",\n    \"public\": \"<string>\",\n    \"selector\": \"<string>\",\n    \"headers\": \"<string>\"\n  },\n  \"generate_dkim\": true,\n  \"dkim_key_length\": 2048,\n  \"shared_with_subaccounts\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6cce4058-5dfb-4041-ac30-ba1b8d79f095",
+              "name": "Sending domain created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain\": \"<string>\",\n  \"tracking_domain\": \"<string>\",\n  \"dkim\": {\n    \"private\": \"<string>\",\n    \"public\": \"<string>\",\n    \"selector\": \"<string>\",\n    \"headers\": \"<string>\"\n  },\n  \"generate_dkim\": true,\n  \"dkim_key_length\": 2048,\n  \"shared_with_subaccounts\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"domain\": \"string\",\n    \"tracking_domain\": \"string\",\n    \"status\": {\n      \"ownership_verified\": true,\n      \"dkim_status\": \"string\",\n      \"cname_status\": \"string\",\n      \"mx_status\": \"string\",\n      \"compliance_status\": \"string\",\n      \"spf_status\": \"string\",\n      \"abuse_at_status\": \"string\",\n      \"postmaster_at_status\": \"string\",\n      \"verification_mailbox_status\": \"string\"\n    },\n    \"dkim\": {\n      \"signing_domain\": \"string\",\n      \"selector\": \"string\",\n      \"headers\": \"string\",\n      \"public\": \"string\"\n    },\n    \"shared_with_subaccounts\": true,\n    \"is_default_bounce_domain\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "920e7945-3ba0-4cc6-9a1d-9b7ad6dc26a2",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain\": \"<string>\",\n  \"tracking_domain\": \"<string>\",\n  \"dkim\": {\n    \"private\": \"<string>\",\n    \"public\": \"<string>\",\n    \"selector\": \"<string>\",\n    \"headers\": \"<string>\"\n  },\n  \"generate_dkim\": true,\n  \"dkim_key_length\": 2048,\n  \"shared_with_subaccounts\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c697c7c4-037a-4efb-a4ae-8caeb888c196",
+          "name": "List All Sending Domains",
+          "request": {
+            "name": "List All Sending Domains",
+            "description": {
+              "content": "Retrieve a list of all sending domains with optional filtering by verification status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sending-domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownership_verified",
+                  "value": "<boolean>",
+                  "description": "Filter by ownership verification status"
+                },
+                {
+                  "disabled": false,
+                  "key": "dkim_status",
+                  "value": "<string>",
+                  "description": "Filter by DKIM verification status"
+                },
+                {
+                  "disabled": false,
+                  "key": "cname_status",
+                  "value": "<string>",
+                  "description": "Filter by CNAME verification status"
+                },
+                {
+                  "disabled": false,
+                  "key": "mx_status",
+                  "value": "<string>",
+                  "description": "Filter by MX record status"
+                },
+                {
+                  "disabled": false,
+                  "key": "abuse_at_status",
+                  "value": "<string>",
+                  "description": "Filter by abuse@ mailbox verification status"
+                },
+                {
+                  "disabled": false,
+                  "key": "postmaster_at_status",
+                  "value": "<string>",
+                  "description": "Filter by postmaster@ mailbox verification status"
+                },
+                {
+                  "disabled": false,
+                  "key": "compliance_status",
+                  "value": "<string>",
+                  "description": "Filter by compliance status"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_default_bounce_domain",
+                  "value": "<boolean>",
+                  "description": "Filter by whether domain is default bounce domain"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7793cddb-fe52-4e0c-80ef-b6a923394230",
+              "name": "List of sending domains",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownership_verified",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dkim_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cname_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mx_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "abuse_at_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postmaster_at_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compliance_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_default_bounce_domain",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"domain\": \"string\",\n      \"tracking_domain\": \"string\",\n      \"status\": {\n        \"ownership_verified\": false,\n        \"dkim_status\": \"string\",\n        \"cname_status\": \"string\",\n        \"mx_status\": \"string\",\n        \"compliance_status\": \"string\",\n        \"spf_status\": \"string\",\n        \"abuse_at_status\": \"string\",\n        \"postmaster_at_status\": \"string\",\n        \"verification_mailbox_status\": \"string\"\n      },\n      \"dkim\": {\n        \"signing_domain\": \"string\",\n        \"selector\": \"string\",\n        \"headers\": \"string\",\n        \"public\": \"string\"\n      },\n      \"shared_with_subaccounts\": false,\n      \"is_default_bounce_domain\": false\n    },\n    {\n      \"domain\": \"string\",\n      \"tracking_domain\": \"string\",\n      \"status\": {\n        \"ownership_verified\": true,\n        \"dkim_status\": \"string\",\n        \"cname_status\": \"string\",\n        \"mx_status\": \"string\",\n        \"compliance_status\": \"string\",\n        \"spf_status\": \"string\",\n        \"abuse_at_status\": \"string\",\n        \"postmaster_at_status\": \"string\",\n        \"verification_mailbox_status\": \"string\"\n      },\n      \"dkim\": {\n        \"signing_domain\": \"string\",\n        \"selector\": \"string\",\n        \"headers\": \"string\",\n        \"public\": \"string\"\n      },\n      \"shared_with_subaccounts\": true,\n      \"is_default_bounce_domain\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0f9bfe8-f19d-43cd-83e9-821c639de713",
+          "name": "Retrieve a Sending Domain",
+          "request": {
+            "name": "Retrieve a Sending Domain",
+            "description": {
+              "content": "Retrieve details about a specific sending domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sending-domains",
+                ":domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domain",
+                  "description": "(Required) Sending domain name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be085965-a956-42b2-9166-f2c2cd6494eb",
+              "name": "Sending domain details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains",
+                    ":domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) Sending domain name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"domain\": \"string\",\n    \"tracking_domain\": \"string\",\n    \"status\": {\n      \"ownership_verified\": true,\n      \"dkim_status\": \"string\",\n      \"cname_status\": \"string\",\n      \"mx_status\": \"string\",\n      \"compliance_status\": \"string\",\n      \"spf_status\": \"string\",\n      \"abuse_at_status\": \"string\",\n      \"postmaster_at_status\": \"string\",\n      \"verification_mailbox_status\": \"string\"\n    },\n    \"dkim\": {\n      \"signing_domain\": \"string\",\n      \"selector\": \"string\",\n      \"headers\": \"string\",\n      \"public\": \"string\"\n    },\n    \"shared_with_subaccounts\": true,\n    \"is_default_bounce_domain\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b626306c-3b8f-4ef4-a48a-927d0cae7794",
+          "name": "Update a Sending Domain",
+          "request": {
+            "name": "Update a Sending Domain",
+            "description": {
+              "content": "Update configuration for a sending domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sending-domains",
+                ":domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domain",
+                  "description": "(Required) Sending domain name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking_domain\": \"<string>\",\n  \"dkim\": \"<object>\",\n  \"shared_with_subaccounts\": \"<boolean>\",\n  \"is_default_bounce_domain\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "20e028fb-01eb-4f6f-bf29-3d956e869572",
+              "name": "Sending domain updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains",
+                    ":domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) Sending domain name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_domain\": \"<string>\",\n  \"dkim\": \"<object>\",\n  \"shared_with_subaccounts\": \"<boolean>\",\n  \"is_default_bounce_domain\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d642dc01-3830-4b1e-baf0-77b5f1fc2de7",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains",
+                    ":domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) Sending domain name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_domain\": \"<string>\",\n  \"dkim\": \"<object>\",\n  \"shared_with_subaccounts\": \"<boolean>\",\n  \"is_default_bounce_domain\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23584b68-ed2e-40d7-b9ae-9284a5001a61",
+          "name": "Delete a Sending Domain",
+          "request": {
+            "name": "Delete a Sending Domain",
+            "description": {
+              "content": "Remove a sending domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sending-domains",
+                ":domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domain",
+                  "description": "(Required) Sending domain name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e53b2f07-2cbb-461b-8fb1-e99b6424ca72",
+              "name": "Sending domain deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains",
+                    ":domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) Sending domain name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a0ae522-738b-4c1e-87d9-2cb8ac8a0203",
+              "name": "Sending domain not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains",
+                    ":domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) Sending domain name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f1c9305-6365-4418-a269-f3a6b8807d88",
+          "name": "Verify a Sending Domain",
+          "request": {
+            "name": "Verify a Sending Domain",
+            "description": {
+              "content": "Initiate or check verification for a sending domain via DKIM, CNAME, or mailbox verification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sending-domains",
+                ":domain",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domain",
+                  "description": "(Required) Sending domain name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dkim_verify\": \"<boolean>\",\n  \"cname_verify\": \"<boolean>\",\n  \"verification_mailbox_verify\": \"<boolean>\",\n  \"verification_mailbox\": \"<string>\",\n  \"postmaster_at_verify\": \"<boolean>\",\n  \"abuse_at_verify\": \"<boolean>\",\n  \"verification_mailbox_token\": \"<string>\",\n  \"postmaster_at_token\": \"<string>\",\n  \"abuse_at_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "919548ec-675a-4bac-8e82-55a31c22e8c2",
+              "name": "Verification result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sending-domains",
+                    ":domain",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) Sending domain name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dkim_verify\": \"<boolean>\",\n  \"cname_verify\": \"<boolean>\",\n  \"verification_mailbox_verify\": \"<boolean>\",\n  \"verification_mailbox\": \"<string>\",\n  \"postmaster_at_verify\": \"<boolean>\",\n  \"abuse_at_verify\": \"<boolean>\",\n  \"verification_mailbox_token\": \"<string>\",\n  \"postmaster_at_token\": \"<string>\",\n  \"abuse_at_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sparkpost.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5b0d6961-caca-418b-b2ad-7225dfaac859",
+    "name": "SparkPost Events DKIM Keys Sending Domains API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.\n\nContact Support:\n Name: SparkPost Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

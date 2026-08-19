@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys Transmissions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transmissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Transmission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/transmissions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send transactional or marketing emails. Supports inline content, stored templates, A/B tests, and RFC822 raw email format."
+        },
+        {
+          "info": {
+            "name": "Delete Scheduled Transmissions by Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/transmissions",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "query",
+                "description": "Campaign identifier to filter transmissions for deletion"
+              }
+            ]
+          },
+          "docs": "Bulk delete scheduled transmissions by campaign ID. Deletion happens asynchronously."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Scheduled Transmission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/transmissions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Transmission ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details about a scheduled transmission by its ID. (Deprecated)"
+        },
+        {
+          "info": {
+            "name": "Delete a Scheduled Transmission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/transmissions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Transmission ID"
+              }
+            ]
+          },
+          "docs": "Remove an individual scheduled transmission. (Deprecated)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

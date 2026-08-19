@@ -1,0 +1,292 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost DKIM Keys Events API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Message Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/events/message",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime (YYYY-MM-DDTHH:MM:ssZ), defaults to 24 hours ago"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime, defaults to 1 minute ago"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor (defaults to \"initial\")"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (1-10,000)"
+              },
+              {
+                "name": "delimiter",
+                "value": "",
+                "type": "query",
+                "description": "List parameter separator (default comma)"
+              },
+              {
+                "name": "events",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of event types to filter"
+              },
+              {
+                "name": "event_ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of event IDs"
+              },
+              {
+                "name": "recipients",
+                "value": "",
+                "type": "query",
+                "description": "Filter by recipient email addresses"
+              },
+              {
+                "name": "recipient_domains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by recipient domains"
+              },
+              {
+                "name": "from_addresses",
+                "value": "",
+                "type": "query",
+                "description": "Filter by from addresses"
+              },
+              {
+                "name": "sending_domains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by sending domains"
+              },
+              {
+                "name": "subjects",
+                "value": "",
+                "type": "query",
+                "description": "Filter by email subjects"
+              },
+              {
+                "name": "bounce_classes",
+                "value": "",
+                "type": "query",
+                "description": "Filter by bounce classification codes"
+              },
+              {
+                "name": "reasons",
+                "value": "",
+                "type": "query",
+                "description": "Filter by bounce or failure reasons"
+              },
+              {
+                "name": "campaigns",
+                "value": "",
+                "type": "query",
+                "description": "Filter by campaign IDs"
+              },
+              {
+                "name": "templates",
+                "value": "",
+                "type": "query",
+                "description": "Filter by template IDs"
+              },
+              {
+                "name": "sending_ips",
+                "value": "",
+                "type": "query",
+                "description": "Filter by sending IPs"
+              },
+              {
+                "name": "ip_pools",
+                "value": "",
+                "type": "query",
+                "description": "Filter by IP pool IDs"
+              },
+              {
+                "name": "subaccounts",
+                "value": "",
+                "type": "query",
+                "description": "Filter by subaccount IDs"
+              },
+              {
+                "name": "messages",
+                "value": "",
+                "type": "query",
+                "description": "Filter by message IDs"
+              },
+              {
+                "name": "transmissions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by transmission IDs"
+              },
+              {
+                "name": "mailbox_providers",
+                "value": "",
+                "type": "query",
+                "description": "Filter by mailbox providers"
+              },
+              {
+                "name": "mailbox_provider_regions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by mailbox provider regions"
+              },
+              {
+                "name": "ab_tests",
+                "value": "",
+                "type": "query",
+                "description": "Filter by A/B test IDs"
+              },
+              {
+                "name": "ab_test_versions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by A/B test version numbers"
+              }
+            ]
+          },
+          "docs": "Search for message-level events with filtering, pagination, and cursor support. Returns deliveries, bounces, clicks, opens, spam complaints, and other engagement events. Data retention is 10 days."
+        },
+        {
+          "info": {
+            "name": "Message Events Documentation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/events/message/documentation"
+          },
+          "docs": "Retrieve field descriptions and metadata for event response objects."
+        },
+        {
+          "info": {
+            "name": "Message Event Samples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/events/message/samples",
+            "params": [
+              {
+                "name": "events",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited event types to get samples for"
+              }
+            ]
+          },
+          "docs": "Get example event payloads for specified event types."
+        },
+        {
+          "info": {
+            "name": "Search Ingest Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/events/ingest",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime, defaults to 24 hours ago"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime, defaults to 1 minute ago"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor (defaults to \"initial\")"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (1-10,000)"
+              },
+              {
+                "name": "delimiter",
+                "value": "",
+                "type": "query",
+                "description": "List separator (defaults to comma)"
+              },
+              {
+                "name": "events",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event types"
+              },
+              {
+                "name": "event_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event IDs"
+              },
+              {
+                "name": "batch_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by batch IDs"
+              },
+              {
+                "name": "subaccounts",
+                "value": "",
+                "type": "query",
+                "description": "Filter by subaccount IDs"
+              },
+              {
+                "name": "retryable",
+                "value": "",
+                "type": "query",
+                "description": "Filter by retryability"
+              }
+            ]
+          },
+          "docs": "Retrieve ingest events with optional filtering. Ingest events track data pipeline ingestion status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

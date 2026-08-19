@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys Templates API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/templates",
+            "params": [
+              {
+                "name": "draft",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns drafts in addition to published templates"
+              },
+              {
+                "name": "shared_with_subaccounts",
+                "value": "",
+                "type": "query",
+                "description": "Filter by templates shared with subaccounts"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all stored templates."
+        },
+        {
+          "info": {
+            "name": "Create a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new email template with HTML, text, and AMP HTML parts."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Template ID"
+              },
+              {
+                "name": "draft",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns the draft version"
+              }
+            ]
+          },
+          "docs": "Retrieve a stored template by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sparkpost.com/api/v1/templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Template ID"
+              },
+              {
+                "name": "update_published",
+                "value": "",
+                "type": "query",
+                "description": "If true, updates the published version directly"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a draft or published template. Use update_published=true to update a published template directly."
+        },
+        {
+          "info": {
+            "name": "Delete a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Template ID"
+              }
+            ]
+          },
+          "docs": "Delete a stored template."
+        },
+        {
+          "info": {
+            "name": "Preview a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/templates/:id/preview",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Template ID"
+              },
+              {
+                "name": "draft",
+                "value": "",
+                "type": "query",
+                "description": "If true, previews the draft version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Render a template with substitution data to preview the output."
+        },
+        {
+          "info": {
+            "name": "Preview Inline Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/utils/content-previewer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Preview an inline template with substitution data without saving it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

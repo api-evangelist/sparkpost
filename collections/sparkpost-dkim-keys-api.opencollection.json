@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DKIM Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List DKIM Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/sending-domains/:domain/dkim-keys",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Sending domain name"
+              }
+            ]
+          },
+          "docs": "List all DKIM keys for a sending domain."
+        },
+        {
+          "info": {
+            "name": "Create a DKIM Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/sending-domains/:domain/dkim-keys",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Sending domain name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new DKIM key to a sending domain."
+        },
+        {
+          "info": {
+            "name": "Retrieve a DKIM Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/sending-domains/:domain/dkim-keys/:key_id",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Sending domain name"
+              },
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "DKIM key ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details about a specific DKIM key."
+        },
+        {
+          "info": {
+            "name": "Update a DKIM Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sparkpost.com/api/v1/sending-domains/:domain/dkim-keys/:key_id",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Sending domain name"
+              },
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "DKIM key ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing DKIM key configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a DKIM Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/sending-domains/:domain/dkim-keys/:key_id",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Sending domain name"
+              },
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "DKIM key ID"
+              }
+            ]
+          },
+          "docs": "Remove a DKIM key from a sending domain."
+        },
+        {
+          "info": {
+            "name": "Verify a DKIM Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/sending-domains/:domain/dkim-keys/:key_id/verify",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Sending domain name"
+              },
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "DKIM key ID"
+              }
+            ]
+          },
+          "docs": "Verify that a DKIM key is properly published in DNS."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1096 @@
+{
+  "item": [
+    {
+      "id": "f57a707e-cdf7-4aaa-a6c0-7d35c68b4638",
+      "name": "Recipient Lists",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aacbf4af-4fe1-4a79-9d91-905195b81373",
+          "name": "Create a Recipient List",
+          "request": {
+            "name": "Create a Recipient List",
+            "description": {
+              "content": "Create a new stored recipient list for use in transmissions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipient-lists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "num_rcpt_errors",
+                  "value": "3",
+                  "description": "Maximum number of recipient errors to return (default 3)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": 3291,\n        \"key_2\": \"string\",\n        \"key_3\": 2015\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": true\n      },\n      \"substitution_data\": {\n        \"key_0\": false\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb9d6e38-ee76-4b27-81dd-29b37c0c18f9",
+              "name": "Recipient list created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num_rcpt_errors",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": 1844.479190692473\n      },\n      \"substitution_data\": {\n        \"key_0\": 2532,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 5379,\n    \"key_1\": 1559.3328841832476\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"total_rejected_recipients\": 6702,\n    \"total_accepted_recipients\": 5693,\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27e3d9e5-c2c1-4eb8-b835-d657b029d054",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num_rcpt_errors",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": 1844.479190692473\n      },\n      \"substitution_data\": {\n        \"key_0\": 2532,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 5379,\n    \"key_1\": 1559.3328841832476\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f459f367-d3ee-499c-af86-a74500b6e4e3",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num_rcpt_errors",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": 1844.479190692473\n      },\n      \"substitution_data\": {\n        \"key_0\": 2532,\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 5379,\n    \"key_1\": 1559.3328841832476\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "035baa35-49cb-4a31-ac1a-b68f5d85f4cd",
+          "name": "List All Recipient Lists",
+          "request": {
+            "name": "List All Recipient Lists",
+            "description": {
+              "content": "Retrieve a summary list of all stored recipient lists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipient-lists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c336144-d60b-4130-98f1-3652ff872524",
+              "name": "List of recipient lists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"total_accepted_recipients\": 7224\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"total_accepted_recipients\": 2239\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33249578-2442-4119-b0e7-aa915ea80bc1",
+          "name": "Retrieve a Recipient List",
+          "request": {
+            "name": "Retrieve a Recipient List",
+            "description": {
+              "content": "Retrieve a stored recipient list by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipient-lists",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "show_recipients",
+                  "value": "true",
+                  "description": "If true, includes the recipient entries (default true)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Recipient list ID (case sensitive)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8596ce62-24cb-4dec-a58f-ab9b120158bd",
+              "name": "Recipient list details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_recipients",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"total_accepted_recipients\": 5307,\n    \"attributes\": {},\n    \"recipients\": [\n      {\n        \"address\": \"<email>\",\n        \"tags\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"metadata\": {\n          \"key_0\": \"string\"\n        },\n        \"substitution_data\": {\n          \"key_0\": 6376,\n          \"key_1\": 9498\n        }\n      },\n      {\n        \"address\": \"<email>\",\n        \"tags\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"metadata\": {\n          \"key_0\": \"string\"\n        },\n        \"substitution_data\": {\n          \"key_0\": 3008\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fe22ea6-6932-4dcd-a236-0a2fa9397840",
+              "name": "Recipient list not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_recipients",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70de06e7-012e-4134-985e-0672accc8ed8",
+          "name": "Update a Recipient List",
+          "request": {
+            "name": "Update a Recipient List",
+            "description": {
+              "content": "Update the metadata or recipients of a stored recipient list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipient-lists",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "num_rcpt_errors",
+                  "value": "3",
+                  "description": "Maximum number of recipient errors to return (default 3)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Recipient list ID (case sensitive)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 5139.21507157203\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": 5857\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": 7937,\n        \"key_2\": false\n      },\n      \"substitution_data\": {\n        \"key_0\": 5228,\n        \"key_1\": false\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce81017a-c74a-4a42-af6a-fbb168091c24",
+              "name": "Recipient list updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num_rcpt_errors",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 8381,\n    \"key_1\": true\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": 6444.353608974229,\n        \"key_1\": true\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": 8625\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": 7706.769246997281\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42bf5726-458d-498f-8da2-84a2d0c3fa05",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num_rcpt_errors",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 8381,\n    \"key_1\": true\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": 6444.353608974229,\n        \"key_1\": true\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": 8625\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": 7706.769246997281\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24a966ed-6c95-4490-8aa2-f6899fe757c1",
+              "name": "Recipient list not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num_rcpt_errors",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 8381,\n    \"key_1\": true\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": 6444.353608974229,\n        \"key_1\": true\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": 8625\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": 7706.769246997281\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57654a5c-84cc-4632-9526-2f3ba9347c6c",
+              "name": "Recipient list is in use",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num_rcpt_errors",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 8381,\n    \"key_1\": true\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": 6444.353608974229,\n        \"key_1\": true\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": 8625\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": 7706.769246997281\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5aa882c0-4453-42eb-8832-6635b04c16ed",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num_rcpt_errors",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": 8381,\n    \"key_1\": true\n  },\n  \"recipients\": [\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": 6444.353608974229,\n        \"key_1\": true\n      },\n      \"substitution_data\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": 8625\n      }\n    },\n    {\n      \"address\": \"<email>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"substitution_data\": {\n        \"key_0\": 7706.769246997281\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9decd389-2543-4684-a659-9bfeb98b14ec",
+          "name": "Delete a Recipient List",
+          "request": {
+            "name": "Delete a Recipient List",
+            "description": {
+              "content": "Delete a stored recipient list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipient-lists",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Recipient list ID (case sensitive)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f106431-3201-4495-b047-9ea81a45596e",
+              "name": "Recipient list deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6594618d-de3b-406d-b13b-64e6e637eda0",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "606583a0-144f-4601-8c19-3242c32c7f90",
+              "name": "Recipient list is referenced by a transmission",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipient-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Recipient list ID (case sensitive)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sparkpost.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b849871a-d648-40cd-a749-04d7de8b5874",
+    "name": "SparkPost Events DKIM Keys Recipient Lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.\n\nContact Support:\n Name: SparkPost Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

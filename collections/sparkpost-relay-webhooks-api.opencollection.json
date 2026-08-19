@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys Relay Webhooks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Relay Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Relay Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/relay-webhooks"
+          },
+          "docs": "Retrieve a list of all configured relay webhooks."
+        },
+        {
+          "info": {
+            "name": "Create a Relay Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/relay-webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a webhook to receive inbound email messages forwarded from an inbound domain."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Relay Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/relay-webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Relay webhook ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details about a specific relay webhook."
+        },
+        {
+          "info": {
+            "name": "Update a Relay Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sparkpost.com/api/v1/relay-webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Relay webhook ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update configuration for an existing relay webhook."
+        },
+        {
+          "info": {
+            "name": "Delete a Relay Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/relay-webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Relay webhook ID"
+              }
+            ]
+          },
+          "docs": "Remove a relay webhook configuration."
+        },
+        {
+          "info": {
+            "name": "Validate a Relay Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/relay-webhooks/:id/validate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Relay webhook ID"
+              }
+            ]
+          },
+          "docs": "Send a test inbound email event to the relay webhook target to validate connectivity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

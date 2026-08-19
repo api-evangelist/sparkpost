@@ -1,0 +1,896 @@
+{
+  "item": [
+    {
+      "id": "7e2f7dd2-8271-4e02-9ba9-2449ae0c1d56",
+      "name": "Templates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69032fd4-9c74-44bb-b5c4-5c52cc6da9ac",
+          "name": "Create a Template",
+          "request": {
+            "name": "Create a Template",
+            "description": {
+              "content": "Create a new email template with HTML, text, and AMP HTML parts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"amp_html\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  \"options\": {\n    \"transactional\": \"<boolean>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\"\n  },\n  \"shared_with_subaccounts\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe2d289f-aedc-4a9d-aeb6-7a824d61e349",
+              "name": "Template created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"amp_html\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  \"options\": {\n    \"transactional\": \"<boolean>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\"\n  },\n  \"shared_with_subaccounts\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e47d722f-b0b0-4ced-bff2-39944cdc6b6c",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"amp_html\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  \"options\": {\n    \"transactional\": \"<boolean>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\"\n  },\n  \"shared_with_subaccounts\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ebe6dfe-4c07-40c0-9789-ff337c97533f",
+          "name": "List All Templates",
+          "request": {
+            "name": "List All Templates",
+            "description": {
+              "content": "Retrieve a list of all stored templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "draft",
+                  "value": "<boolean>",
+                  "description": "If true, returns drafts in addition to published templates"
+                },
+                {
+                  "disabled": false,
+                  "key": "shared_with_subaccounts",
+                  "value": "<boolean>",
+                  "description": "Filter by templates shared with subaccounts"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a00e1ab-da8a-4283-8b82-eb00b0c0b1f2",
+              "name": "List of templates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "draft",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "shared_with_subaccounts",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"results\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"published\": false,\n        \"content\": {\n          \"html\": \"<string>\",\n          \"text\": \"<string>\",\n          \"amp_html\": \"<string>\",\n          \"subject\": \"<string>\",\n          \"from\": \"<string>\",\n          \"reply_to\": \"<string>\",\n          \"headers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        \"options\": {\n          \"transactional\": \"<boolean>\",\n          \"open_tracking\": \"<boolean>\",\n          \"click_tracking\": \"<boolean>\"\n        },\n        \"shared_with_subaccounts\": false,\n        \"last_update_time\": \"1987-10-02T15:51:38.645Z\"\n      }\n    },\n    {\n      \"results\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"published\": false,\n        \"content\": {\n          \"html\": \"<string>\",\n          \"text\": \"<string>\",\n          \"amp_html\": \"<string>\",\n          \"subject\": \"<string>\",\n          \"from\": \"<string>\",\n          \"reply_to\": \"<string>\",\n          \"headers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        },\n        \"options\": {\n          \"transactional\": \"<boolean>\",\n          \"open_tracking\": \"<boolean>\",\n          \"click_tracking\": \"<boolean>\"\n        },\n        \"shared_with_subaccounts\": false,\n        \"last_update_time\": \"2013-12-07T13:52:34.527Z\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9bf2fe2-3bd7-4da4-802e-20181eec6408",
+          "name": "Retrieve a Template",
+          "request": {
+            "name": "Retrieve a Template",
+            "description": {
+              "content": "Retrieve a stored template by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "draft",
+                  "value": "<boolean>",
+                  "description": "If true, returns the draft version"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c358626c-0bf9-4ef6-a635-8c068fc1a43d",
+              "name": "Template details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "draft",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"published\": false,\n    \"content\": {\n      \"html\": \"<string>\",\n      \"text\": \"<string>\",\n      \"amp_html\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"from\": \"<string>\",\n      \"reply_to\": \"<string>\",\n      \"headers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"options\": {\n      \"transactional\": \"<boolean>\",\n      \"open_tracking\": \"<boolean>\",\n      \"click_tracking\": \"<boolean>\"\n    },\n    \"shared_with_subaccounts\": true,\n    \"last_update_time\": \"1971-01-04T14:27:17.601Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "461b5991-1b39-434f-a9f7-1bd1bf6cdce2",
+          "name": "Update a Template",
+          "request": {
+            "name": "Update a Template",
+            "description": {
+              "content": "Update a draft or published template. Use update_published=true to update a published template directly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "update_published",
+                  "value": "<boolean>",
+                  "description": "If true, updates the published version directly"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"amp_html\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  \"options\": {\n    \"transactional\": \"<boolean>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\"\n  },\n  \"shared_with_subaccounts\": \"<boolean>\",\n  \"published\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1269a4bb-56ec-4e68-afb0-3190f12293a7",
+              "name": "Template updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "update_published",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"amp_html\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  },\n  \"options\": {\n    \"transactional\": \"<boolean>\",\n    \"open_tracking\": \"<boolean>\",\n    \"click_tracking\": \"<boolean>\"\n  },\n  \"shared_with_subaccounts\": \"<boolean>\",\n  \"published\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caadfde6-3e3b-44b9-90c3-7399e897d60a",
+          "name": "Delete a Template",
+          "request": {
+            "name": "Delete a Template",
+            "description": {
+              "content": "Delete a stored template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "668a8969-9c22-4ae7-a0d3-262610fb599d",
+              "name": "Template deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22e53c3b-3af2-4c31-8aa1-117b181755d2",
+              "name": "Template is in use by an active transmission",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f4f01e6-ad94-49d0-a5f4-6b3ada858372",
+          "name": "Preview a Template",
+          "request": {
+            "name": "Preview a Template",
+            "description": {
+              "content": "Render a template with substitution data to preview the output.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "draft",
+                  "value": "<boolean>",
+                  "description": "If true, previews the draft version"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"substitution_data\": {\n    \"key_0\": 7473,\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac71dfc0-7272-46a0-a3c6-0b852997f71e",
+              "name": "Rendered template preview",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "draft",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"substitution_data\": {\n    \"key_0\": 7565,\n    \"key_1\": 427\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"subject\": \"string\",\n    \"html\": \"string\",\n    \"text\": \"string\",\n    \"amp_html\": \"string\",\n    \"from\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac143427-f267-49ed-8b25-d3a808349603",
+          "name": "Preview Inline Template",
+          "request": {
+            "name": "Preview Inline Template",
+            "description": {
+              "content": "Preview an inline template with substitution data without saving it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "utils",
+                "content-previewer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"substitution_data\": {\n    \"key_0\": true\n  },\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"amp_html\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b27ff3e4-daa7-49eb-baea-f1a2a92414ab",
+              "name": "Rendered inline template preview",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "utils",
+                    "content-previewer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"substitution_data\": {\n    \"key_0\": true\n  },\n  \"content\": {\n    \"html\": \"<string>\",\n    \"text\": \"<string>\",\n    \"amp_html\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"from\": \"<string>\",\n    \"reply_to\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sparkpost.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9c27faf6-6396-4af9-8ed8-574431baec9f",
+    "name": "SparkPost Events DKIM Keys Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.\n\nContact Support:\n Name: SparkPost Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

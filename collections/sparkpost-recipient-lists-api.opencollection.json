@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys Recipient Lists API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recipient Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Recipient Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/recipient-lists"
+          },
+          "docs": "Retrieve a summary list of all stored recipient lists."
+        },
+        {
+          "info": {
+            "name": "Create a Recipient List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/recipient-lists",
+            "params": [
+              {
+                "name": "num_rcpt_errors",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of recipient errors to return (default 3)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new stored recipient list for use in transmissions."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Recipient List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/recipient-lists/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Recipient list ID (case sensitive)"
+              },
+              {
+                "name": "show_recipients",
+                "value": "",
+                "type": "query",
+                "description": "If true, includes the recipient entries (default true)"
+              }
+            ]
+          },
+          "docs": "Retrieve a stored recipient list by ID."
+        },
+        {
+          "info": {
+            "name": "Update a Recipient List",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sparkpost.com/api/v1/recipient-lists/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Recipient list ID (case sensitive)"
+              },
+              {
+                "name": "num_rcpt_errors",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of recipient errors to return (default 3)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the metadata or recipients of a stored recipient list."
+        },
+        {
+          "info": {
+            "name": "Delete a Recipient List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/recipient-lists/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Recipient list ID (case sensitive)"
+              }
+            ]
+          },
+          "docs": "Delete a stored recipient list."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

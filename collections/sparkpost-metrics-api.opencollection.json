@@ -1,0 +1,825 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys Metrics API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Metrics API Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/"
+          },
+          "docs": "Lists available child endpoints for discoverability."
+        },
+        {
+          "info": {
+            "name": "Metrics Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "delimiter",
+                "value": "",
+                "type": "query",
+                "description": "List parameter separator (default comma)"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "domains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by recipient domains"
+              },
+              {
+                "name": "campaigns",
+                "value": "",
+                "type": "query",
+                "description": "Filter by campaign IDs"
+              },
+              {
+                "name": "templates",
+                "value": "",
+                "type": "query",
+                "description": "Filter by template IDs"
+              },
+              {
+                "name": "sending_ips",
+                "value": "",
+                "type": "query",
+                "description": "Filter by sending IP addresses"
+              },
+              {
+                "name": "ip_pools",
+                "value": "",
+                "type": "query",
+                "description": "Filter by IP pool IDs"
+              },
+              {
+                "name": "sending_domains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by sending domains"
+              },
+              {
+                "name": "subaccounts",
+                "value": "",
+                "type": "query",
+                "description": "Filter by subaccount IDs"
+              },
+              {
+                "name": "mailbox_providers",
+                "value": "",
+                "type": "query",
+                "description": "Filter by mailbox providers"
+              },
+              {
+                "name": "mailbox_provider_regions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by mailbox provider regions"
+              },
+              {
+                "name": "subject_campaigns",
+                "value": "",
+                "type": "query",
+                "description": "Filter by subject campaigns"
+              },
+              {
+                "name": "precision",
+                "value": "",
+                "type": "query",
+                "description": "Time precision for bucketing results"
+              },
+              {
+                "name": "query_filters",
+                "value": "",
+                "type": "query",
+                "description": "Advanced filter structure (see /metrics/deliverability/query-filters-schema)"
+              }
+            ]
+          },
+          "docs": "Query aggregate deliverability metrics across all sending dimensions."
+        },
+        {
+          "info": {
+            "name": "Advanced Query JSON Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/query-filters-schema"
+          },
+          "docs": "Retrieves the JSON Schema for validating the query_filters parameter."
+        },
+        {
+          "info": {
+            "name": "Metrics by Recipient Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/domain",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by recipient domain."
+        },
+        {
+          "info": {
+            "name": "Metrics by Sending IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/sending-ip",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by sending IP address."
+        },
+        {
+          "info": {
+            "name": "Metrics by IP Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/ip-pool",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by IP pool."
+        },
+        {
+          "info": {
+            "name": "Metrics by Sending Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/sending-domain",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by sending domain."
+        },
+        {
+          "info": {
+            "name": "Metrics by Subaccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/subaccount",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by subaccount."
+        },
+        {
+          "info": {
+            "name": "Metrics by Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/campaign",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by campaign."
+        },
+        {
+          "info": {
+            "name": "Metrics by Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/template",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by template."
+        },
+        {
+          "info": {
+            "name": "Metrics by Watched Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/watched-domain",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by watched domain."
+        },
+        {
+          "info": {
+            "name": "Metrics by Mailbox Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/mailbox-provider",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by mailbox provider (e.g., Gmail, Yahoo)."
+        },
+        {
+          "info": {
+            "name": "Metrics by Mailbox Provider Region",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/mailbox-provider-region",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by mailbox provider region."
+        },
+        {
+          "info": {
+            "name": "Time-Series Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/time-series",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "precision",
+                "value": "",
+                "type": "query",
+                "description": "Time series precision"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics over time at specified precision intervals."
+        },
+        {
+          "info": {
+            "name": "Bounce Reason Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/bounce-reason",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Bounce-specific metrics to return"
+              }
+            ]
+          },
+          "docs": "Query bounce metrics grouped by bounce reason."
+        },
+        {
+          "info": {
+            "name": "Bounce Reason Metrics by Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/bounce-reason/domain",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              }
+            ]
+          },
+          "docs": "Query bounce metrics grouped by bounce reason and recipient domain."
+        },
+        {
+          "info": {
+            "name": "Metrics by Subject Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/metrics/deliverability/subject-campaign",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start datetime in YYYY-MM-DDTHH:MM format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End datetime (defaults to now)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of metrics to return"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for date bucketing (default UTC)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (1-10000, default 1000)"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Metric name to sort results by"
+              }
+            ]
+          },
+          "docs": "Query deliverability metrics grouped by subject campaign. Requires deliverability add-on."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

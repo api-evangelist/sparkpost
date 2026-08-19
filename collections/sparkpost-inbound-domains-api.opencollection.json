@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SparkPost Events DKIM Keys Inbound Domains API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbound Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Inbound Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/inbound-domains"
+          },
+          "docs": "Retrieve a list of all registered inbound domains."
+        },
+        {
+          "info": {
+            "name": "Create an Inbound Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sparkpost.com/api/v1/inbound-domains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new inbound domain for receiving inbound email via relay webhooks."
+        },
+        {
+          "info": {
+            "name": "Retrieve an Inbound Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sparkpost.com/api/v1/inbound-domains/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Inbound domain name"
+              }
+            ]
+          },
+          "docs": "Retrieve details about a specific inbound domain."
+        },
+        {
+          "info": {
+            "name": "Delete an Inbound Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sparkpost.com/api/v1/inbound-domains/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Inbound domain name"
+              }
+            ]
+          },
+          "docs": "Remove an inbound domain registration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
