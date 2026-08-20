@@ -26,6 +26,16 @@ tags:
   - Marketing Email
   - Email Delivery
   - SMTP
+  - Webhook
+  - Analytics
+  - Templates
+  - Suppression List
+tags_raw:
+  - Email
+  - Transactional Email
+  - Marketing Email
+  - Email Delivery
+  - SMTP
   - Webhooks
   - Analytics
   - Templates
@@ -67,6 +77,8 @@ apis:
   humanURL: https://developers.sparkpost.com/api/transmissions/
   baseURL: https://api.sparkpost.com/api/v1
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -367,6 +379,8 @@ apis:
   humanURL: https://developers.sparkpost.com/api/transmissions/
   baseURL: https://api.sparkpost.com/api/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
