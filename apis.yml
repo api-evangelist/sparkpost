@@ -363,6 +363,8 @@ apis:
   humanURL: https://developers.sparkpost.com/api/transmissions/
   baseURL: https://api.sparkpost.com/api/v1
   tags:
+  - Transmission
+  tags_raw:
   - Transmissions
   properties:
   - type: OpenAPI
