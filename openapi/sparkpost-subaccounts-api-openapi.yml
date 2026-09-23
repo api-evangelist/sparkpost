@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Subaccounts API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Subaccounts API
+  description: Manage subaccounts for multi-tenant or agency deployments, each with isolated sending domains, API keys, suppression lists, and reporting.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/subaccounts/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -200,45 +200,30 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    SubaccountResponse:
+    SubaccountDetails:
       type: object
       properties:
-        results:
-          $ref: '#/components/schemas/SubaccountDetails'
-    SubaccountsListResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubaccountDetails'
-        total_count:
+        id:
           type: integer
-        links:
-          type: object
-          properties:
-            next:
-              type: string
-    SubaccountUpdateRequest:
-      type: object
-      properties:
         name:
           type: string
-          maxLength: 64
         status:
           type: string
-          enum:
-          - active
-          - suspended
-          - terminated
+        compliance_status:
+          type: string
         ip_pool:
           type: string
-          description: Set to empty string to unassign current IP pool
         options:
           type: object
           properties:
             deliverability:
               type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
     ErrorResponse:
       type: object
       properties:
@@ -253,6 +238,35 @@ components:
                 type: string
               description:
                 type: string
+    SubaccountsListResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubaccountDetails'
+        total_count:
+          type: integer
+        links:
+          type: object
+          properties:
+            next:
+              type: string
+    SubaccountCreateResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            subaccount_id:
+              type: integer
+            key:
+              type: string
+              description: API key for the subaccount (shown only on creation)
+            label:
+              type: string
+            short_key:
+              type: string
     SubaccountRequest:
       type: object
       required:
@@ -288,45 +302,31 @@ components:
             deliverability:
               type: boolean
               description: Enable deliverability features for this subaccount
-    SubaccountCreateResponse:
+    SubaccountUpdateRequest:
       type: object
       properties:
-        results:
-          type: object
-          properties:
-            subaccount_id:
-              type: integer
-            key:
-              type: string
-              description: API key for the subaccount (shown only on creation)
-            label:
-              type: string
-            short_key:
-              type: string
-    SubaccountDetails:
-      type: object
-      properties:
-        id:
-          type: integer
         name:
           type: string
+          maxLength: 64
         status:
           type: string
-        compliance_status:
-          type: string
+          enum:
+          - active
+          - suspended
+          - terminated
         ip_pool:
           type: string
+          description: Set to empty string to unassign current IP pool
         options:
           type: object
           properties:
             deliverability:
               type: boolean
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
+    SubaccountResponse:
+      type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/SubaccountDetails'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

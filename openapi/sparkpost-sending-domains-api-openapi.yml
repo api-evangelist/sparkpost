@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Sending Domains API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Sending Domains API
+  description: Add and verify custom sending domains via DKIM signing. Required for domain-based email authentication and custom bounce domain configuration.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/sending-domains/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -201,64 +201,6 @@ paths:
           description: Verification result
 components:
   schemas:
-    SendingDomainRequest:
-      type: object
-      required:
-      - domain
-      properties:
-        domain:
-          type: string
-          description: The sending domain name
-        tracking_domain:
-          type: string
-          description: Tracking domain to associate with this sending domain
-        dkim:
-          type: object
-          description: DKIM key configuration
-          properties:
-            private:
-              type: string
-            public:
-              type: string
-            selector:
-              type: string
-            headers:
-              type: string
-        generate_dkim:
-          type: boolean
-          default: true
-          description: Whether to auto-generate a DKIM key
-        dkim_key_length:
-          type: integer
-          default: 2048
-          description: Length of generated DKIM key in bits
-        shared_with_subaccounts:
-          type: boolean
-          default: false
-          description: Whether this domain is shared with subaccounts
-    SendingDomainResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/SendingDomainDetails'
-    SendingDomainsListResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SendingDomainDetails'
-    SendingDomainUpdateRequest:
-      type: object
-      properties:
-        tracking_domain:
-          type: string
-        dkim:
-          type: object
-        shared_with_subaccounts:
-          type: boolean
-        is_default_bounce_domain:
-          type: boolean
     ErrorResponse:
       type: object
       properties:
@@ -273,27 +215,6 @@ components:
                 type: string
               description:
                 type: string
-    SendingDomainVerifyRequest:
-      type: object
-      properties:
-        dkim_verify:
-          type: boolean
-        cname_verify:
-          type: boolean
-        verification_mailbox_verify:
-          type: boolean
-        verification_mailbox:
-          type: string
-        postmaster_at_verify:
-          type: boolean
-        abuse_at_verify:
-          type: boolean
-        verification_mailbox_token:
-          type: string
-        postmaster_at_token:
-          type: string
-        abuse_at_token:
-          type: string
     SendingDomainDetails:
       type: object
       properties:
@@ -337,6 +258,85 @@ components:
           type: boolean
         is_default_bounce_domain:
           type: boolean
+    SendingDomainVerifyRequest:
+      type: object
+      properties:
+        dkim_verify:
+          type: boolean
+        cname_verify:
+          type: boolean
+        verification_mailbox_verify:
+          type: boolean
+        verification_mailbox:
+          type: string
+        postmaster_at_verify:
+          type: boolean
+        abuse_at_verify:
+          type: boolean
+        verification_mailbox_token:
+          type: string
+        postmaster_at_token:
+          type: string
+        abuse_at_token:
+          type: string
+    SendingDomainUpdateRequest:
+      type: object
+      properties:
+        tracking_domain:
+          type: string
+        dkim:
+          type: object
+        shared_with_subaccounts:
+          type: boolean
+        is_default_bounce_domain:
+          type: boolean
+    SendingDomainRequest:
+      type: object
+      required:
+      - domain
+      properties:
+        domain:
+          type: string
+          description: The sending domain name
+        tracking_domain:
+          type: string
+          description: Tracking domain to associate with this sending domain
+        dkim:
+          type: object
+          description: DKIM key configuration
+          properties:
+            private:
+              type: string
+            public:
+              type: string
+            selector:
+              type: string
+            headers:
+              type: string
+        generate_dkim:
+          type: boolean
+          default: true
+          description: Whether to auto-generate a DKIM key
+        dkim_key_length:
+          type: integer
+          default: 2048
+          description: Length of generated DKIM key in bits
+        shared_with_subaccounts:
+          type: boolean
+          default: false
+          description: Whether this domain is shared with subaccounts
+    SendingDomainsListResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SendingDomainDetails'
+    SendingDomainResponse:
+      type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/SendingDomainDetails'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

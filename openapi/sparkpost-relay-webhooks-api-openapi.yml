@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Relay Webhooks API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Inbound Domains Relay Webhooks API
+  description: Configure inbound email processing by associating inbound domains with relay webhooks that forward received messages as HTTP POST events to your application.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/inbound-domains/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -164,6 +164,69 @@ paths:
           description: Validation result
 components:
   schemas:
+    RelayWebhookUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        target:
+          type: string
+          format: uri
+        auth_token:
+          type: string
+        auth_type:
+          type: string
+          enum:
+          - none
+          - oauth2
+        auth_request_details:
+          type: object
+        match:
+          type: object
+          properties:
+            domain:
+              type: string
+        custom_headers:
+          type: object
+          additionalProperties:
+            type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    RelayWebhookDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        target:
+          type: string
+        auth_type:
+          type: string
+        match:
+          type: object
+          properties:
+            domain:
+              type: string
+        custom_headers:
+          type: object
+    RelayWebhookResponse:
+      type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/RelayWebhookDetails'
     RelayWebhookRequest:
       type: object
       required:
@@ -213,69 +276,6 @@ components:
           additionalProperties:
             type: string
           description: Custom HTTP headers to include in relay webhook requests
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    RelayWebhookUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        target:
-          type: string
-          format: uri
-        auth_token:
-          type: string
-        auth_type:
-          type: string
-          enum:
-          - none
-          - oauth2
-        auth_request_details:
-          type: object
-        match:
-          type: object
-          properties:
-            domain:
-              type: string
-        custom_headers:
-          type: object
-          additionalProperties:
-            type: string
-    RelayWebhookResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/RelayWebhookDetails'
-    RelayWebhookDetails:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        target:
-          type: string
-        auth_type:
-          type: string
-        match:
-          type: object
-          properties:
-            domain:
-              type: string
-        custom_headers:
-          type: object
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

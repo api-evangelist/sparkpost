@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Sending Domains DKIM Keys API
+  description: Add and verify custom sending domains via DKIM signing. Required for domain-based email authentication and custom bounce domain configuration.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/sending-domains/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -176,19 +176,6 @@ paths:
           description: Domain or key not found
 components:
   schemas:
-    DkimKeyUpdateRequest:
-      type: object
-      properties:
-        signing_domain:
-          type: string
-        headers:
-          type: string
-        private:
-          type: string
-        public:
-          type: string
-        selector:
-          type: string
     DkimKeyRequest:
       type: object
       required:
@@ -210,6 +197,19 @@ components:
         dkim_key_length:
           type: integer
           default: 2048
+    DkimKeyUpdateRequest:
+      type: object
+      properties:
+        signing_domain:
+          type: string
+        headers:
+          type: string
+        private:
+          type: string
+        public:
+          type: string
+        selector:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

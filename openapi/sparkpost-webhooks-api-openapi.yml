@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Webhooks API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Webhooks API
+  description: Configure real-time HTTP push notifications for email events (deliveries, bounces, opens, clicks, spam complaints). Supports batched event payloads and retry logic.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/webhooks/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0

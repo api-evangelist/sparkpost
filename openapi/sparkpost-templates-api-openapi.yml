@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Templates API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Templates API
+  description: Create, retrieve, update, delete, and preview stored email templates. Templates support dynamic substitution data and both text and HTML parts.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/templates/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -208,6 +208,60 @@ paths:
           description: Rendered inline template preview
 components:
   schemas:
+    TemplateUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          $ref: '#/components/schemas/TemplateContent'
+        options:
+          $ref: '#/components/schemas/TemplateOptions'
+        shared_with_subaccounts:
+          type: boolean
+        published:
+          type: boolean
+          description: Set to true to publish the draft
+    TemplateCreateResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+    TemplatePreviewResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            subject:
+              type: string
+            html:
+              type: string
+            text:
+              type: string
+            amp_html:
+              type: string
+            from:
+              type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     TemplateResponse:
       type: object
       properties:
@@ -231,52 +285,34 @@ components:
             last_update_time:
               type: string
               format: date-time
-    TemplatePreviewResponse:
+    TemplateOptions:
       type: object
       properties:
-        results:
-          type: object
-          properties:
-            subject:
-              type: string
-            html:
-              type: string
-            text:
-              type: string
-            amp_html:
-              type: string
-            from:
-              type: string
-    TemplateUpdateRequest:
+        transactional:
+          type: boolean
+        open_tracking:
+          type: boolean
+        click_tracking:
+          type: boolean
+    TemplateRequest:
       type: object
       properties:
+        id:
+          type: string
+          description: Unique alphanumeric ID (auto-generated if not provided)
         name:
           type: string
+          description: Display name for the template
         description:
           type: string
+          description: Template description
         content:
           $ref: '#/components/schemas/TemplateContent'
         options:
           $ref: '#/components/schemas/TemplateOptions'
         shared_with_subaccounts:
           type: boolean
-        published:
-          type: boolean
-          description: Set to true to publish the draft
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
+          description: Whether this template is shared with subaccounts
     TemplateListResponse:
       type: object
       properties:
@@ -284,14 +320,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TemplateResponse'
-    TemplateCreateResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
     TemplateContent:
       type: object
       properties:
@@ -325,34 +353,6 @@ components:
           additionalProperties:
             type: string
           description: Additional email headers
-    TemplateRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique alphanumeric ID (auto-generated if not provided)
-        name:
-          type: string
-          description: Display name for the template
-        description:
-          type: string
-          description: Template description
-        content:
-          $ref: '#/components/schemas/TemplateContent'
-        options:
-          $ref: '#/components/schemas/TemplateOptions'
-        shared_with_subaccounts:
-          type: boolean
-          description: Whether this template is shared with subaccounts
-    TemplateOptions:
-      type: object
-      properties:
-        transactional:
-          type: boolean
-        open_tracking:
-          type: boolean
-        click_tracking:
-          type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

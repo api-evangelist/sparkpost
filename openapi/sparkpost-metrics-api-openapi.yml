@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Metrics API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Metrics API
+  description: Query aggregate email performance metrics including deliveries, bounces, opens, clicks, and spam complaints. Supports filtering by campaign, template, sending domain, and time range.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/metrics/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -381,13 +381,6 @@ paths:
                 $ref: '#/components/schemas/MetricsResponse'
 components:
   parameters:
-    templates:
-      name: templates
-      in: query
-      required: false
-      description: Filter by template IDs
-      schema:
-        type: string
     campaigns:
       name: campaigns
       in: query
@@ -395,11 +388,101 @@ components:
       description: Filter by campaign IDs
       schema:
         type: string
+    subject_campaigns:
+      name: subject_campaigns
+      in: query
+      required: false
+      description: Filter by subject campaigns
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of results (1-10000, default 1000)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 10000
+        default: 1000
+    query_filters:
+      name: query_filters
+      in: query
+      required: false
+      description: Advanced filter structure (see /metrics/deliverability/query-filters-schema)
+      schema:
+        type: string
+    templates:
+      name: templates
+      in: query
+      required: false
+      description: Filter by template IDs
+      schema:
+        type: string
     domains:
       name: domains
       in: query
       required: false
       description: Filter by recipient domains
+      schema:
+        type: string
+    delimiter:
+      name: delimiter
+      in: query
+      required: false
+      description: List parameter separator (default comma)
+      schema:
+        type: string
+        default: ','
+    metrics:
+      name: metrics
+      in: query
+      required: true
+      description: Comma-delimited list of metrics to return
+      schema:
+        type: string
+    sending_domains:
+      name: sending_domains
+      in: query
+      required: false
+      description: Filter by sending domains
+      schema:
+        type: string
+    mailbox_provider_regions:
+      name: mailbox_provider_regions
+      in: query
+      required: false
+      description: Filter by mailbox provider regions
+      schema:
+        type: string
+    ip_pools:
+      name: ip_pools
+      in: query
+      required: false
+      description: Filter by IP pool IDs
+      schema:
+        type: string
+    timezone:
+      name: timezone
+      in: query
+      required: false
+      description: Timezone for date bucketing (default UTC)
+      schema:
+        type: string
+        default: UTC
+    to:
+      name: to
+      in: query
+      required: false
+      description: End datetime (defaults to now)
+      schema:
+        type: string
+        format: date-time
+    subaccounts:
+      name: subaccounts
+      in: query
+      required: false
+      description: Filter by subaccount IDs
       schema:
         type: string
     sending_ips:
@@ -417,20 +500,6 @@ components:
       schema:
         type: string
         format: date-time
-    metrics:
-      name: metrics
-      in: query
-      required: true
-      description: Comma-delimited list of metrics to return
-      schema:
-        type: string
-    subject_campaigns:
-      name: subject_campaigns
-      in: query
-      required: false
-      description: Filter by subject campaigns
-      schema:
-        type: string
     mailbox_providers:
       name: mailbox_providers
       in: query
@@ -438,32 +507,11 @@ components:
       description: Filter by mailbox providers
       schema:
         type: string
-    sending_domains:
-      name: sending_domains
-      in: query
-      required: false
-      description: Filter by sending domains
-      schema:
-        type: string
-    ip_pools:
-      name: ip_pools
-      in: query
-      required: false
-      description: Filter by IP pool IDs
-      schema:
-        type: string
     order_by:
       name: order_by
       in: query
       required: false
       description: Metric name to sort results by
-      schema:
-        type: string
-    subaccounts:
-      name: subaccounts
-      in: query
-      required: false
-      description: Filter by subaccount IDs
       schema:
         type: string
     precision:
@@ -479,54 +527,6 @@ components:
         - 15min
         - hour
         - day
-    to:
-      name: to
-      in: query
-      required: false
-      description: End datetime (defaults to now)
-      schema:
-        type: string
-        format: date-time
-    query_filters:
-      name: query_filters
-      in: query
-      required: false
-      description: Advanced filter structure (see /metrics/deliverability/query-filters-schema)
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of results (1-10000, default 1000)
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 10000
-        default: 1000
-    mailbox_provider_regions:
-      name: mailbox_provider_regions
-      in: query
-      required: false
-      description: Filter by mailbox provider regions
-      schema:
-        type: string
-    delimiter:
-      name: delimiter
-      in: query
-      required: false
-      description: List parameter separator (default comma)
-      schema:
-        type: string
-        default: ','
-    timezone:
-      name: timezone
-      in: query
-      required: false
-      description: Timezone for date bucketing (default UTC)
-      schema:
-        type: string
-        default: UTC
   schemas:
     MetricsResponse:
       type: object

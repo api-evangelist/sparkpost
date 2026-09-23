@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Recipient Lists API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Recipient Lists API
+  description: Create and manage stored recipient lists for use with Transmissions. Lists can include substitution data per recipient for personalized sending campaigns.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/recipient-lists/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -187,32 +187,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    RecipientListRequest:
+    ErrorResponse:
       type: object
-      required:
-      - recipients
       properties:
-        id:
-          type: string
-          maxLength: 64
-          description: Unique alphanumeric ID (auto-generated if not provided)
-        name:
-          type: string
-          maxLength: 64
-          description: Display name
-        description:
-          type: string
-          maxLength: 1024
-          description: Description of the list
-        attributes:
-          type: object
-          additionalProperties: true
-          description: Arbitrary metadata for the list
-        recipients:
+        errors:
           type: array
           items:
-            $ref: '#/components/schemas/Recipient'
-          description: List of recipient objects
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     RecipientListUpdateRequest:
       type: object
       properties:
@@ -231,66 +219,6 @@ components:
           items:
             $ref: '#/components/schemas/Recipient'
           description: Replaces all existing recipients
-    RecipientListSummary:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        total_accepted_recipients:
-          type: integer
-    RecipientListCreateResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            total_rejected_recipients:
-              type: integer
-            total_accepted_recipients:
-              type: integer
-            id:
-              type: string
-            name:
-              type: string
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    RecipientListResponse:
-      type: object
-      properties:
-        results:
-          allOf:
-          - $ref: '#/components/schemas/RecipientListSummary'
-          - type: object
-            properties:
-              attributes:
-                type: object
-              recipients:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Recipient'
-    RecipientListsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecipientListSummary'
     Recipient:
       type: object
       required:
@@ -322,6 +250,78 @@ components:
           type: object
           additionalProperties: true
           description: Per-recipient substitution data for templates
+    RecipientListsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecipientListSummary'
+    RecipientListCreateResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            total_rejected_recipients:
+              type: integer
+            total_accepted_recipients:
+              type: integer
+            id:
+              type: string
+            name:
+              type: string
+    RecipientListRequest:
+      type: object
+      required:
+      - recipients
+      properties:
+        id:
+          type: string
+          maxLength: 64
+          description: Unique alphanumeric ID (auto-generated if not provided)
+        name:
+          type: string
+          maxLength: 64
+          description: Display name
+        description:
+          type: string
+          maxLength: 1024
+          description: Description of the list
+        attributes:
+          type: object
+          additionalProperties: true
+          description: Arbitrary metadata for the list
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipient'
+          description: List of recipient objects
+    RecipientListSummary:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        total_accepted_recipients:
+          type: integer
+    RecipientListResponse:
+      type: object
+      properties:
+        results:
+          allOf:
+          - $ref: '#/components/schemas/RecipientListSummary'
+          - type: object
+            properties:
+              attributes:
+                type: object
+              recipients:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipient'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

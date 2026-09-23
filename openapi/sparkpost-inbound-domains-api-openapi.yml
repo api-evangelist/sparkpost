@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Inbound Domains API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost & Relay Webhooks Inbound Domains API
+  description: Configure inbound email processing by associating inbound domains with relay webhooks that forward received messages as HTTP POST events to your application.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/inbound-domains/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0

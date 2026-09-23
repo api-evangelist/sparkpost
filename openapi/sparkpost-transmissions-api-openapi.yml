@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Transmissions API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Transmissions API
+  description: Send transactional and marketing emails at scale using inline recipients or stored recipient lists. Supports templating, A/B testing, scheduled sending, and per-recipient substitution data.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/transmissions/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -126,20 +126,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    TransmissionDetails:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
-            state:
-              type: string
-            num_recipients:
-              type: integer
-            campaign_id:
-              type: string
     ErrorResponse:
       type: object
       properties:
@@ -154,6 +140,63 @@ components:
                 type: string
               description:
                 type: string
+    Recipient:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          oneOf:
+          - type: string
+            description: Recipient email address
+          - type: object
+            properties:
+              email:
+                type: string
+              name:
+                type: string
+              header_to:
+                type: string
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags for recipient grouping
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Per-recipient metadata
+        substitution_data:
+          type: object
+          additionalProperties: true
+          description: Per-recipient substitution data for templates
+    TransmissionResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            total_rejected_recipients:
+              type: integer
+            total_accepted_recipients:
+              type: integer
+            id:
+              type: string
+              description: Transmission ID
+    TransmissionDetails:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+            state:
+              type: string
+            num_recipients:
+              type: integer
+            campaign_id:
+              type: string
     TransmissionRequest:
       type: object
       properties:
@@ -252,49 +295,6 @@ components:
         return_path:
           type: string
           description: Envelope FROM address for bounce handling
-    TransmissionResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            total_rejected_recipients:
-              type: integer
-            total_accepted_recipients:
-              type: integer
-            id:
-              type: string
-              description: Transmission ID
-    Recipient:
-      type: object
-      required:
-      - address
-      properties:
-        address:
-          oneOf:
-          - type: string
-            description: Recipient email address
-          - type: object
-            properties:
-              email:
-                type: string
-              name:
-                type: string
-              header_to:
-                type: string
-        tags:
-          type: array
-          items:
-            type: string
-          description: Tags for recipient grouping
-        metadata:
-          type: object
-          additionalProperties: true
-          description: Per-recipient metadata
-        substitution_data:
-          type: object
-          additionalProperties: true
-          description: Per-recipient substitution data for templates
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

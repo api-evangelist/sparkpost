@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SparkPost Events DKIM Keys Suppression List API
-  description: Retrieve detailed per-message event data covering deliveries, bounces, clicks, opens, and other engagement events for individual messages.
+  title: SparkPost Suppression List API
+  description: Manage the suppression list to prevent sending to unsubscribed, bounced, or complained recipients. Supports bulk insert, search, and deletion of suppressed addresses.
   version: 1.0.0
   contact:
     name: SparkPost Developer Support
-    url: https://developers.sparkpost.com/api/events/
+    url: https://developers.sparkpost.com/api/suppression-list/
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -281,28 +281,42 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    SuppressionResponse:
+    ErrorResponse:
       type: object
       properties:
-        results:
+        errors:
           type: array
           items:
             type: object
             properties:
-              recipient:
+              message:
                 type: string
-              type:
-                type: string
-              source:
+              code:
                 type: string
               description:
                 type: string
-              created:
-                type: string
-                format: date-time
-              updated:
-                type: string
-                format: date-time
+    SuppressionEntry:
+      type: object
+      required:
+      - recipient
+      - type
+      properties:
+        recipient:
+          type: string
+          format: email
+          description: Recipient email address
+        type:
+          type: string
+          enum:
+          - transactional
+          - non_transactional
+          description: Type of suppression
+        description:
+          type: string
+          description: Human-readable reason for suppression
+        list_id:
+          type: string
+          description: RFC 2919 compliant list identifier
     SuppressionListResponse:
       type: object
       properties:
@@ -332,47 +346,33 @@ components:
           properties:
             next:
               type: string
+    SuppressionResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              recipient:
+                type: string
+              type:
+                type: string
+              source:
+                type: string
+              description:
+                type: string
+              created:
+                type: string
+                format: date-time
+              updated:
+                type: string
+                format: date-time
     SingleSuppressionRequest:
       type: object
       required:
       - type
       properties:
-        type:
-          type: string
-          enum:
-          - transactional
-          - non_transactional
-          description: Type of suppression
-        description:
-          type: string
-          description: Human-readable reason for suppression
-        list_id:
-          type: string
-          description: RFC 2919 compliant list identifier
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    SuppressionEntry:
-      type: object
-      required:
-      - recipient
-      - type
-      properties:
-        recipient:
-          type: string
-          format: email
-          description: Recipient email address
         type:
           type: string
           enum:
