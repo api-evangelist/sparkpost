@@ -201,6 +201,24 @@ paths:
           description: Verification result
 components:
   schemas:
+    SendingDomainsListResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SendingDomainDetails'
+    SendingDomainUpdateRequest:
+      type: object
+      properties:
+        tracking_domain:
+          type: string
+        dkim:
+          type: object
+        shared_with_subaccounts:
+          type: boolean
+        is_default_bounce_domain:
+          type: boolean
     ErrorResponse:
       type: object
       properties:
@@ -215,6 +233,41 @@ components:
                 type: string
               description:
                 type: string
+    SendingDomainRequest:
+      type: object
+      required:
+      - domain
+      properties:
+        domain:
+          type: string
+          description: The sending domain name
+        tracking_domain:
+          type: string
+          description: Tracking domain to associate with this sending domain
+        dkim:
+          type: object
+          description: DKIM key configuration
+          properties:
+            private:
+              type: string
+            public:
+              type: string
+            selector:
+              type: string
+            headers:
+              type: string
+        generate_dkim:
+          type: boolean
+          default: true
+          description: Whether to auto-generate a DKIM key
+        dkim_key_length:
+          type: integer
+          default: 2048
+          description: Length of generated DKIM key in bits
+        shared_with_subaccounts:
+          type: boolean
+          default: false
+          description: Whether this domain is shared with subaccounts
     SendingDomainDetails:
       type: object
       properties:
@@ -279,59 +332,6 @@ components:
           type: string
         abuse_at_token:
           type: string
-    SendingDomainUpdateRequest:
-      type: object
-      properties:
-        tracking_domain:
-          type: string
-        dkim:
-          type: object
-        shared_with_subaccounts:
-          type: boolean
-        is_default_bounce_domain:
-          type: boolean
-    SendingDomainRequest:
-      type: object
-      required:
-      - domain
-      properties:
-        domain:
-          type: string
-          description: The sending domain name
-        tracking_domain:
-          type: string
-          description: Tracking domain to associate with this sending domain
-        dkim:
-          type: object
-          description: DKIM key configuration
-          properties:
-            private:
-              type: string
-            public:
-              type: string
-            selector:
-              type: string
-            headers:
-              type: string
-        generate_dkim:
-          type: boolean
-          default: true
-          description: Whether to auto-generate a DKIM key
-        dkim_key_length:
-          type: integer
-          default: 2048
-          description: Length of generated DKIM key in bits
-        shared_with_subaccounts:
-          type: boolean
-          default: false
-          description: Whether this domain is shared with subaccounts
-    SendingDomainsListResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SendingDomainDetails'
     SendingDomainResponse:
       type: object
       properties:

@@ -170,33 +170,6 @@ components:
           type: object
           additionalProperties: true
           description: Per-recipient substitution data for templates
-    TransmissionResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            total_rejected_recipients:
-              type: integer
-            total_accepted_recipients:
-              type: integer
-            id:
-              type: string
-              description: Transmission ID
-    TransmissionDetails:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
-            state:
-              type: string
-            num_recipients:
-              type: integer
-            campaign_id:
-              type: string
     TransmissionRequest:
       type: object
       properties:
@@ -295,6 +268,33 @@ components:
         return_path:
           type: string
           description: Envelope FROM address for bounce handling
+    TransmissionDetails:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+            state:
+              type: string
+            num_recipients:
+              type: integer
+            campaign_id:
+              type: string
+    TransmissionResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            total_rejected_recipients:
+              type: integer
+            total_accepted_recipients:
+              type: integer
+            id:
+              type: string
+              description: Transmission ID
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

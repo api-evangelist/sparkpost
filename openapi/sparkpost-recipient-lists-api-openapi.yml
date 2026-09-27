@@ -187,6 +187,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    RecipientListResponse:
+      type: object
+      properties:
+        results:
+          allOf:
+          - $ref: '#/components/schemas/RecipientListSummary'
+          - type: object
+            properties:
+              attributes:
+                type: object
+              recipients:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipient'
     ErrorResponse:
       type: object
       properties:
@@ -201,24 +215,6 @@ components:
                 type: string
               description:
                 type: string
-    RecipientListUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 1024
-        attributes:
-          type: object
-          additionalProperties: true
-          description: Replaces all existing attributes
-        recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/Recipient'
-          description: Replaces all existing recipients
     Recipient:
       type: object
       required:
@@ -250,27 +246,6 @@ components:
           type: object
           additionalProperties: true
           description: Per-recipient substitution data for templates
-    RecipientListsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecipientListSummary'
-    RecipientListCreateResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            total_rejected_recipients:
-              type: integer
-            total_accepted_recipients:
-              type: integer
-            id:
-              type: string
-            name:
-              type: string
     RecipientListRequest:
       type: object
       required:
@@ -297,6 +272,38 @@ components:
           items:
             $ref: '#/components/schemas/Recipient'
           description: List of recipient objects
+    RecipientListUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 1024
+        attributes:
+          type: object
+          additionalProperties: true
+          description: Replaces all existing attributes
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipient'
+          description: Replaces all existing recipients
+    RecipientListCreateResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            total_rejected_recipients:
+              type: integer
+            total_accepted_recipients:
+              type: integer
+            id:
+              type: string
+            name:
+              type: string
     RecipientListSummary:
       type: object
       properties:
@@ -308,20 +315,13 @@ components:
           type: string
         total_accepted_recipients:
           type: integer
-    RecipientListResponse:
+    RecipientListsResponse:
       type: object
       properties:
         results:
-          allOf:
-          - $ref: '#/components/schemas/RecipientListSummary'
-          - type: object
-            properties:
-              attributes:
-                type: object
-              recipients:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Recipient'
+          type: array
+          items:
+            $ref: '#/components/schemas/RecipientListSummary'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

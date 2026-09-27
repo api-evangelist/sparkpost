@@ -214,40 +214,6 @@ paths:
           description: Sample event payloads
 components:
   schemas:
-    WebhookUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        target:
-          type: string
-          format: uri
-        events:
-          type: array
-          items:
-            type: string
-        active:
-          type: boolean
-        custom_headers:
-          type: object
-          additionalProperties:
-            type: string
-        exception_subaccounts:
-          type: array
-          items:
-            type: integer
-        subaccount_id:
-          type: integer
-        auth_type:
-          type: string
-          enum:
-          - none
-          - basic
-          - oauth2
-        auth_request_details:
-          type: object
-        auth_credentials:
-          type: object
     ErrorResponse:
       type: object
       properties:
@@ -262,36 +228,6 @@ components:
                 type: string
               description:
                 type: string
-    WebhookDetails:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        target:
-          type: string
-        events:
-          type: array
-          items:
-            type: string
-        active:
-          type: boolean
-        auth_type:
-          type: string
-        custom_headers:
-          type: object
-        last_successful:
-          type: string
-          format: date-time
-        last_failure:
-          type: string
-          format: date-time
-    WebhookResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/WebhookDetails'
     WebhookRequest:
       type: object
       required:
@@ -350,6 +286,70 @@ components:
               type: string
             password:
               type: string
+    WebhookResponse:
+      type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/WebhookDetails'
+    WebhookUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        target:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        custom_headers:
+          type: object
+          additionalProperties:
+            type: string
+        exception_subaccounts:
+          type: array
+          items:
+            type: integer
+        subaccount_id:
+          type: integer
+        auth_type:
+          type: string
+          enum:
+          - none
+          - basic
+          - oauth2
+        auth_request_details:
+          type: object
+        auth_credentials:
+          type: object
+    WebhookDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        target:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        auth_type:
+          type: string
+        custom_headers:
+          type: object
+        last_successful:
+          type: string
+          format: date-time
+        last_failure:
+          type: string
+          format: date-time
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

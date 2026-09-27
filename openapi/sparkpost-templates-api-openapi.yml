@@ -208,30 +208,6 @@ paths:
           description: Rendered inline template preview
 components:
   schemas:
-    TemplateUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        content:
-          $ref: '#/components/schemas/TemplateContent'
-        options:
-          $ref: '#/components/schemas/TemplateOptions'
-        shared_with_subaccounts:
-          type: boolean
-        published:
-          type: boolean
-          description: Set to true to publish the draft
-    TemplateCreateResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
     TemplatePreviewResponse:
       type: object
       properties:
@@ -262,38 +238,6 @@ components:
                 type: string
               description:
                 type: string
-    TemplateResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-            description:
-              type: string
-            published:
-              type: boolean
-            content:
-              $ref: '#/components/schemas/TemplateContent'
-            options:
-              $ref: '#/components/schemas/TemplateOptions'
-            shared_with_subaccounts:
-              type: boolean
-            last_update_time:
-              type: string
-              format: date-time
-    TemplateOptions:
-      type: object
-      properties:
-        transactional:
-          type: boolean
-        open_tracking:
-          type: boolean
-        click_tracking:
-          type: boolean
     TemplateRequest:
       type: object
       properties:
@@ -313,13 +257,14 @@ components:
         shared_with_subaccounts:
           type: boolean
           description: Whether this template is shared with subaccounts
-    TemplateListResponse:
+    TemplateCreateResponse:
       type: object
       properties:
         results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TemplateResponse'
+          type: object
+          properties:
+            id:
+              type: string
     TemplateContent:
       type: object
       properties:
@@ -353,6 +298,61 @@ components:
           additionalProperties:
             type: string
           description: Additional email headers
+    TemplateListResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateResponse'
+    TemplateResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            description:
+              type: string
+            published:
+              type: boolean
+            content:
+              $ref: '#/components/schemas/TemplateContent'
+            options:
+              $ref: '#/components/schemas/TemplateOptions'
+            shared_with_subaccounts:
+              type: boolean
+            last_update_time:
+              type: string
+              format: date-time
+    TemplateOptions:
+      type: object
+      properties:
+        transactional:
+          type: boolean
+        open_tracking:
+          type: boolean
+        click_tracking:
+          type: boolean
+    TemplateUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          $ref: '#/components/schemas/TemplateContent'
+        options:
+          $ref: '#/components/schemas/TemplateOptions'
+        shared_with_subaccounts:
+          type: boolean
+        published:
+          type: boolean
+          description: Set to true to publish the draft
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

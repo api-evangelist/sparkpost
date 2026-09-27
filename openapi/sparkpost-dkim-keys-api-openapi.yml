@@ -176,6 +176,19 @@ paths:
           description: Domain or key not found
 components:
   schemas:
+    DkimKeyUpdateRequest:
+      type: object
+      properties:
+        signing_domain:
+          type: string
+        headers:
+          type: string
+        private:
+          type: string
+        public:
+          type: string
+        selector:
+          type: string
     DkimKeyRequest:
       type: object
       required:
@@ -197,19 +210,6 @@ components:
         dkim_key_length:
           type: integer
           default: 2048
-    DkimKeyUpdateRequest:
-      type: object
-      properties:
-        signing_domain:
-          type: string
-        headers:
-          type: string
-        private:
-          type: string
-        public:
-          type: string
-        selector:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
