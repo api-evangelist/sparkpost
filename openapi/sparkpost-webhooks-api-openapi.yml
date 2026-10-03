@@ -214,20 +214,31 @@ paths:
           description: Sample event payloads
 components:
   schemas:
-    ErrorResponse:
+    WebhookDetails:
       type: object
       properties:
-        errors:
+        id:
+          type: string
+        name:
+          type: string
+        target:
+          type: string
+        events:
           type: array
           items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
+            type: string
+        active:
+          type: boolean
+        auth_type:
+          type: string
+        custom_headers:
+          type: object
+        last_successful:
+          type: string
+          format: date-time
+        last_failure:
+          type: string
+          format: date-time
     WebhookRequest:
       type: object
       required:
@@ -286,11 +297,6 @@ components:
               type: string
             password:
               type: string
-    WebhookResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/WebhookDetails'
     WebhookUpdateRequest:
       type: object
       properties:
@@ -325,31 +331,25 @@ components:
           type: object
         auth_credentials:
           type: object
-    WebhookDetails:
+    WebhookResponse:
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        target:
-          type: string
-        events:
+        results:
+          $ref: '#/components/schemas/WebhookDetails'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
           type: array
           items:
-            type: string
-        active:
-          type: boolean
-        auth_type:
-          type: string
-        custom_headers:
-          type: object
-        last_successful:
-          type: string
-          format: date-time
-        last_failure:
-          type: string
-          format: date-time
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

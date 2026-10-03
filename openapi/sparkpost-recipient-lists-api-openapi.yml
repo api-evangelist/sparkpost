@@ -201,51 +201,17 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Recipient'
-    ErrorResponse:
+    RecipientListSummary:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    Recipient:
-      type: object
-      required:
-      - address
-      properties:
-        address:
-          oneOf:
-          - type: string
-            format: email
-          - type: object
-            properties:
-              email:
-                type: string
-                format: email
-              name:
-                type: string
-              header_to:
-                type: string
-        tags:
-          type: array
-          items:
-            type: string
-          description: Tags for recipient grouping
-        metadata:
-          type: object
-          additionalProperties: true
-          description: Per-recipient metadata
-        substitution_data:
-          type: object
-          additionalProperties: true
-          description: Per-recipient substitution data for templates
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        total_accepted_recipients:
+          type: integer
     RecipientListRequest:
       type: object
       required:
@@ -290,6 +256,44 @@ components:
           items:
             $ref: '#/components/schemas/Recipient'
           description: Replaces all existing recipients
+    Recipient:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          oneOf:
+          - type: string
+            format: email
+          - type: object
+            properties:
+              email:
+                type: string
+                format: email
+              name:
+                type: string
+              header_to:
+                type: string
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags for recipient grouping
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Per-recipient metadata
+        substitution_data:
+          type: object
+          additionalProperties: true
+          description: Per-recipient substitution data for templates
+    RecipientListsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecipientListSummary'
     RecipientListCreateResponse:
       type: object
       properties:
@@ -304,24 +308,20 @@ components:
               type: string
             name:
               type: string
-    RecipientListSummary:
+    ErrorResponse:
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        total_accepted_recipients:
-          type: integer
-    RecipientListsResponse:
-      type: object
-      properties:
-        results:
+        errors:
           type: array
           items:
-            $ref: '#/components/schemas/RecipientListSummary'
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -200,34 +200,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    SubaccountCreateResponse:
+    SubaccountsListResponse:
       type: object
       properties:
         results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubaccountDetails'
+        total_count:
+          type: integer
+        links:
           type: object
           properties:
-            subaccount_id:
-              type: integer
-            key:
-              type: string
-              description: API key for the subaccount (shown only on creation)
-            label:
-              type: string
-            short_key:
+            next:
               type: string
     SubaccountResponse:
       type: object
@@ -313,19 +298,34 @@ components:
         updated_at:
           type: string
           format: date-time
-    SubaccountsListResponse:
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    SubaccountCreateResponse:
       type: object
       properties:
         results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubaccountDetails'
-        total_count:
-          type: integer
-        links:
           type: object
           properties:
-            next:
+            subaccount_id:
+              type: integer
+            key:
+              type: string
+              description: API key for the subaccount (shown only on creation)
+            label:
+              type: string
+            short_key:
               type: string
   securitySchemes:
     ApiKeyAuth:

@@ -298,20 +298,50 @@ components:
         list_id:
           type: string
           description: RFC 2919 compliant list identifier
-    ErrorResponse:
+    SuppressionEntry:
+      type: object
+      required:
+      - recipient
+      - type
+      properties:
+        recipient:
+          type: string
+          format: email
+          description: Recipient email address
+        type:
+          type: string
+          enum:
+          - transactional
+          - non_transactional
+          description: Type of suppression
+        description:
+          type: string
+          description: Human-readable reason for suppression
+        list_id:
+          type: string
+          description: RFC 2919 compliant list identifier
+    SuppressionResponse:
       type: object
       properties:
-        errors:
+        results:
           type: array
           items:
             type: object
             properties:
-              message:
+              recipient:
                 type: string
-              code:
+              type:
+                type: string
+              source:
                 type: string
               description:
                 type: string
+              created:
+                type: string
+                format: date-time
+              updated:
+                type: string
+                format: date-time
     SuppressionListResponse:
       type: object
       properties:
@@ -341,50 +371,20 @@ components:
           properties:
             next:
               type: string
-    SuppressionResponse:
+    ErrorResponse:
       type: object
       properties:
-        results:
+        errors:
           type: array
           items:
             type: object
             properties:
-              recipient:
+              message:
                 type: string
-              type:
-                type: string
-              source:
+              code:
                 type: string
               description:
                 type: string
-              created:
-                type: string
-                format: date-time
-              updated:
-                type: string
-                format: date-time
-    SuppressionEntry:
-      type: object
-      required:
-      - recipient
-      - type
-      properties:
-        recipient:
-          type: string
-          format: email
-          description: Recipient email address
-        type:
-          type: string
-          enum:
-          - transactional
-          - non_transactional
-          description: Type of suppression
-        description:
-          type: string
-          description: Human-readable reason for suppression
-        list_id:
-          type: string
-          description: RFC 2919 compliant list identifier
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

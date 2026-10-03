@@ -126,20 +126,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    TransmissionResponse:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
+        results:
+          type: object
+          properties:
+            total_rejected_recipients:
+              type: integer
+            total_accepted_recipients:
+              type: integer
+            id:
+              type: string
+              description: Transmission ID
     Recipient:
       type: object
       required:
@@ -282,19 +281,20 @@ components:
               type: integer
             campaign_id:
               type: string
-    TransmissionResponse:
+    ErrorResponse:
       type: object
       properties:
-        results:
-          type: object
-          properties:
-            total_rejected_recipients:
-              type: integer
-            total_accepted_recipients:
-              type: integer
-            id:
-              type: string
-              description: Transmission ID
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

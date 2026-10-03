@@ -164,43 +164,6 @@ paths:
           description: Validation result
 components:
   schemas:
-    RelayWebhookDetails:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        target:
-          type: string
-        auth_type:
-          type: string
-        match:
-          type: object
-          properties:
-            domain:
-              type: string
-        custom_headers:
-          type: object
-    RelayWebhookResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/RelayWebhookDetails'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
     RelayWebhookRequest:
       type: object
       required:
@@ -250,6 +213,24 @@ components:
           additionalProperties:
             type: string
           description: Custom HTTP headers to include in relay webhook requests
+    RelayWebhookDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        target:
+          type: string
+        auth_type:
+          type: string
+        match:
+          type: object
+          properties:
+            domain:
+              type: string
+        custom_headers:
+          type: object
     RelayWebhookUpdateRequest:
       type: object
       properties:
@@ -276,6 +257,25 @@ components:
           type: object
           additionalProperties:
             type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    RelayWebhookResponse:
+      type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/RelayWebhookDetails'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
