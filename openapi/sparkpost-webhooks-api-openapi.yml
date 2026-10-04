@@ -214,31 +214,6 @@ paths:
           description: Sample event payloads
 components:
   schemas:
-    WebhookDetails:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        target:
-          type: string
-        events:
-          type: array
-          items:
-            type: string
-        active:
-          type: boolean
-        auth_type:
-          type: string
-        custom_headers:
-          type: object
-        last_successful:
-          type: string
-          format: date-time
-        last_failure:
-          type: string
-          format: date-time
     WebhookRequest:
       type: object
       required:
@@ -297,6 +272,50 @@ components:
               type: string
             password:
               type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    WebhookDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        target:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        auth_type:
+          type: string
+        custom_headers:
+          type: object
+        last_successful:
+          type: string
+          format: date-time
+        last_failure:
+          type: string
+          format: date-time
+    WebhookResponse:
+      type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/WebhookDetails'
     WebhookUpdateRequest:
       type: object
       properties:
@@ -331,25 +350,6 @@ components:
           type: object
         auth_credentials:
           type: object
-    WebhookResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/WebhookDetails'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -164,6 +164,46 @@ paths:
           description: Validation result
 components:
   schemas:
+    RelayWebhookUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        target:
+          type: string
+          format: uri
+        auth_token:
+          type: string
+        auth_type:
+          type: string
+          enum:
+          - none
+          - oauth2
+        auth_request_details:
+          type: object
+        match:
+          type: object
+          properties:
+            domain:
+              type: string
+        custom_headers:
+          type: object
+          additionalProperties:
+            type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     RelayWebhookRequest:
       type: object
       required:
@@ -213,6 +253,11 @@ components:
           additionalProperties:
             type: string
           description: Custom HTTP headers to include in relay webhook requests
+    RelayWebhookResponse:
+      type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/RelayWebhookDetails'
     RelayWebhookDetails:
       type: object
       properties:
@@ -231,51 +276,6 @@ components:
               type: string
         custom_headers:
           type: object
-    RelayWebhookUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        target:
-          type: string
-          format: uri
-        auth_token:
-          type: string
-        auth_type:
-          type: string
-          enum:
-          - none
-          - oauth2
-        auth_request_details:
-          type: object
-        match:
-          type: object
-          properties:
-            domain:
-              type: string
-        custom_headers:
-          type: object
-          additionalProperties:
-            type: string
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    RelayWebhookResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/RelayWebhookDetails'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

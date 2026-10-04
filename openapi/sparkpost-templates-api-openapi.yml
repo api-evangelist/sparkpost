@@ -208,6 +208,68 @@ paths:
           description: Rendered inline template preview
 components:
   schemas:
+    TemplatePreviewResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            subject:
+              type: string
+            html:
+              type: string
+            text:
+              type: string
+            amp_html:
+              type: string
+            from:
+              type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    TemplateOptions:
+      type: object
+      properties:
+        transactional:
+          type: boolean
+        open_tracking:
+          type: boolean
+        click_tracking:
+          type: boolean
+    TemplateResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            description:
+              type: string
+            published:
+              type: boolean
+            content:
+              $ref: '#/components/schemas/TemplateContent'
+            options:
+              $ref: '#/components/schemas/TemplateOptions'
+            shared_with_subaccounts:
+              type: boolean
+            last_update_time:
+              type: string
+              format: date-time
     TemplateRequest:
       type: object
       properties:
@@ -235,27 +297,6 @@ components:
           properties:
             id:
               type: string
-    TemplateListResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TemplateResponse'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
     TemplateUpdateRequest:
       type: object
       properties:
@@ -272,15 +313,6 @@ components:
         published:
           type: boolean
           description: Set to true to publish the draft
-    TemplateOptions:
-      type: object
-      properties:
-        transactional:
-          type: boolean
-        open_tracking:
-          type: boolean
-        click_tracking:
-          type: boolean
     TemplateContent:
       type: object
       properties:
@@ -314,45 +346,13 @@ components:
           additionalProperties:
             type: string
           description: Additional email headers
-    TemplatePreviewResponse:
+    TemplateListResponse:
       type: object
       properties:
         results:
-          type: object
-          properties:
-            subject:
-              type: string
-            html:
-              type: string
-            text:
-              type: string
-            amp_html:
-              type: string
-            from:
-              type: string
-    TemplateResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-            description:
-              type: string
-            published:
-              type: boolean
-            content:
-              $ref: '#/components/schemas/TemplateContent'
-            options:
-              $ref: '#/components/schemas/TemplateOptions'
-            shared_with_subaccounts:
-              type: boolean
-            last_update_time:
-              type: string
-              format: date-time
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateResponse'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

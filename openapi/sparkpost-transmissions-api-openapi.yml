@@ -126,6 +126,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    TransmissionDetails:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+            state:
+              type: string
+            num_recipients:
+              type: integer
+            campaign_id:
+              type: string
     TransmissionResponse:
       type: object
       properties:
@@ -139,6 +153,20 @@ components:
             id:
               type: string
               description: Transmission ID
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     Recipient:
       type: object
       required:
@@ -267,34 +295,6 @@ components:
         return_path:
           type: string
           description: Envelope FROM address for bounce handling
-    TransmissionDetails:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
-            state:
-              type: string
-            num_recipients:
-              type: integer
-            campaign_id:
-              type: string
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -214,31 +214,25 @@ components:
           properties:
             next:
               type: string
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     SubaccountResponse:
       type: object
       properties:
         results:
           $ref: '#/components/schemas/SubaccountDetails'
-    SubaccountUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 64
-        status:
-          type: string
-          enum:
-          - active
-          - suspended
-          - terminated
-        ip_pool:
-          type: string
-          description: Set to empty string to unassign current IP pool
-        options:
-          type: object
-          properties:
-            deliverability:
-              type: boolean
     SubaccountRequest:
       type: object
       required:
@@ -274,6 +268,21 @@ components:
             deliverability:
               type: boolean
               description: Enable deliverability features for this subaccount
+    SubaccountCreateResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            subaccount_id:
+              type: integer
+            key:
+              type: string
+              description: API key for the subaccount (shown only on creation)
+            label:
+              type: string
+            short_key:
+              type: string
     SubaccountDetails:
       type: object
       properties:
@@ -298,35 +307,26 @@ components:
         updated_at:
           type: string
           format: date-time
-    ErrorResponse:
+    SubaccountUpdateRequest:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    SubaccountCreateResponse:
-      type: object
-      properties:
-        results:
+        name:
+          type: string
+          maxLength: 64
+        status:
+          type: string
+          enum:
+          - active
+          - suspended
+          - terminated
+        ip_pool:
+          type: string
+          description: Set to empty string to unassign current IP pool
+        options:
           type: object
           properties:
-            subaccount_id:
-              type: integer
-            key:
-              type: string
-              description: API key for the subaccount (shown only on creation)
-            label:
-              type: string
-            short_key:
-              type: string
+            deliverability:
+              type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -298,28 +298,6 @@ components:
         list_id:
           type: string
           description: RFC 2919 compliant list identifier
-    SuppressionEntry:
-      type: object
-      required:
-      - recipient
-      - type
-      properties:
-        recipient:
-          type: string
-          format: email
-          description: Recipient email address
-        type:
-          type: string
-          enum:
-          - transactional
-          - non_transactional
-          description: Type of suppression
-        description:
-          type: string
-          description: Human-readable reason for suppression
-        list_id:
-          type: string
-          description: RFC 2919 compliant list identifier
     SuppressionResponse:
       type: object
       properties:
@@ -342,6 +320,20 @@ components:
               updated:
                 type: string
                 format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
     SuppressionListResponse:
       type: object
       properties:
@@ -371,20 +363,28 @@ components:
           properties:
             next:
               type: string
-    ErrorResponse:
+    SuppressionEntry:
       type: object
+      required:
+      - recipient
+      - type
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
+        recipient:
+          type: string
+          format: email
+          description: Recipient email address
+        type:
+          type: string
+          enum:
+          - transactional
+          - non_transactional
+          description: Type of suppression
+        description:
+          type: string
+          description: Human-readable reason for suppression
+        list_id:
+          type: string
+          description: RFC 2919 compliant list identifier
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -187,57 +187,27 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    RecipientListResponse:
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    RecipientListsResponse:
       type: object
       properties:
         results:
-          allOf:
-          - $ref: '#/components/schemas/RecipientListSummary'
-          - type: object
-            properties:
-              attributes:
-                type: object
-              recipients:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Recipient'
-    RecipientListSummary:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        total_accepted_recipients:
-          type: integer
-    RecipientListRequest:
-      type: object
-      required:
-      - recipients
-      properties:
-        id:
-          type: string
-          maxLength: 64
-          description: Unique alphanumeric ID (auto-generated if not provided)
-        name:
-          type: string
-          maxLength: 64
-          description: Display name
-        description:
-          type: string
-          maxLength: 1024
-          description: Description of the list
-        attributes:
-          type: object
-          additionalProperties: true
-          description: Arbitrary metadata for the list
-        recipients:
           type: array
           items:
-            $ref: '#/components/schemas/Recipient'
-          description: List of recipient objects
+            $ref: '#/components/schemas/RecipientListSummary'
     RecipientListUpdateRequest:
       type: object
       properties:
@@ -256,6 +226,20 @@ components:
           items:
             $ref: '#/components/schemas/Recipient'
           description: Replaces all existing recipients
+    RecipientListResponse:
+      type: object
+      properties:
+        results:
+          allOf:
+          - $ref: '#/components/schemas/RecipientListSummary'
+          - type: object
+            properties:
+              attributes:
+                type: object
+              recipients:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipient'
     Recipient:
       type: object
       required:
@@ -287,13 +271,17 @@ components:
           type: object
           additionalProperties: true
           description: Per-recipient substitution data for templates
-    RecipientListsResponse:
+    RecipientListSummary:
       type: object
       properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecipientListSummary'
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        total_accepted_recipients:
+          type: integer
     RecipientListCreateResponse:
       type: object
       properties:
@@ -308,20 +296,32 @@ components:
               type: string
             name:
               type: string
-    ErrorResponse:
+    RecipientListRequest:
       type: object
+      required:
+      - recipients
       properties:
-        errors:
+        id:
+          type: string
+          maxLength: 64
+          description: Unique alphanumeric ID (auto-generated if not provided)
+        name:
+          type: string
+          maxLength: 64
+          description: Display name
+        description:
+          type: string
+          maxLength: 1024
+          description: Description of the list
+        attributes:
+          type: object
+          additionalProperties: true
+          description: Arbitrary metadata for the list
+        recipients:
           type: array
           items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
+            $ref: '#/components/schemas/Recipient'
+          description: List of recipient objects
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
