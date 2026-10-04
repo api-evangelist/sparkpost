@@ -1,0 +1,36 @@
+slug: sparkpost
+provider: SparkPost
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Webhooks
+  spec_file: sparkpost-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.75
+  evidence: '"Configure real-time HTTP push notifications for email events ... Supports batched event
+    payloads and retry logic"; GET /webhooks/{id}/batch-status, GET /webhooks/events/samples'
+  reason: Create/update/validate webhook subscriptions plus event schema documentation and delivery batch
+    status is exactly outbound webhook and event subscription lifecycle management.
+- tag: Subaccounts
+  spec_file: sparkpost-subaccounts-api-openapi.yml
+  capability_id: BC-4230.10
+  capability_id_l1: BC-4230
+  capability_name: Tenant Provisioning & Lifecycle
+  confidence: 0.7
+  evidence: '"Manage subaccounts for multi-tenant or agency deployments, each with isolated sending domains,
+    API keys, suppression lists, and reporting"; POST /subaccounts createSubaccount'
+  reason: Creation and administration of isolated subaccounts in an explicitly multi-tenant deployment
+    model matches tenant provisioning and lifecycle; some overlap with tenant configuration/isolation
+    keeps confidence at 0.7.

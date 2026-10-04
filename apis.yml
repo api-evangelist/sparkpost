@@ -422,6 +422,9 @@ apis:
   - type: Documentation
     url: https://developers.sparkpost.com/api/inbound-domains/
 common:
+  - type: CapabilityMap
+    url: capabilities/sparkpost-capability-edges.yml
+    name: SparkPost Business Capability Map
   - type: AgenticAccess
     url: agentic-access/sparkpost-agentic-access.yml
   - type: VulnerabilityDisclosure
