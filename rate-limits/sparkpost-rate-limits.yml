@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: SparkPost API Rate Limits
 description: SparkPost applies rate limits to protect service stability. HTTP 429 is returned when limits are exceeded. Daily and monthly sending quotas apply separately from per-endpoint API rate limits.
 specificationVersion: "0.1"
