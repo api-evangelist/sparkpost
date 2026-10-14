@@ -20,5 +20,18 @@
     matched_domain: sparkpost.com
     detected_by: sweep-cpaas.py
     detected: '2026-10-12'
-  status: pending-generation
+  status: not-a-workflow
+  arazzo: null
+- slug: sparkpost-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/sparkpost/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
   arazzo: null

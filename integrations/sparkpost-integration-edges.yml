@@ -15,6 +15,34 @@ edges:
     matched_domain: sparkpost.com
     detected_by: sweep-cpaas.py
     detected: '2026-10-12'
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/sparkpost/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - SparkPost
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Single Sign-On
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - IDENTITY_SECURITY_POSTURE_MANAGEMENT
+  - SAML
+  - UPDATE
 generated: '2026-10-12'
 method: searched
-checked: []
+checked:
+- okta/integrations/okta-integration-edges.yml
+source:
+- okta/integrations/okta-integration-edges.yml
