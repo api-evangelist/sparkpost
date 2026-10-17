@@ -126,47 +126,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    TransmissionDetails:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: string
-            state:
-              type: string
-            num_recipients:
-              type: integer
-            campaign_id:
-              type: string
-    TransmissionResponse:
-      type: object
-      properties:
-        results:
-          type: object
-          properties:
-            total_rejected_recipients:
-              type: integer
-            total_accepted_recipients:
-              type: integer
-            id:
-              type: string
-              description: Transmission ID
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
     Recipient:
       type: object
       required:
@@ -295,6 +254,47 @@ components:
         return_path:
           type: string
           description: Envelope FROM address for bounce handling
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    TransmissionResponse:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            total_rejected_recipients:
+              type: integer
+            total_accepted_recipients:
+              type: integer
+            id:
+              type: string
+              description: Transmission ID
+    TransmissionDetails:
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            id:
+              type: string
+            state:
+              type: string
+            num_recipients:
+              type: integer
+            campaign_id:
+              type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

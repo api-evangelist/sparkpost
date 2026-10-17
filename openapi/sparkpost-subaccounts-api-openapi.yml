@@ -200,6 +200,26 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    SubaccountUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 64
+        status:
+          type: string
+          enum:
+          - active
+          - suspended
+          - terminated
+        ip_pool:
+          type: string
+          description: Set to empty string to unassign current IP pool
+        options:
+          type: object
+          properties:
+            deliverability:
+              type: boolean
     SubaccountsListResponse:
       type: object
       properties:
@@ -214,60 +234,6 @@ components:
           properties:
             next:
               type: string
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    SubaccountResponse:
-      type: object
-      properties:
-        results:
-          $ref: '#/components/schemas/SubaccountDetails'
-    SubaccountRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          maxLength: 64
-          description: Display name for the subaccount
-        ip_pool:
-          type: string
-          description: IP Pool ID for mail deliveries
-        setup_api_key:
-          type: boolean
-          default: true
-          description: Whether to create an API key for this subaccount
-        key_label:
-          type: string
-          description: Label for the API key (required if setup_api_key is true)
-        key_grants:
-          type: array
-          items:
-            type: string
-          description: Permission grants for the API key (required if setup_api_key is true)
-        key_valid_ips:
-          type: array
-          items:
-            type: string
-          description: IP addresses allowed to use the API key
-        options:
-          type: object
-          properties:
-            deliverability:
-              type: boolean
-              description: Enable deliverability features for this subaccount
     SubaccountCreateResponse:
       type: object
       properties:
@@ -307,26 +273,60 @@ components:
         updated_at:
           type: string
           format: date-time
-    SubaccountUpdateRequest:
+    SubaccountResponse:
       type: object
+      properties:
+        results:
+          $ref: '#/components/schemas/SubaccountDetails'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    SubaccountRequest:
+      type: object
+      required:
+      - name
       properties:
         name:
           type: string
           maxLength: 64
-        status:
-          type: string
-          enum:
-          - active
-          - suspended
-          - terminated
+          description: Display name for the subaccount
         ip_pool:
           type: string
-          description: Set to empty string to unassign current IP pool
+          description: IP Pool ID for mail deliveries
+        setup_api_key:
+          type: boolean
+          default: true
+          description: Whether to create an API key for this subaccount
+        key_label:
+          type: string
+          description: Label for the API key (required if setup_api_key is true)
+        key_grants:
+          type: array
+          items:
+            type: string
+          description: Permission grants for the API key (required if setup_api_key is true)
+        key_valid_ips:
+          type: array
+          items:
+            type: string
+          description: IP addresses allowed to use the API key
         options:
           type: object
           properties:
             deliverability:
               type: boolean
+              description: Enable deliverability features for this subaccount
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

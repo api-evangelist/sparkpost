@@ -281,23 +281,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    SingleSuppressionRequest:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - transactional
-          - non_transactional
-          description: Type of suppression
-        description:
-          type: string
-          description: Human-readable reason for suppression
-        list_id:
-          type: string
-          description: RFC 2919 compliant list identifier
     SuppressionResponse:
       type: object
       properties:
@@ -320,6 +303,23 @@ components:
               updated:
                 type: string
                 format: date-time
+    SingleSuppressionRequest:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - transactional
+          - non_transactional
+          description: Type of suppression
+        description:
+          type: string
+          description: Human-readable reason for suppression
+        list_id:
+          type: string
+          description: RFC 2919 compliant list identifier
     ErrorResponse:
       type: object
       properties:

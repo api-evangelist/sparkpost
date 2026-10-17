@@ -381,27 +381,20 @@ paths:
                 $ref: '#/components/schemas/MetricsResponse'
 components:
   parameters:
-    to:
-      name: to
+    subaccounts:
+      name: subaccounts
       in: query
       required: false
-      description: End datetime (defaults to now)
+      description: Filter by subaccount IDs
       schema:
         type: string
-        format: date-time
-    precision:
-      name: precision
+    subject_campaigns:
+      name: subject_campaigns
       in: query
       required: false
-      description: Time precision for bucketing results
+      description: Filter by subject campaigns
       schema:
         type: string
-        enum:
-        - 1min
-        - 5min
-        - 15min
-        - hour
-        - day
     timezone:
       name: timezone
       in: query
@@ -410,28 +403,42 @@ components:
       schema:
         type: string
         default: UTC
-    campaigns:
-      name: campaigns
+    ip_pools:
+      name: ip_pools
       in: query
       required: false
-      description: Filter by campaign IDs
+      description: Filter by IP pool IDs
       schema:
         type: string
-    templates:
-      name: templates
+    mailbox_providers:
+      name: mailbox_providers
       in: query
       required: false
-      description: Filter by template IDs
+      description: Filter by mailbox providers
       schema:
         type: string
-    from:
-      name: from
+    mailbox_provider_regions:
+      name: mailbox_provider_regions
       in: query
-      required: true
-      description: Start datetime in YYYY-MM-DDTHH:MM format
+      required: false
+      description: Filter by mailbox provider regions
       schema:
         type: string
-        format: date-time
+    delimiter:
+      name: delimiter
+      in: query
+      required: false
+      description: List parameter separator (default comma)
+      schema:
+        type: string
+        default: ','
+    query_filters:
+      name: query_filters
+      in: query
+      required: false
+      description: Advanced filter structure (see /metrics/deliverability/query-filters-schema)
+      schema:
+        type: string
     order_by:
       name: order_by
       in: query
@@ -446,61 +453,26 @@ components:
       description: Comma-delimited list of metrics to return
       schema:
         type: string
-    mailbox_provider_regions:
-      name: mailbox_provider_regions
+    sending_domains:
+      name: sending_domains
       in: query
       required: false
-      description: Filter by mailbox provider regions
+      description: Filter by sending domains
       schema:
         type: string
-    domains:
-      name: domains
+    to:
+      name: to
       in: query
       required: false
-      description: Filter by recipient domains
+      description: End datetime (defaults to now)
       schema:
         type: string
-    query_filters:
-      name: query_filters
+        format: date-time
+    templates:
+      name: templates
       in: query
       required: false
-      description: Advanced filter structure (see /metrics/deliverability/query-filters-schema)
-      schema:
-        type: string
-    mailbox_providers:
-      name: mailbox_providers
-      in: query
-      required: false
-      description: Filter by mailbox providers
-      schema:
-        type: string
-    subaccounts:
-      name: subaccounts
-      in: query
-      required: false
-      description: Filter by subaccount IDs
-      schema:
-        type: string
-    sending_ips:
-      name: sending_ips
-      in: query
-      required: false
-      description: Filter by sending IP addresses
-      schema:
-        type: string
-    delimiter:
-      name: delimiter
-      in: query
-      required: false
-      description: List parameter separator (default comma)
-      schema:
-        type: string
-        default: ','
-    ip_pools:
-      name: ip_pools
-      in: query
-      required: false
-      description: Filter by IP pool IDs
+      description: Filter by template IDs
       schema:
         type: string
     limit:
@@ -513,18 +485,46 @@ components:
         minimum: 1
         maximum: 10000
         default: 1000
-    subject_campaigns:
-      name: subject_campaigns
+    from:
+      name: from
       in: query
-      required: false
-      description: Filter by subject campaigns
+      required: true
+      description: Start datetime in YYYY-MM-DDTHH:MM format
       schema:
         type: string
-    sending_domains:
-      name: sending_domains
+        format: date-time
+    campaigns:
+      name: campaigns
       in: query
       required: false
-      description: Filter by sending domains
+      description: Filter by campaign IDs
+      schema:
+        type: string
+    precision:
+      name: precision
+      in: query
+      required: false
+      description: Time precision for bucketing results
+      schema:
+        type: string
+        enum:
+        - 1min
+        - 5min
+        - 15min
+        - hour
+        - day
+    sending_ips:
+      name: sending_ips
+      in: query
+      required: false
+      description: Filter by sending IP addresses
+      schema:
+        type: string
+    domains:
+      name: domains
+      in: query
+      required: false
+      description: Filter by recipient domains
       schema:
         type: string
   schemas:

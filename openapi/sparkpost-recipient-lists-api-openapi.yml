@@ -187,27 +187,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    RecipientListsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecipientListSummary'
     RecipientListUpdateRequest:
       type: object
       properties:
@@ -226,20 +205,20 @@ components:
           items:
             $ref: '#/components/schemas/Recipient'
           description: Replaces all existing recipients
-    RecipientListResponse:
+    RecipientListCreateResponse:
       type: object
       properties:
         results:
-          allOf:
-          - $ref: '#/components/schemas/RecipientListSummary'
-          - type: object
-            properties:
-              attributes:
-                type: object
-              recipients:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Recipient'
+          type: object
+          properties:
+            total_rejected_recipients:
+              type: integer
+            total_accepted_recipients:
+              type: integer
+            id:
+              type: string
+            name:
+              type: string
     Recipient:
       type: object
       required:
@@ -271,31 +250,41 @@ components:
           type: object
           additionalProperties: true
           description: Per-recipient substitution data for templates
-    RecipientListSummary:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        total_accepted_recipients:
-          type: integer
-    RecipientListCreateResponse:
+    RecipientListsResponse:
       type: object
       properties:
         results:
-          type: object
-          properties:
-            total_rejected_recipients:
-              type: integer
-            total_accepted_recipients:
-              type: integer
-            id:
-              type: string
-            name:
-              type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/RecipientListSummary'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    RecipientListResponse:
+      type: object
+      properties:
+        results:
+          allOf:
+          - $ref: '#/components/schemas/RecipientListSummary'
+          - type: object
+            properties:
+              attributes:
+                type: object
+              recipients:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipient'
     RecipientListRequest:
       type: object
       required:
@@ -322,6 +311,17 @@ components:
           items:
             $ref: '#/components/schemas/Recipient'
           description: List of recipient objects
+    RecipientListSummary:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        total_accepted_recipients:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

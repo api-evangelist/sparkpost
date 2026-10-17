@@ -201,25 +201,22 @@ paths:
           description: Verification result
 components:
   schemas:
+    SendingDomainUpdateRequest:
+      type: object
+      properties:
+        tracking_domain:
+          type: string
+        dkim:
+          type: object
+        shared_with_subaccounts:
+          type: boolean
+        is_default_bounce_domain:
+          type: boolean
     SendingDomainResponse:
       type: object
       properties:
         results:
           $ref: '#/components/schemas/SendingDomainDetails'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
     SendingDomainDetails:
       type: object
       properties:
@@ -263,17 +260,48 @@ components:
           type: boolean
         is_default_bounce_domain:
           type: boolean
-    SendingDomainUpdateRequest:
+    SendingDomainsListResponse:
       type: object
       properties:
-        tracking_domain:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SendingDomainDetails'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    SendingDomainVerifyRequest:
+      type: object
+      properties:
+        dkim_verify:
+          type: boolean
+        cname_verify:
+          type: boolean
+        verification_mailbox_verify:
+          type: boolean
+        verification_mailbox:
           type: string
-        dkim:
-          type: object
-        shared_with_subaccounts:
+        postmaster_at_verify:
           type: boolean
-        is_default_bounce_domain:
+        abuse_at_verify:
           type: boolean
+        verification_mailbox_token:
+          type: string
+        postmaster_at_token:
+          type: string
+        abuse_at_token:
+          type: string
     SendingDomainRequest:
       type: object
       required:
@@ -309,34 +337,6 @@ components:
           type: boolean
           default: false
           description: Whether this domain is shared with subaccounts
-    SendingDomainVerifyRequest:
-      type: object
-      properties:
-        dkim_verify:
-          type: boolean
-        cname_verify:
-          type: boolean
-        verification_mailbox_verify:
-          type: boolean
-        verification_mailbox:
-          type: string
-        postmaster_at_verify:
-          type: boolean
-        abuse_at_verify:
-          type: boolean
-        verification_mailbox_token:
-          type: string
-        postmaster_at_token:
-          type: string
-        abuse_at_token:
-          type: string
-    SendingDomainsListResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SendingDomainDetails'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

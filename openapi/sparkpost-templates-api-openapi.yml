@@ -208,45 +208,13 @@ paths:
           description: Rendered inline template preview
 components:
   schemas:
-    TemplatePreviewResponse:
+    TemplateListResponse:
       type: object
       properties:
         results:
-          type: object
-          properties:
-            subject:
-              type: string
-            html:
-              type: string
-            text:
-              type: string
-            amp_html:
-              type: string
-            from:
-              type: string
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
           type: array
           items:
-            type: object
-            properties:
-              message:
-                type: string
-              code:
-                type: string
-              description:
-                type: string
-    TemplateOptions:
-      type: object
-      properties:
-        transactional:
-          type: boolean
-        open_tracking:
-          type: boolean
-        click_tracking:
-          type: boolean
+            $ref: '#/components/schemas/TemplateResponse'
     TemplateResponse:
       type: object
       properties:
@@ -270,25 +238,6 @@ components:
             last_update_time:
               type: string
               format: date-time
-    TemplateRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique alphanumeric ID (auto-generated if not provided)
-        name:
-          type: string
-          description: Display name for the template
-        description:
-          type: string
-          description: Template description
-        content:
-          $ref: '#/components/schemas/TemplateContent'
-        options:
-          $ref: '#/components/schemas/TemplateOptions'
-        shared_with_subaccounts:
-          type: boolean
-          description: Whether this template is shared with subaccounts
     TemplateCreateResponse:
       type: object
       properties:
@@ -297,22 +246,6 @@ components:
           properties:
             id:
               type: string
-    TemplateUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        content:
-          $ref: '#/components/schemas/TemplateContent'
-        options:
-          $ref: '#/components/schemas/TemplateOptions'
-        shared_with_subaccounts:
-          type: boolean
-        published:
-          type: boolean
-          description: Set to true to publish the draft
     TemplateContent:
       type: object
       properties:
@@ -346,13 +279,80 @@ components:
           additionalProperties:
             type: string
           description: Additional email headers
-    TemplateListResponse:
+    TemplatePreviewResponse:
       type: object
       properties:
         results:
+          type: object
+          properties:
+            subject:
+              type: string
+            html:
+              type: string
+            text:
+              type: string
+            amp_html:
+              type: string
+            from:
+              type: string
+    TemplateOptions:
+      type: object
+      properties:
+        transactional:
+          type: boolean
+        open_tracking:
+          type: boolean
+        click_tracking:
+          type: boolean
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
           type: array
           items:
-            $ref: '#/components/schemas/TemplateResponse'
+            type: object
+            properties:
+              message:
+                type: string
+              code:
+                type: string
+              description:
+                type: string
+    TemplateUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          $ref: '#/components/schemas/TemplateContent'
+        options:
+          $ref: '#/components/schemas/TemplateOptions'
+        shared_with_subaccounts:
+          type: boolean
+        published:
+          type: boolean
+          description: Set to true to publish the draft
+    TemplateRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique alphanumeric ID (auto-generated if not provided)
+        name:
+          type: string
+          description: Display name for the template
+        description:
+          type: string
+          description: Template description
+        content:
+          $ref: '#/components/schemas/TemplateContent'
+        options:
+          $ref: '#/components/schemas/TemplateOptions'
+        shared_with_subaccounts:
+          type: boolean
+          description: Whether this template is shared with subaccounts
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

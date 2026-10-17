@@ -164,6 +164,24 @@ paths:
           description: Validation result
 components:
   schemas:
+    RelayWebhookDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        target:
+          type: string
+        auth_type:
+          type: string
+        match:
+          type: object
+          properties:
+            domain:
+              type: string
+        custom_headers:
+          type: object
     RelayWebhookUpdateRequest:
       type: object
       properties:
@@ -258,24 +276,6 @@ components:
       properties:
         results:
           $ref: '#/components/schemas/RelayWebhookDetails'
-    RelayWebhookDetails:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        target:
-          type: string
-        auth_type:
-          type: string
-        match:
-          type: object
-          properties:
-            domain:
-              type: string
-        custom_headers:
-          type: object
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
