@@ -43,7 +43,7 @@ tags:
   - Webhook
   - Analytics
   - Templates
-  - Suppression List
+  - Suppression
 tags_raw:
   - Email
   - Transactional Email
@@ -303,6 +303,8 @@ apis:
   humanURL: https://developers.sparkpost.com/api/transmissions/
   baseURL: https://api.sparkpost.com/api/v1
   tags:
+  - Suppression
+  tags_raw:
   - Suppression List
   properties:
   - type: OpenAPI
